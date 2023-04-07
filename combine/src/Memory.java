@@ -9,15 +9,15 @@ public class Memory {
 
     class con_table{//连续储存的表
         int available=1;
-        int number;
         int start;//开始地址
         int end;//结束地址
-        int pid;//访问号
+        int pid=-1;//访问号
         int size;//大小
+        int num;
     }
     class page_table{//分页储存的表
         int page_number;
-        int pid;//访问号
+        int pid=-1;//访问号
         int available=1;
     }
     class process{
@@ -33,6 +33,7 @@ public class Memory {
         int number=-1;
         int time=0;
     }
+    static int con_time=0;//第几个页表
     static int page_size=1024;
     static int page_number=8;//虚拟内存大小
     static int physical_page=4;//物理内存
@@ -51,8 +52,16 @@ public class Memory {
 
     //连续内存分配算法
     Memory() throws IOException {
+        //初始化连续内存表
+        con_table new_con_table=new con_table();
+        new_con_table.start=0;
+        new_con_table.end=total_size-1;
+        new_con_table.size=total_size;
+        new_con_table.num=con_time;
+        con_time++;
+        con_table.add(new_con_table);
         mode_alloc="ca";//第一行是分配模式
-        schedule="FIFO";//第二行分配查页方式
+        schedule="LRU";//第二行分配查页方式
         //初始化虚拟表三个节点,初始都为-1
         for(int i=0;i<size_virtual_page;i++){
             virtual_page new_page=new virtual_page();
@@ -100,7 +109,7 @@ public class Memory {
         //连续内存分配
         //遍历table || FIFO算法
         for(int i=0;i<con_table.size();i++){
-            if(con_table.get(i).size>=target.size && con_table.get(i).available==1 && i<con_table.size()-1){
+            if(con_table.get(i).size==target.size && con_table.get(i).available==1 ){//正好等于且可用
                 //如果找到了
                 con_table.get(i).pid=target.pid;
                 con_table.get(i).available=0;
@@ -108,23 +117,27 @@ public class Memory {
                 target.in=1;
                 return;
             }
+            else if(con_table.get(i).size>target.size && con_table.get(i).available==1){//大于且可用
+                con_table new_table=new con_table();
+                new_table.pid=target.pid;
+                new_table.size=target.size;
+                new_table.start=con_table.get(i).start;
+                new_table.end=new_table.start+target.size-1;
+                new_table.available=0;
+                new_table.num=con_time;
+                target.page[0]=con_time;
+                target.in=1;
+                con_time++;
+                con_table.add(new_table);
+
+                //修改原来的表
+                con_table.get(i).start=new_table.end+1;
+                con_table.get(i).size=con_table.get(i).size-target.size;
+
+            }
 
         }
 
-        //创新新的子表,复制target数据插入原来的总表
-        con_table new_table=new con_table();
-        new_table.pid=target.pid;
-        new_table.size=target.size;
-        if(con_table.size()>0) new_table.start=1+con_table.get(con_table.size()-1).end;
-        else new_table.start=0;
-        new_table.end=new_table.start+target.size-1;
-        new_table.available=0;
-        new_table.number=con_table.size();//当为0时表示第一个表
-        target.page[0]=con_table.size();
-        target.in=1;
-        con_table.add(new_table);
-        //打印分配的页表
-        System.out.println("分配的页表为:"+target.page[0]);
 
     }
     public static void page_alloc(process target){
@@ -338,17 +351,19 @@ public class Memory {
     Boolean check_memory(int size){
         //检查内存是否已满
         if(mode_alloc.equals("ca")){
-            if(con_table.size()==0){
-                if(size>total_size){
-                    System.out.println("内存不够");
-                    return false;
+            //找con_table中available为1的最大的块
+            int max=0;
+            for(int i=0;i<con_table.size();i++){
+                if(con_table.get(i).available==1){
+                    if(con_table.get(i).end-con_table.get(i).start>max){
+                        max=con_table.get(i).end-con_table.get(i).start;
+                    }
                 }
             }
-            //如果内存不足
-            else if(con_table.get(con_table.size()-1).end+ size>total_size-1){
-                System.out.println("内存不足");
+            //如果最大的块小于size,返回false
+            if(max<size){
+                System.out.println("内存不够");
                 return false;
-
             }
             return true;
 

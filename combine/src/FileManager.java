@@ -1007,12 +1007,19 @@ public class FileManager {
         //将路径拼接为完整的文件路径
         path = root_path + current_working_path + path;
         File file = new File(path);
+        //判断路径是否为目录，如果是则报错并返回
+
         String result = "";
 
         //判断文件是否存在，如果不存在则报错并返回
         if(!file.exists()) {
             System.out.print("Error:" + path + " does not exist.");
             result = "error";
+
+        }
+        else  if (file.isDirectory()) {
+            System.out.println("Error: Directory " + path + " does not exist.");
+            return ("error");
         }
         else {
             result=  path;
