@@ -31,6 +31,8 @@ public class Kernel {
         //初始化进程管理器,把内存管理器传进去
          processManager = new ProcessManager(memoryManager);
         // Create a pipe for communication from shell to kernel
+        new Thread(processManager).start();
+
 
         shellOutput.connect(shellInput);
         shellOutput1.connect(shellInput1);
@@ -435,7 +437,7 @@ public class Kernel {
             }
             //遍历pcbList,打印状态,name,pid
             for (int i = 0; i < pcbList.size(); i++) {
-                shellInput1.write(("进程名字:" + pcbList.get(i).name + " 进程状态:" + pcbList.get(i).status + " 进程pid:" + pcbList.get(i).pid).getBytes());
+                shellInput1.write(("进程名字:" + pcbList.get(i).name + " 进程状态:" + pcbList.get(i).status + " 进程pid:" + pcbList.get(i).pid+"\n").getBytes());
                 shellInput1.flush();
             }
         }

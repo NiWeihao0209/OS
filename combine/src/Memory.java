@@ -93,6 +93,7 @@ public class Memory {
         }
 
 
+
     }
     public void continue_alloc(process target){
 
@@ -122,6 +123,8 @@ public class Memory {
         target.page[0]=con_table.size();
         target.in=1;
         con_table.add(new_table);
+        //打印分配的页表
+        System.out.println("分配的页表为:"+target.page[0]);
 
     }
     public static void page_alloc(process target){
@@ -179,6 +182,7 @@ public class Memory {
     //访问页表
     public static void access_con(process target){
         //看看target.page[0]是否在虚拟页中
+        System.out.println("pid:"+target.pid+" "+target.page[0]);
         for(int i=0;i<virtual_page.size();i++){
             if(virtual_page.get(i).number==target.page[0]){
                 //如果在虚拟页中,访问次数加1
