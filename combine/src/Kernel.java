@@ -1,11 +1,8 @@
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Kernel {
     //创建文件管理器
@@ -14,7 +11,7 @@ public class Kernel {
     //创建进程管理器
     static ProcessManager processManager;
     //创建内存管理器
-    static Memory memoryManager;
+
 
 
     static String[] keyword ={"gcc","vi","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","re"};
@@ -25,9 +22,10 @@ public class Kernel {
     //管道1,kernel向shell传输数据
     static PipedInputStream shellOutput1 = new PipedInputStream();
     static PipedOutputStream shellInput1 = new PipedOutputStream();
+    static Memory memoryManager;
     public static void main(String[] args) throws IOException {
         //初始化内存管理器
-        memoryManager = new Memory();
+        memoryManager= new Memory();
         //初始化进程管理器,把内存管理器传进去
          processManager = new ProcessManager(memoryManager);
         // Create a pipe for communication from shell to kernel
@@ -373,7 +371,7 @@ public class Kernel {
         String[] words = word.split(" ");
         List<String> list = null;
         if(words.length==1){
-            list=memoryManager.check();
+            list=memoryManager.showAllMemory();
             //打印内存信息
             if (list.size()!=0) {
                 printList(list);

@@ -1,6 +1,4 @@
 import java.util.*;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class ProcessManager implements Runnable {
     private int curPid;             //当前分配的进程的pid
@@ -17,7 +15,8 @@ public class ProcessManager implements Runnable {
     private double historyLength;
     private boolean running;        //时候有进程在执行
     private Map<Integer, Integer> pidToAid;//虚拟地址对应实际地址
-    private Memory memory;
+    Memory memory;
+
     public List<ProcessControlBlock> getProcess() {
         //遍历pcbList,打印状态,name,pid
         for (int i = 0; i < pcbList.size(); i++) {
@@ -77,7 +76,7 @@ public class ProcessManager implements Runnable {
         synchronized(memory){
             //申请内存
             //******这里需要调用内存方面的函数
-            memory.add_process(newProcess.pid,newProcess.name,newSize);
+            memory.createProcess(newProcess.pid,newProcess.name,newSize);
             System.out.println("pid为"+newProcess.pid+"的进程申请内存成功");
         }
 
@@ -118,8 +117,6 @@ public class ProcessManager implements Runnable {
 
         //把数据存给memory
         synchronized(memory) {
-            //检查是否有足够的内存空间
-            memory.check_memory(sizeInt);
             //获取时间
             //*******newProcess.create_time =
 
@@ -136,11 +133,10 @@ public class ProcessManager implements Runnable {
             //把创建好的进程加入到就绪队列
             readyQueue.get(newProcess.priority).add(newProcess);
             // 这里放置需要互斥访问的代码
-            memory.add_process(newProcess.pid,name,sizeInt);
+            boolean createResult =  memory.createProcess(newProcess.pid,name,sizeInt);
+            //TODO:分情况讨论，如果创建成功，就把进程加入到就绪队列，如果创建失败，就把进程加入到等待队列
             System.out.println("---pid为"+newProcess.pid+"的进程申请内存成功");
         }
-
-
     }
 
 
@@ -315,7 +311,8 @@ public class ProcessManager implements Runnable {
             if(currentRunning != -1 && commend.equals("access")){
                 //调用 self.memory_manager.access() 方法访问内存，并且如果操作失败，则会将该进程从命令队列中删除。
                 int locate= Integer.parseInt(strs[1]);
-                memory.access_memory(pcbList.get(currentRunning).pid,locate);
+                int accessResult = memory.access(pcbList.get(currentRunning).pid,locate);
+                //TODO：分情况讨论
                 System.out.print("pid"+pcbList.get(currentRunning).pid+"访问内存"+strs[1]+"成功"+"\n");
 
                 //修改当前父进程程序计数器，使它读到下一个地址
@@ -336,7 +333,7 @@ public class ProcessManager implements Runnable {
                     System.out.print(String.format("\033[2K\033[%dG", 0));
                     // 需要内存的方法
                     synchronized(memory){
-                        memory.release_memory(pcbList.get(currentRunning).pid);
+                        memory.release(pcbList.get(currentRunning).pid);
                         System.out.println(String.format("[pid #%d] finish!", currentRunning));
                     }
 
