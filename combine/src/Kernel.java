@@ -1,6 +1,8 @@
-import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
+
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ public class Kernel {
 
 
 
-    static String[] keyword ={"gcc","vi","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","re"};
+    static String[] keyword ={"gcc","vi","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","re","mc"};
     //管道0,shell向kernel传输数据
     static String method= "print";
     static PipedInputStream shellOutput = new PipedInputStream();
@@ -112,6 +114,10 @@ public class Kernel {
         else if (words[0].equals("gcc")){
             deal_gcc(word);
         }
+        else if (words[0].equals("mc")){
+            deal_mc(word);
+        }
+
 
 
         else{
@@ -119,6 +125,24 @@ public class Kernel {
             shellInput1.flush();
         }
     }
+
+
+    private static void deal_mc(String word) throws IOException {
+        String[] words = word.split(" ");
+        if(words.length==2 &&(words[1].equals("ca")||words[1].equals("pa"))){
+            fileManager.change_mem(words[1]);
+
+        }
+        else{
+            try {
+                shellInput1.write("mc:错误".getBytes());
+                shellInput1.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     //打印list
     public static void printList(List<String> list) throws IOException {
         //打印list,全打印在同一行,用空格隔开
@@ -319,7 +343,13 @@ public class Kernel {
     }
     public static void deal_dss(String word) throws IOException {
         String[] words = word.split(" ");
+        List<String> list = null;
         if(words.length==1){
+            list=fileManager.dss();
+            if(list!=null ){
+                shellInput1.write(list.toString().getBytes());
+                shellInput1.flush();
+            }
         }
         else {
             //参数过多
@@ -388,6 +418,7 @@ public class Kernel {
     public static void deal_td(String word) throws IOException {
         String[] words = word.split(" ");
         if(words.length==1){
+            fileManager.tidy_disk();
         }
         else {
             //参数过多

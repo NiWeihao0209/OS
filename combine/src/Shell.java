@@ -12,7 +12,7 @@ import java.io.PipedOutputStream;
 public class Shell extends JFrame implements ActionListener, KeyListener, MouseListener,Runnable  {
     private static JTextArea terminalOutput;
     private JTextField terminalInput;
-    static String[] keyword ={"gcc","vi","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man"};
+    static String[] keyword ={"gcc","vi","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","mc"};
     static int Level=0;//一级权限等级,只能识别基础命令
     private static PipedOutputStream kernelInput;
     private PipedInputStream kernelOutput;

@@ -388,6 +388,38 @@ public class FileManager {
         }
         System.out.println("tidy disk complete");
     }
+    //展示磁盘块状态
+    public List<String> dss() {
+        List<String> result = new ArrayList<>();
+
+        result.add("当前磁盘块状态为：");
+        for (Block block : all_blocks) {
+            result.add(block.get_fp() + ": ");
+            for (int i : block.get_loc()) {
+                result.add(i + " ");
+            }
+            result.add("\n");
+        }
+        return result;
+    }
+    //修改memory方法
+    public void change_mem(String word) throws IOException {
+        //修改System/user第一行为words[1]
+        //将路径拼接为完整的文件路径
+        String path ="File/user";
+        File file = new File(path);
+        //读取文件内容
+        String text_content = readFile(file);
+        //将文件内容转换为json对象，以便于之后提取content字段
+        JSONObject data = JSON.parseObject(text_content);
+        //修改mem字段为word
+        data.put("mem",word);
+        Gson gson = new Gson();
+        //将更新后的json对象转换为json字符串
+        String jsonData = gson.toJson(data);
+        //将更新后的内容写回到文件中
+        writeFile(file, jsonData);
+    }
 
     public JSONObject get_file(String file_path, String mode, String seek_algo) {
         String[] parts = this.path_split(file_path);
@@ -678,6 +710,10 @@ public class FileManager {
         return result;
     }
     public String rm(String file_path, String mode) {
+        if("\\user".equals(current_working_path +file_path)){
+            System.out.println("Error: have no right to delete directory /user.");
+            return ("Error: have no right to delete directory /user.");
+        }
         String[] pathList = path_split(file_path);
         String upperPath = pathList[0];
         String basename = pathList[1];
@@ -867,9 +903,15 @@ public class FileManager {
      @param path 文件路径
      */
     public String vi(String path) {
+        if("\\user".equals(current_working_path + path)){
+            System.out.println("Error: have no right to open directory /user.");
+            return ("Error: have no right to open directory /user.");
+        }
+
         //将路径拼接为完整的文件路径
         path = root_path + current_working_path + path;
         File file = new File(path);
+
 
         //判断文件是否存在且为目录，如果是则报错并返回
         if (file.exists() && file.isDirectory()) {

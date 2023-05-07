@@ -25,7 +25,7 @@ public class Gcc {
             }
            else if(str.length==2){
                //判断str[1]是否为int类型
-                if(str[0].equals("cpu") || str[0].equals("access") || str[0].equals("printer")){
+                if(str[0].equals("cpu") || str[0].equals("access") || str[0].equals("printer") ){
                      if(str[1].matches("[0-9]+")){
 
                      }
@@ -33,6 +33,21 @@ public class Gcc {
                           return false;
                      }
                 }
+                else if( str[0].equals("block") && str.length<=100){
+                    //把str[1]按空格分割，存入数组中
+                    String[] str1 = str[1].split(" ");
+                    //判断str1中的元素是否都为int类型
+                    for(int j=0;j<str1.length;j++){
+                        if(str1[j].matches("[0-9]+")){
+
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+
+                }
+
                 else{
                      return false;
                 }

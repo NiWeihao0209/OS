@@ -1,3 +1,10 @@
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -656,7 +663,31 @@ public class Memory {
     static String testName = "ca";
     ConMemoryManager conMemoryManager;
     PageMemoryManager pageMemoryManager;
+    private static String readFile(File file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line).append("\n");
+        }
+        reader.close();
+        return content.toString();
+    }
     Memory(){
+        //读取文件System/user的men作为testName
+        try {
+            //将路径拼接为完整的文件路径
+            String path ="File/user";
+            File file = new File(path);
+            //读取文件内容
+            String text_content = readFile(file);
+            //将文件内容转换为json对象，以便于之后提取content字段
+            JSONObject data = JSON.parseObject(text_content);
+            //提取mem字段
+            testName = data.getString("mem");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if (testName.equals("ca")) {
             conMemoryManager = new ConMemoryManager(10000);
         }

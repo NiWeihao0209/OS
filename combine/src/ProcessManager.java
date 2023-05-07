@@ -16,6 +16,7 @@ public class ProcessManager implements Runnable {
     private boolean running;        //时候有进程在执行
     private Map<Integer, Integer> pidToAid;//虚拟地址对应实际地址
     Memory memory;
+    DiskScheduler disk=new DiskScheduler();
 
     public List<ProcessControlBlock> getProcess() {
         //遍历pcbList,打印状态,name,pid
@@ -271,13 +272,13 @@ public class ProcessManager implements Runnable {
             time_out();
 
             String commend = "";
-            String[] strs= new String[2];
+            String[] strs= new String[100];
 
             if(currentRunning != -1){
                 nowpc = pcbList.get(currentRunning).pc;
                 if(nowpc < pcbList.get(currentRunning).commend_queue.size()){
                     //把“access 1”类型的字符串按空格分割转为字符串数组
-                    strs = pcbList.get(currentRunning).commend_queue.get(nowpc).split(" ", 2);
+                    strs = pcbList.get(currentRunning).commend_queue.get(nowpc).split(" ");
                     commend = strs[0];
                 }
             } else {
@@ -314,6 +315,20 @@ public class ProcessManager implements Runnable {
                 int accessResult = memory.access(pcbList.get(currentRunning).pid,locate);
                 //TODO：分情况讨论
                 System.out.print("pid"+pcbList.get(currentRunning).pid+"访问内存"+strs[1]+"成功"+"\n");
+
+                //修改当前父进程程序计数器，使它读到下一个地址
+                pcbList.get(currentRunning).pc += 1;
+            }
+            //block语句
+            if(currentRunning != -1 && commend.equals("block")){
+               //把str数组第二个数到最后一个值复制到int型disk_access数组中
+                int[] disk_access = new int[strs.length-1];
+                for(int i = 1; i < strs.length; i++){
+                    disk_access[i-1] = Integer.parseInt(strs[i]);
+                }
+                disk.Disk_find(disk_access);
+
+
 
                 //修改当前父进程程序计数器，使它读到下一个地址
                 pcbList.get(currentRunning).pc += 1;
