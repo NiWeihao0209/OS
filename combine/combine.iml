@@ -10,25 +10,6 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/fastjson-1.2.28.jar!/" />
-          <root url="jar://$MODULE_DIR$/gson-2.7.jar!/" />
-          <root url="jar://$MODULE_DIR$/json-20210307.jar!/" />
-          <root url="file://$MODULE_DIR$" />
-          <root url="file://$MODULE_DIR$" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/src" />
-        </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$" recursive="false" />
-        <jarDirectory url="file://$MODULE_DIR$" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" exported="" name="javafx-swt" level="project" />
-    <orderEntry type="library" exported="" name="fastjson-1.2.28" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/../fastjson-1.2.28.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -51,6 +32,27 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="fastjson-1.2.28" level="project" />
+    <orderEntry type="library" exported="" name="javafx-swt" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx-swt.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.base.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.controls.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.fxml.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.media.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.graphics.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.swing.jar!/" />
+          <root url="jar://$MODULE_DIR$/../javafx-sdk-17.0.6/lib/javafx.web.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../javafx-sdk-17.0.6" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../javafx-sdk-17.0.6" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>

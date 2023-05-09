@@ -58,20 +58,10 @@ public class FileManager {
         //this.disk = new Disk(block_size, tracks, secs);
     }
 
-    /*test区 start
-     * */
-    public void test_bitmap() {
-        for (int i = 0; i < bitmap.length; i++)
-            System.out.print(bitmap[i] + " ");
-        System.out.println();
-        for (int[] value : block_dir.values()) {
-            for (int i = 0; i < value.length; i++) {
-                System.out.print(value[i] + " ");
-            }
-        }
-    }
+
     public List<String> dss() {
         List<String> result = new ArrayList<>();
+        Diary.println("get information of blocks success");
 
         result.add("当前磁盘块状态为：");
         for (Block block : all_blocks) {
@@ -83,10 +73,29 @@ public class FileManager {
         }
         return result;
     }
+    public void change_page(String word) throws IOException {
+        //修改System/user第一行为words[1]
+        //将路径拼接为完整的文件路径
+        String path ="File/user";
+        Diary.println("change way of page");
+        File file = new File(path);
+        //读取文件内容
+        String text_content = readFile(file);
+        //将文件内容转换为json对象，以便于之后提取content字段
+        JSONObject data = JSON.parseObject(text_content);
+        //修改mode字段为word
+        data.put("mode",word);
+        Gson gson = new Gson();
+        //将更新后的json对象转换为json字符串
+        String jsonData = gson.toJson(data);
+        //将更新后的内容写回到文件中
+        writeFile(file, jsonData);
+    }
     public void change_mem(String word) throws IOException {
         //修改System/user第一行为words[1]
         //将路径拼接为完整的文件路径
         String path ="File/user";
+        Diary.println("change way of memory");
         File file = new File(path);
         //读取文件内容
         String text_content = readFile(file);
@@ -101,47 +110,13 @@ public class FileManager {
         writeFile(file, jsonData);
     }
 
-    public void test_filetree() {
-        System.out.println(file_system_tree);
-    }
-
-    public void test_blocks() {
-        System.out.println("当前block_dir为：");
-        for (Map.Entry<String, int[]> entry : block_dir.entrySet()) {
-            System.out.print(entry.getKey() + ":");
-            for (int i : entry.getValue()) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("当前all_blocks为：");
-        for (Block block : all_blocks) {
-            System.out.print(block.get_fp() + ": ");
-            for (int i : block.get_loc()) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public void test_fp2loc(String fp) {
-        List<int[]> temp = fp2loc(fp);
-        for (int[] t : temp) {
-            for (int i : t) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    /*test区 end
-     * */
     private ArrayList<Block> initBlocks() { // 初始化文件块
         ArrayList<Block> blocks = new ArrayList<>();
         for (int i = 0; i < block_number; i++) {
             Block b = new Block(block_size, cal_loc(i));
             blocks.add(b);
         }
+        Diary.println("initialize blocks");
         bitmap = new int[block_number];
         Arrays.fill(bitmap, 1);
         return blocks;
@@ -191,11 +166,11 @@ public class FileManager {
                     if (this.fill_file_into_blocks(
                             data, file_path.substring(this.root_path.length()), 0) == -1) {  // 将此文件的信息存于外存块中
                         // 没有足够的存储空间
-                        System.out.println("block storage error: No Enough Initial Space");
+                        Diary.println("block storage error: No Enough Initial Space");
                     }
                 } catch (IOException e) {
                     // 处理读取或解析 JSON 异常
-                    System.out.println("error: Json exception");
+                    Diary.println("error: Json exception");
                 }
             }
         }
@@ -253,7 +228,7 @@ public class FileManager {
         } else if (method == 2) {
             return block_worst_fit(goal_str);
         } else {
-            System.out.println("error: please set a legal free blocks finding method.");
+            Diary.println("error: please set a legal free blocks finding method.");
             return -1;
         }
     }
@@ -357,7 +332,7 @@ public class FileManager {
             }
             return dir_dict;
         } catch (Exception e) {
-            System.out.println("error: path2dict.");
+            Diary.println("error: path2dict.");
             return null;
         }
     }
@@ -419,7 +394,7 @@ public class FileManager {
             JSONObject data = JSON.parseObject(fileContent);
             this.fill_file_into_blocks(data, entry.getKey(), 0);
         }
-        System.out.println("tidy disk complete");
+        Diary.println("tidy disk complete");
     }
 
     public JSONObject get_file(String file_path, String mode, String seek_algo) {
@@ -433,13 +408,13 @@ public class FileManager {
         } else {
             // 异常2.文件不存在
             if (!current_working_dict.containsKey(basename)) {
-                System.out.println("get_file: cannot get file '" + basename + "': file not exist");
+                Diary.println("get_file: cannot get file '" + basename + "': file not exist");
                 return null;
             }
             //异常3.是文件夹
             Object file_object = current_working_dict.get(basename);
             if (file_object instanceof HashMap<?, ?>) {
-                System.out.println("get_file: cannot get file '" + basename + "': dir not a common file");
+                Diary.println("get_file: cannot get file '" + basename + "': dir not a common file");
                 return null;
             }
             String gf_path;
@@ -463,7 +438,7 @@ public class FileManager {
                 return data;
             } catch (IOException e) {
                 // 处理读取或解析 JSON 异常
-                System.out.println("error: Json exception");
+                Diary.println("error: Json exception");
             }
         }
         return null;
@@ -478,13 +453,15 @@ public class FileManager {
             dir_path = current_working_path;
         if (mode == null)
             mode = "";
-        System.out.println(dir_path);
+        Diary.println("try commend ls");
         Map<String, Object> current_working_map = path2map(dir_path);
         List<String> result = new ArrayList<String>();
         // 异常1:ls路径出错. 由于path2dict()中已经报错 | 注: 此处偷懒 如果目标存在, 但不是文件夹, 同样报path error
         if (current_working_map == null) {
             // handle exception
             result.add("error: path2dic");
+            Diary.println("error: path2dic");
+
         }
         // ls的对象是一个文件，则只显示该文件的信息
         else if (hasSingleStringEntry(current_working_map)) {
@@ -512,10 +489,12 @@ public class FileManager {
 
             // 目录为空时, 直接结束
             if (file_list.size() == 0) {
+                Diary.println("file null");
                 return null;
             }
             if (!mode.equals("-a") && !mode.equals("-l") && !mode.equals("-al") && !mode.equals("")) {
                 result.add("ls: invalid option'" + mode + "', try '-a' / '-l' / '-al'");
+                Diary.println("ls: invalid option'" + mode + "', try '-a' / '-l' / '-al'");
                 return result;
             }
             for (String file : file_list) {
@@ -547,7 +526,7 @@ public class FileManager {
                 }
             }
         }
-        System.out.println(result);
+        Diary.println("ls success");
         return result;
     }
     public boolean hasSingleStringEntry(Map<String, Object> map) {
@@ -613,7 +592,7 @@ public class FileManager {
                 }
             }
         }
-        System.out.println(result);
+        Diary.println(result);
         return result;
     }
     // command: cd
@@ -621,7 +600,6 @@ public class FileManager {
         String result ;
         if (dir_path.equals("")){
             this.current_working_path = file_separator;
-            System.out.println(this.current_working_path);
             return (this.current_working_path);
         }
 
@@ -711,12 +689,12 @@ public class FileManager {
                 }
             }
         }
-        System.out.println(result);
+        Diary.println(result);
         return result;
     }
     public String rm(String file_path, String mode) {
         if("\\user".equals(current_working_path +file_path)){
-            System.out.println("Error: have no right to delete directory /user.");
+            Diary.println("Error: have no right to delete directory /user.");
             return ("Error: have no right to delete directory /user.");
         }
         String[] pathList = path_split(file_path);
@@ -818,12 +796,12 @@ public class FileManager {
         }
         if (result == null)
             result = "rm success";
-        System.out.println(result);
+        Diary.println(result);
         return result;
     }
     public String mkf(String file_path, String file_type, String size) throws IOException {
         if (file_type.charAt(0) != 'c') {
-            System.out.println("mkf: cannot create file'" + file_path + "': only common file can be created");
+            Diary.println("mkf: cannot create file'" + file_path + "': only common file can be created");
             return ("mkf: cannot create file'" + file_path + "': only common file can be created");
         }
         String[] path_split = path_split(file_path);
@@ -843,7 +821,7 @@ public class FileManager {
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting(); // 设置缩进
         Gson gson = gsonBuilder.create();
         String json_data = gson.toJson(json_text);
-        System.out.println(json_data);
+
 
         // 异常1 路径出错
         if (current_working_dict == null) {
@@ -859,7 +837,7 @@ public class FileManager {
                     mkf_path = file_path;
                 }
                 if (fill_file_into_blocks(json_text, mkf_path, 2) == -1) {  // 测试是否能装入block
-                    System.out.println("mkf: cannot create file'" + basename + "': No enough Space");
+                    Diary.println("mkf: cannot create file'" + basename + "': No enough Space");
                     return ("mkf: cannot create file'" + basename + "': No enough Space");
                 }
                 mkf_path = root_path + mkf_path;
@@ -873,13 +851,13 @@ public class FileManager {
                 }
                 // 同时修改文件树
                 current_working_dict.put(basename, file_type);
-                System.out.println("mkf success");
+                Diary.println("mkf success");
                 if(FileManagerWin.fileInput!=null)
                     FileManagerWin.fileInput.write("success".getBytes());
                 return "mkf success";
                 // 异常2 文件已存在
             } else {
-                System.out.println("mkf: cannot create file'" + basename + "': file exists");
+                Diary.println("mkf: cannot create file'" + basename + "': file exists");
                 if(FileManagerWin.fileInput!=null)
                     FileManagerWin.fileInput.write("failed".getBytes());
                 return ("mkf: cannot create file'" + basename + "': file exists");
@@ -913,7 +891,7 @@ public class FileManager {
      */
     public String vi(String path) {
         if("\\user".equals(current_working_path + path)){
-            System.out.println("Error: have no right to open directory /user.");
+            Diary.println("Error: have no right to open directory /user.");
             return ("Error: have no right to open directory /user.");
         }
         //将路径拼接为完整的文件路径
@@ -922,17 +900,17 @@ public class FileManager {
 
         //判断文件是否存在且为目录，如果是则报错并返回
         if (file.exists() && file.isDirectory()) {
-            System.out.println("Error: Cannot open directory " + path + ".");
+            Diary.println("Error: Cannot open directory " + path + ".");
             return ("Error: Cannot open directory " + path + ".");
         }
         //判断文件是否为目录，如果是则报错并返回
         if (file.isDirectory()) {
-            System.out.println("Error: Directory " + path + " does not exist.");
+            Diary.println("Error: Directory " + path + " does not exist.");
             return ("Error: Directory " + path + " does not exist.");
         }
         //判断文件是否存在，如果不存在则报错并返回
         if(!file.exists()) {
-            System.out.print("Error:" + path + " does not exist.");
+            Diary.println("Error:" + path + " does not exist.");
             return ("Error:" + path + " does not exist.");
         }
 
@@ -1068,12 +1046,12 @@ public class FileManager {
 
         //判断文件是否存在，如果不存在则报错并返回
         if(!file.exists()) {
-            System.out.print("Error:" + path + " does not exist.");
+            Diary.println("Error:" + path + " does not exist.");
             result = "error";
 
         }
         else  if (file.isDirectory()) {
-            System.out.println("Error: Directory " + path + " does not exist.");
+            Diary.println("Error: Directory " + path + " does not exist.");
             return ("error");
         }
         else {
@@ -1104,6 +1082,6 @@ public class FileManager {
         //接下来进行磁块等的重新分配
         delete_file_from_blocks(path.substring(this.root_path.length()));
         fill_file_into_blocks(data,path.substring(this.root_path.length()),1);
-        System.out.println("success");
+        Diary.println("sv success");
     }
 }

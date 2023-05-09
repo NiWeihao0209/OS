@@ -1,6 +1,7 @@
 package Windows;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
@@ -28,7 +29,7 @@ public class Controller implements Runnable{
 
 	public Stage primaryStage;
 
-	private HashSet<String> keyWord=new HashSet<>(Arrays.asList(new String[] { "gcc","vi","vi-ui","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","sv"}));
+	private HashSet<String> keyWord=new HashSet<>(Arrays.asList(new String[] {"pc","ar", "mc","gcc","vi","vi-ui","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","sv"}));
 
 	static int Level=0;//一级权限等级,只能识别基础命令
 
@@ -108,7 +109,7 @@ public class Controller implements Runnable{
 					input[0].flush();
 					return;
 				}
-				System.out.println("s:" + command);
+
 				//开启写管道
 				input[0].write(command.getBytes());
 				input[0].flush();
@@ -132,7 +133,7 @@ public class Controller implements Runnable{
 			}else{
 				if(command.split(" ")[0].equals("vi-ui"))
 					command=command.replace("vi-ui","vi");
-				System.out.println("s:" + command);
+
 				//开启写管道
 				input[0].write(command.getBytes());
 				input[0].flush();
@@ -163,8 +164,7 @@ public class Controller implements Runnable{
 					JSONObject data = JSON.parseObject(fileContent); // 读取json字符串，便于之后提取type
 					part_of_tree.put(new FileInfo(file.getName(),data.getString("type"),file_path),file);
 				} catch (IOException e) {
-					// 处理读取或解析 JSON 异常
-					System.out.println("error: Json exception");
+
 				}
 			}
 		}
@@ -180,9 +180,11 @@ public class Controller implements Runnable{
 			while ((bytesRead = output[1].read(buffer)) != -1) {
 				String data = new String(buffer, 0, bytesRead);
 				//打印data
-				//System.out.println(data);
-				if(terminal!=null)
+
+				if(terminal!=null) {
+
 					TerminalWin.setText(data);
+				}
 				// Process the data as needed
 			}
 		} catch (IOException e) {

@@ -1,10 +1,8 @@
 package SystemCore;
-
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
+import java.time.Instant;
 import java.util.*;
 
 public class ProcessManager implements Runnable {
@@ -16,27 +14,24 @@ public class ProcessManager implements Runnable {
     private List<ProcessControlBlock> waitingQueue;         //等待队列
     private int currentRunning;
     public static ObservableList<ProcessControlBlock> pcbList;
-    private HardwareResource printer;
+    private HardwareManager hardwareManager;
     private List<String> devices; //含有的设备
-    private Map<String, List<ProcessControlBlock>> resourcesHistory;
-    private double historyLength;
+    private Map<String, List<List<Object>>> resourcesHistory;
+    private int historyLength;
     private boolean running;        //时候有进程在执行
     private Map<Integer, Integer> pidToAid;//虚拟地址对应实际地址
     Memory memory;
     DiskScheduler disk=new DiskScheduler();
-
     public List<ProcessControlBlock> getProcess() {
         //遍历pcbList,打印状态,name,pid
         for (int i = 0; i < pcbList.size(); i++) {
-            System.out.println("进程名字:" + pcbList.get(i).name + " 进程状态:" + pcbList.get(i).status + " 进程pid:" + pcbList.get(i).pid);
+            Diary.println("process_name:" + pcbList.get(i).name + " process_statue:" + pcbList.get(i).status + " pid:" + pcbList.get(i).pid);
         }
         return pcbList;
     }
 
-
-
     //memoryManager是内存管理器对象，用于管理进程的内存分配和释放。
-    public ProcessManager(Memory memory) {
+    public ProcessManager(Memory memory, HardwareManager hardwareManager) {
         this.curPid = 0;
         this.priority = true;
         this.preemptive = false;
@@ -50,9 +45,8 @@ public class ProcessManager implements Runnable {
         //现在正在运行的内存的pid，初始没有置为-1
         this.currentRunning = -1;
         this.pcbList = FXCollections.observableArrayList();
-
-        //表示打印机资源
-        //********this.printer = new SystemCore.HardwareResource(printerNum);******//
+        //表示设备管理资源
+        this.hardwareManager = hardwareManager;
         //设备列表，初始先默认加入cpu，打印机两个设备
         this.devices = new ArrayList<>();
         this.devices.add("cpu");
@@ -61,7 +55,8 @@ public class ProcessManager implements Runnable {
         this.resourcesHistory = new HashMap<>();
         this.resourcesHistory.put("cpu", new ArrayList<>());
         this.resourcesHistory.put("printer", new ArrayList<>());
-        this.historyLength = 14.0;
+        //时间戳
+        this.historyLength = 14;
         //初始没有正在进行运行的进程置为false
         this.running = false;
         this.pidToAid = new HashMap<>();
@@ -70,46 +65,45 @@ public class ProcessManager implements Runnable {
 
     public void fork(List<String> list){
         //首先复制目前当前正在执行的父进程的信息
-        ProcessControlBlock runningProcess = pcbList.get(currentRunning);
+        ProcessControlBlock runningProcess = pcbList.get(getIndex(pcbList,currentRunning));
 
         //创建一个新的进程
         int newPid = curPid;
         curPid = curPid+1;
-        ProcessControlBlock newProcess = new ProcessControlBlock(newPid,runningProcess.pid,runningProcess.name,runningProcess.priority,runningProcess.size,list);
-
-        //修改当前父进程程序计数器，使它读到下一个地址
-        pcbList.get(currentRunning).pc += 1;
-        //复制父进程的size
-        int newSize = runningProcess.size;
-        synchronized(memory){
-            //申请内存
-            //******这里需要调用内存方面的函数
-            memory.createProcess(newProcess.pid,newProcess.name,newSize);
-            System.out.println("pid为"+newProcess.pid+"的进程申请内存成功");
-        }
-
-
-
-        //如果申请成功
         //复制父进程的信息
-        //newProcess.parent_pid = runningProcess.pid;
-        //newProcess.commend_queue = runningProcess.commend_queue;
-        //newProcess.priority = runningProcess.priority;
+        ProcessControlBlock newProcess = new ProcessControlBlock(newPid,runningProcess.pid,runningProcess.name,runningProcess.priority,runningProcess.size,list);
         //设置好子进程的pc
-        newProcess.pc = runningProcess.pc;
-
+        newProcess.pc = runningProcess.pc+1;
         //设置好子进程的状态为就绪
         newProcess.status = "ready";
+        //获取时间
+        newProcess.create_time = new Date();
 
+        //修改当前父进程程序计数器，使它读到下一个地址
+        pcbList.get(getIndex(pcbList,currentRunning)).pc += 1;
 
-        //获取时间newProcess.create_time =
+        //复制父进程的size
+        int newSize = runningProcess.size;
+        //判断内存是否足够创建
+        synchronized(memory){
+            //申请内存
+            boolean createResult =  memory.createProcess(newProcess.pid,newProcess.name,newSize);
+            if(createResult){
+                Diary.println("Process: "+newProcess.pid+" has successfully allocated memory.");
 
-        //加入pcblist
-        pcbList.add(newProcess);
+                //把创建好的进程加入pcbList
+                pcbList.add(newProcess);
+                Diary.println("Process: "+newProcess.pid+" has been successfully created.");
 
-        //加入到就绪队列
-        readyQueue.get(newProcess.priority).add(newProcess);
-
+                //把创建好的进程加入到就绪队列
+                readyQueue.get(newProcess.priority).add(newProcess);
+                Diary.println("Process: "+newProcess.pid+" successfully added to the readyQueue.");
+            }
+            else {
+                Diary.println("Process: "+newProcess.pid+" failed to create due to insufficient memory allocation!");
+                //curPid --;
+            }
+        }
     }
 
     //系统自己的程序创建进程，需要调用到文件模块
@@ -120,30 +114,36 @@ public class ProcessManager implements Runnable {
         int priorityInt = Integer.parseInt(priority);
         //size是字符串，需要转换成int
         int sizeInt = Integer.parseInt(size);
+
+        //创建一个进程
         ProcessControlBlock newProcess = new ProcessControlBlock(curPid,0,name,priorityInt,sizeInt,list);
         newProcess.parent_pid = 0;
+        //获取时间
+        newProcess.create_time = new Date();
 
-        //把数据存给memory
+        //修改当前进程的curPid
+        curPid ++;
+
+        //把数据传给memory，申请内存
         synchronized(memory) {
-            //获取时间
-            //*******newProcess.create_time =
-
-            //********从list里读取到name，priority，centent，size
-
-            //把内存分的实际地址与当前进程建立联系，即填好当前processManager的pidToAid
-
-            //修改当前进程的curPid
-            curPid ++;
-
-            //把创建好的进程加入pcbList
-            pcbList.add(newProcess);
-
-            //把创建好的进程加入到就绪队列
-            readyQueue.get(newProcess.priority).add(newProcess);
             // 这里放置需要互斥访问的代码
             boolean createResult =  memory.createProcess(newProcess.pid,name,sizeInt);
-            //TODO:分情况讨论，如果创建成功，就把进程加入到就绪队列，如果创建失败，就把进程加入到等待队列
-            System.out.println("---pid为"+newProcess.pid+"的进程申请内存成功");
+            //如果创建成功，就把进程加入到就绪队列
+            if(createResult){
+                Diary.println("Process: "+newProcess.pid+" has successfully allocated memory.");
+
+                //把创建好的进程加入pcbList
+                pcbList.add(newProcess);
+                Diary.println("Process: "+newProcess.pid+" has been successfully created.");
+
+                //把创建好的进程加入到就绪队列
+                readyQueue.get(newProcess.priority).add(newProcess);
+                Diary.println("Process: "+newProcess.pid+" successfully added to the readyQueue.");
+            }
+            else {
+                Diary.println("Process: "+newProcess.pid+" failed to create due to insufficient memory allocation!");
+                //curPid --;
+            }
         }
     }
 
@@ -156,10 +156,13 @@ public class ProcessManager implements Runnable {
             for (int i = 0 ;i < readyQueue.get(priority).size() && flag == 0; i++) {
                 ProcessControlBlock pcb = readyQueue.get(priority).get(i);
                 flag = 1;
+
                 // 设置其为当前正在运行的进程，将其状态设置为“running”
-                currentRunning = getIndex(pcbList,pcb.pid);
-                pcbList.get(currentRunning).status="running";
-                pcbList.set(currentRunning,pcbList.get(currentRunning));
+                currentRunning = pcb.pid;
+                pcbList.get(getIndex(pcbList,currentRunning)).status = "running";
+                pcbList.set(getIndex(pcbList,currentRunning),pcbList.get(getIndex(pcbList,currentRunning)));
+                Diary.println("---Process: "+currentRunning+" has transitioned to running.");
+
                 //在readyQueue中清除该进程
                 readyQueue.get(pcb.priority).remove(i);
             }
@@ -170,17 +173,20 @@ public class ProcessManager implements Runnable {
         }
     }
 
-    //时间片管理
+    //时间片轮转
     public void time_out(){
         //首先判断当前是否有进程正在运行
         if (currentRunning != -1){
             //修改当前正在执行的进程status为“ready”
-            pcbList.get(currentRunning).status="ready";
-            pcbList.set(currentRunning,pcbList.get(currentRunning));
-            int priority = pcbList.get(currentRunning).priority;
+            pcbList.get(getIndex(pcbList,currentRunning)).status = "ready";
+            pcbList.set(getIndex(pcbList,currentRunning),pcbList.get(getIndex(pcbList,currentRunning)));
+            Diary.println("---Process: "+currentRunning+" has transitioned to ready.");
+
+            int priority = pcbList.get(getIndex(pcbList,currentRunning)).priority;
             //判断是否已经执行完所有命令,没执行完就加入对应优先级的就绪队列
-            if (pcbList.get(currentRunning).commend_queue.size() >= pcbList.get(currentRunning).pc){
-                readyQueue.get(priority).add(pcbList.get(currentRunning));
+            if (pcbList.get(getIndex(pcbList,currentRunning)).commend_queue.size() >= pcbList.get(getIndex(pcbList,currentRunning)).pc){
+                readyQueue.get(priority).add(pcbList.get(getIndex(pcbList,currentRunning)));
+                Diary.println("Process: "+currentRunning+" successfully added to the readyQueue.");
             }
         }
         schduler();
@@ -188,35 +194,63 @@ public class ProcessManager implements Runnable {
 
 
     //中断管理
-    public void io_interrput(){
+    public void io_interrput(String time){
         //修改当前父进程程序计数器，使它读到下一个地址
-        pcbList.get(currentRunning).pc += 1;
+        //pcbList.get(getIndex(pcbList,currentRunning)).pc += 1;
+
         //把当前正在执行的进程状态改为“waiting”
-        pcbList.get(currentRunning).status="waiting";
-        pcbList.set(currentRunning,pcbList.get(currentRunning));
-        waitingQueue.add(pcbList.get(currentRunning));
+        pcbList.get(getIndex(pcbList,currentRunning)).status = "waiting";
+        pcbList.set(getIndex(pcbList,currentRunning),pcbList.get(getIndex(pcbList,currentRunning)));
+        Diary.println("---Process: "+currentRunning+" has transitioned to waiting.");
+
+        waitingQueue.add(pcbList.get(getIndex(pcbList,currentRunning)));
+        Diary.println("Process: "+currentRunning+" successfully added to the waitingQueue.");
+
         //计算预期等待时间
-        //检查打印设备是否空闲
-        //设置好设备工作
+        int expectime = Integer.parseInt(time)*timeSlot;
+        //记录使用设备
+        int hardwareResult = hardwareManager.use_hardware("printer",pcbList.get(getIndex(pcbList,currentRunning)).pid,expectime);
+
+        if(hardwareResult == -1){
+            Diary.println("Process: "+currentRunning+" failed to request the use of device resources!");
+        } else if (hardwareResult == 1) {
+            Diary.println("Process: "+currentRunning+" has successfully requested the use of device resources.");
+            //修改进程状态
+            pcbList.get(getIndex(pcbList,currentRunning)).status = "waiting(printer)";
+            pcbList.set(getIndex(pcbList,currentRunning),pcbList.get(getIndex(pcbList,currentRunning)));
+            Diary.println("---Process: "+currentRunning+" has transitioned to waiting(printer).");
+        }
         schduler();
     }
 
-    //释放资源
+    //释放设备资源
     public void release(int pid){
         //程序计数器加一
         pcbList.get(getIndex(pcbList,pid)).pc ++;
         waitingQueue.remove(getIndex(waitingQueue,pid));
-        //在打印机的运行队列中遍历找到后删除相关信息
-        //************************
+        Diary.println("Process: "+pid+" successfully remove from waitingQueue.");
 
-        //对于等待队列中的每个进程，如果该进程的状态不是“等待打印机”，并且打印机有空闲资源，则该进程会被插入打印机的运行队列中。
+        //对于等待队列中的每个进程，如果该进程的状态不是“等待(设备)”，并且设备有空闲资源，则该进程会被插入打印机的运行队列中。
         for(int waitpid = 0; waitpid < waitingQueue.size(); waitpid++){
-            if(waitingQueue.get(waitpid).status != "wating(Printer)"){
-                //根据下一条指令计算出预计需要使用设备的时间
+            if(Objects.equals(waitingQueue.get(waitpid).status, "waiting")){
+                int wpid = waitingQueue.get(waitpid).pid;
+
+                //得到需要使用设备的时间
+                String commendnow = pcbList.get(getIndex(pcbList,wpid)).commend_queue.get(pcbList.get(getIndex(pcbList,wpid)).pc);
+                String[] strs= new String[2];
+                strs = commendnow.split(" ", 2);
+                int expectime = Integer.parseInt(strs[1])*timeSlot;
+
                 //调用设备提供的方法插入到设备中
-                //*************
-                //修改改pcb的status
-                waitingQueue.get(waitpid).status = "waiting(Printer)";
+                int hardwareResult = hardwareManager.use_hardware(strs[0],pcbList.get(getIndex(pcbList,wpid)).pid,expectime);
+                if(hardwareResult == -1){
+                    Diary.println("Process: "+pcbList.get(getIndex(pcbList,wpid)).pid+" failed to request the use of device resources!");
+                } else if (hardwareResult == 1) {
+                    Diary.println("Process: "+pcbList.get(getIndex(pcbList,wpid)).pid+" has successfully requested the use of device resources.");
+                    pcbList.get(getIndex(pcbList,wpid)).status = "waiting(printer)";
+                    pcbList.set(getIndex(pcbList,wpid),pcbList.get(getIndex(pcbList,wpid)));
+                    Diary.println("---Process: "+wpid+" has transitioned to waiting.");
+                }
             }
         }
     }
@@ -224,23 +258,49 @@ public class ProcessManager implements Runnable {
     //杀死进程
     public void killProcess(int pid) {
         //遍历是否在pcbList里面
-        int index=getIndex(pcbList,pid);
-        if(index!=-1){
-            String status=pcbList.get(index).status;
-            // Set status to terminated
-            pcbList.get(index).status="terminated";
-            pcbList.set(index,pcbList.get(index));
-            // 根据之前的状态释放对应的资源
-            if(status == "ready"){
-                readyQueue.get(pcbList.get(index).priority).remove(getIndex(readyQueue.get(pcbList.get(index).priority),pid));
-            } else if (status == "running") {
-                currentRunning = -1;
-            } else if (status == "waiting") {
-                waitingQueue.remove(getIndex(waitingQueue,pid));
-            } else if (status =="waiting(Printer)") {
-                release(pid);
+        for (int i = 0; i < pcbList.size(); i++) {
+            ProcessControlBlock pcb = pcbList.get(getIndex(pcbList,i));
+            if (pcb.pid == pid) {
+                //判断进程是否状态为terminated
+                if(pcbList.get(getIndex(pcbList,pid)).status.equals("terminated")){
+                    Diary.println("Process: "+pid+" has already been terminated.");
+                    return;
+                }
+                // Set status to terminated
+                pcbList.get(getIndex(pcbList,pid)).status = "terminated";
+                pcbList.set(getIndex(pcbList,pid),pcbList.get(getIndex(pcbList,pid)));
+                Diary.println("---Process: "+pid+" has transitioned to waiting.");
+
+                // 根据之前的状态释放对应的资源
+                if(pcb.status == "ready"){
+                    int flag = 0;
+                    for (int priority = 2; priority >= 0; priority--) {
+                        for (int index = 0; index < readyQueue.get(priority).size() && flag == 0; index++) {
+                            if(readyQueue.get(priority).get(index).pid == pid){
+                                readyQueue.get(pcb.priority).remove(index);
+                                flag = 1;
+                            }
+                        }
+                    }
+                } else if (pcb.status == "running") {
+                    currentRunning = -1;
+                } else if (pcb.status == "waiting") {
+                    waitingQueue.remove(getIndex(waitingQueue,pid));
+                    Diary.println("process: "+pid+" successfully remove from waitingQueue.");
+                } else if (pcb.status =="waiting(Printer)") {
+                    release(pid);
+                }
+
+                //从内存提供的方法释放所占用的内存
+                synchronized(memory){
+
+                    memory.release(pcbList.get(getIndex(pcbList,pid)).pid);
+                    Diary.println("Process:"+pid+" has been killed!");
+                }
             }
         }
+        //如果不在pcbList里面
+        Diary.println("Process: "+pid+" is not in the pcbList.");
     }
 
     //显示进程状态
@@ -253,7 +313,7 @@ public class ProcessManager implements Runnable {
                 is_running = true;
             }
             if(is_running == false){
-                System.out.println("No process is running currently");
+                Diary.println("No process is running currently");
             }
         }
     }
@@ -262,11 +322,32 @@ public class ProcessManager implements Runnable {
     //记录设备使用历史
     public void append_resources_hestory(String type ,int pid){
         //得到现在系统的时间 unix_time
-        resourcesHistory.get(type).add(pcbList.get(pid));
-        //只要空间够就一直记录到对应的设备使用历史
-
+        long unixTime = Instant.now().getEpochSecond();
+        //计入进程和对应时间
+        resourcesHistory.get(type).add(List.of(unixTime, pid));
+        //删除超过时间戳的信息
+        while (!resourcesHistory.get(type).isEmpty() && unixTime - (long) resourcesHistory.get(type).get(0).get(0) > historyLength) {
+            resourcesHistory.get(type).remove(0);
+        }
     }
 
+    //获得队列的index
+    private int getIndex(List<ProcessControlBlock> queue,int pid){
+        for (int i=0;i<queue.size();i++){
+            if(queue.get(i).pid==pid)
+                return i;
+        }
+        return -1;
+    }
+
+    //获得pcblist中的index
+    private int getIndex(ArrayList<ProcessControlBlock> pcbList,int pid){
+        for (int i=0;i<pcbList.size();i++){
+            if(pcbList.get(i).pid==pid)
+                return i;
+        }
+        return -1;
+    }
 
     //启动进程管理器
     @Override
@@ -278,136 +359,168 @@ public class ProcessManager implements Runnable {
             time_out();
 
             String commend = "";
-            String[] strs= new String[2];
+            String[] strs= new String[100];//blcok<=100
 
+            //把多字符串类型的字符串按空格分割转为字符串数组
             if(currentRunning != -1){
-                nowpc = pcbList.get(currentRunning).pc;
-                if(nowpc < pcbList.get(currentRunning).commend_queue.size()){
+                nowpc = pcbList.get(getIndex(pcbList,currentRunning)).pc;
+                //Diary.println("##########################nowpc= "+nowpc+"currentrun= "+currentRunning);
+                if(nowpc < pcbList.get(getIndex(pcbList,currentRunning)).commend_queue.size()){
                     //把“access 1”类型的字符串按空格分割转为字符串数组
-                    strs = pcbList.get(currentRunning).commend_queue.get(nowpc).split(" ", 2);
+                    strs = pcbList.get(getIndex(pcbList,currentRunning)).commend_queue.get(nowpc).split(" ");
                     commend = strs[0];
                 }
             } else {
                 nowpc = -1;
             }
 
+            if(strs[0] != null){
+                //只要有程序在运行就检查是否需要中断 printer语句
+                if (currentRunning != -1 && commend.equals("printer")){
+                    io_interrput(strs[1]);
+                }
+
+                //Diary.println("****************************************");
+                //Diary.println("pcblist have "+pcbList.size()+" processes");
+                //Diary.println("****************************************");
+                //Diary.println("##########################nowpc= "+nowpc+"currentrun= "+currentRunning);
+
+                //fork语句
+                else if (currentRunning != -1 && pcbList.get(getIndex(pcbList,currentRunning)).commend_queue.get(nowpc).equals("fork")){
+                    fork(pcbList.get(getIndex(pcbList,currentRunning)).commend_queue);
+                    try {
+                        Thread.sleep(timeSlot);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    //appendResourcesHistory
+                    append_resources_hestory("cpu",pcbList.get(getIndex(pcbList,currentRunning)).pid);
+                }
 
 
-            //只要有程序在运行就检查是否需要中断 printer语句
-            if (currentRunning != -1 && pcbList.get(currentRunning).commend_queue.get(nowpc).equals("printer")){
-                io_interrput();
-            }
+                //access语句
+                else if(currentRunning != -1 && commend.equals("access")){
+                    //调用 self.memory_manager.access() 方法访问内存，并且如果操作失败，则会将该进程从命令队列中删除。
+                    int locate= Integer.parseInt(strs[1]);
+                    int accessResult = memory.access(pcbList.get(getIndex(pcbList,currentRunning)).pid,locate);
 
-            //fork语句
-            if (currentRunning != -1 && pcbList.get(currentRunning).commend_queue.get(nowpc).equals("fork")){
-                fork(pcbList.get(currentRunning).commend_queue);
+                    //返回0表示进程不存在，返回1表示访问成功，返回2表示访问越界，返回3表示进程未分配内存，返回4表示其他错误,返回5表示缺页
+                    if(accessResult == 1){
+                        Diary.println("Process: "+pcbList.get(getIndex(pcbList,currentRunning)).pid+" access memory "+strs[1]+" successfully"+"\n");
+                    } else if (accessResult == 2) {
+                        Diary.println("Process: "+pcbList.get(getIndex(pcbList,currentRunning)).pid+" access memory "+strs[1]+" failed, crocess-border visit!"+"\n");
+                    } else if (accessResult == 5) {
+                        Diary.println("Process: "+pcbList.get(getIndex(pcbList,currentRunning)).pid+" access memory "+strs[1]+" failed, page fault"+"\n");
+                    } else {
+                        Diary.println("Process: "+pcbList.get(getIndex(pcbList,currentRunning)).pid+" access memory "+strs[1]+" failed, else error!"+"\n");
+                    }
+
+                    //修改当前父进程程序计数器，使它读到下一个地址
+                    pcbList.get(getIndex(pcbList,currentRunning)).pc += 1;
+                }
+
+                //对于cpu指令，将当前命令的剩余时间减1，记录使用了CPU资源，如果当前命令执行完毕，则将PC指针加1，转到下一个命令执行。
+                else if (currentRunning != -1 && strs[0].equals("cpu")) {
+                    //将当前进程命令队列里的剩余时间减1
+                    int beforeCpuTime = Integer.parseInt(strs[1]) - 1;
+                    String nowCpuTime = Integer.toString(beforeCpuTime);
+                    pcbList.get(getIndex(pcbList,currentRunning)).commend_queue.set(nowpc,"cpu "+nowCpuTime);
+
+                    //记录使用了CPU资源
+                    append_resources_hestory("cpu", pcbList.get(getIndex(pcbList,currentRunning)).pid);
+
+                    //如果cpu指令后续时间为0，跳转到下一条指令
+                    if (beforeCpuTime == 0) {
+                        pcbList.get(getIndex(pcbList,currentRunning)).pc +=1;
+                    }
+                }
+                //block语句
+                else if(currentRunning != -1 && strs[0].equals("block")){
+                    //把str数组第二个数到最后一个值复制到int型disk_access数组中
+                    int[] disk_access = new int[strs.length-1];
+                    for(int i = 1; i < strs.length; i++){
+                        disk_access[i-1] = Integer.parseInt(strs[i]);
+                    }
+
+                    disk.Disk_find(disk_access);
+
+
+
+                    //修改当前父进程程序计数器，使它读到下一个地址
+                    pcbList.get(getIndex(pcbList,currentRunning)).pc += 1;
+                }
+
+
+                //模拟占用时间片
                 try {
                     Thread.sleep(timeSlot);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-
-                //appendResourcesHistory
-
-
             }
 
-
-            //access语句
-            if(currentRunning != -1 && commend.equals("access")){
-                //调用 self.memory_manager.access() 方法访问内存，并且如果操作失败，则会将该进程从命令队列中删除。
-                int locate= Integer.parseInt(strs[1]);
-                int accessResult = memory.access(pcbList.get(currentRunning).pid,locate);
-                //TODO：分情况讨论
-                System.out.print("pid"+pcbList.get(currentRunning).pid+"访问内存"+strs[1]+"成功"+"\n");
-
-                //修改当前父进程程序计数器，使它读到下一个地址
-                pcbList.get(currentRunning).pc += 1;
-            }
-            //block语句
-            if(currentRunning != -1 && commend.equals("block")){
-                //把str数组第二个数到最后一个值复制到int型disk_access数组中
-                int[] disk_access = new int[strs.length-1];
-                for(int i = 1; i < strs.length; i++){
-                    disk_access[i-1] = Integer.parseInt(strs[i]);
-                }
-
-                disk.Disk_find(disk_access);
-
-
-
-                //修改当前父进程程序计数器，使它读到下一个地址
-                pcbList.get(currentRunning).pc += 1;
-            }
-
-            //????时间片调度算法
-            try {
-                Thread.sleep(timeSlot);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
             //判断所有命令是否执行完毕
             if (currentRunning != -1){
                 //如果执行完毕，释放资源，修改状态
-                if(pcbList.get(currentRunning).commend_queue.size() - pcbList.get(currentRunning).pc <= 0){
-                    System.out.print(String.format("\033[2K\033[%dG", 0));
-                    // 需要内存的方法
+                if(pcbList.get(getIndex(pcbList,currentRunning)).commend_queue.size() - pcbList.get(getIndex(pcbList,currentRunning)).pc <= 0){
+
+                    // 释放进程占用内存
                     synchronized(memory){
-                        memory.release(pcbList.get(currentRunning).pid);
-                        System.out.println(String.format("[pid #%d] finish!", currentRunning));
+                        memory.release(pcbList.get(getIndex(pcbList,currentRunning)).pid);
+                        Diary.println("Process: "+currentRunning+" finish!");
                     }
 
-                    pcbList.get(currentRunning).status="terminated";
-                    pcbList.set(currentRunning,pcbList.get(currentRunning));
+                    pcbList.get(getIndex(pcbList,currentRunning)).status = "terminated";
+                    pcbList.set(getIndex(pcbList,currentRunning),pcbList.get(getIndex(pcbList,currentRunning)));
+                    Diary.println("---Process: "+currentRunning+" has transitioned to terminated.");
                     currentRunning = -1;
                 }
-                //没有执行完，将当前命令的剩余时间减1，记录使用了CPU资源，如果当前命令执行完毕，则将PC指针加1，转到下一个命令执行。
-                else if (pcbList.get(currentRunning).commend_queue.size() - pcbList.get(currentRunning).pc > 1) {
-                    //将当前命令的剩余时间减1
-                    //需要pcb存入时修改变量类型为int
-                    //记录使用了CPU资源
-                    // appendResourcesHistory("cpu", pcbList.get(currentRunning).getPid());
-
-                    /*if (pcbList.get(currentRunning).commend_queue.get(pcbList.get(currentRunning).pc).get(1) == 0) {
-                        pcbList.get(currentRunning).pc +=1;
-                    }*/
-                }
-
 
             }
 
+            //对有进程在运行的设备资源的处理
+            //更新设备状态
+            hardwareManager.update_hardware_used();
+            //遍历得到已经结束使用设备的进程
+            for (int i = 0; i < hardwareManager.last_stop_hardware_pid.size(); i++){
+                int pid_h = hardwareManager.last_stop_hardware_pid.get(i);
+                //记录设备使用了资源
+                append_resources_hestory("printer", pcbList.get(getIndex(pcbList,pid_h)).pid);
+                //判断进程是否执行完所有命令
+                //执行完所有指令
+                if(pcbList.get(getIndex(pcbList,pid_h)).commend_queue.size() - pcbList.get(getIndex(pcbList,pid_h)).pc <= 0){
 
+                    // 释放进程占用内存
+                    synchronized(memory){
+                        memory.release(pcbList.get(getIndex(pcbList,pid_h)).pid);
+                        Diary.println("Process: "+pid_h+" finish!");
+                    }
 
-            ///对打印机队列的处理，需要调用到printer函数
+                    pcbList.get(getIndex(pcbList,pid_h)).status = "terminated";
+                    pcbList.set(getIndex(pcbList,pid_h),pcbList.get(getIndex(pcbList,pid_h)));
+                    Diary.println("---Process: "+pid_h+" has transitioned to terminated.");
+                }
+                //未执行完
+                else {
+                    //修改对应进程状态为ready
+                    pcbList.get(getIndex(pcbList,pid_h)).status = "ready";
+                    pcbList.set(getIndex(pcbList,pid_h),pcbList.get(getIndex(pcbList,pid_h)));
+                    Diary.println("---Process: "+pid_h+" has transitioned to ready.");
 
+                    //加入到就绪队列
+                    readyQueue.get(pcbList.get(getIndex(pcbList,pid_h)).priority).add(pcbList.get(getIndex(pcbList,pid_h)));
+                    Diary.println("Process: "+pid_h+" successfully added to the readyQueue.");
+                }
+                //释放并重新分配设备资源
+                release(pid_h);
+            }
 
+            //清空表示此时没有需要从waiting态转为其他状态的进程
+            hardwareManager.empty_last_stop_pid();
         }
-
-
     }
-
-    private int getIndex(ObservableList<ProcessControlBlock> pcbList,int pid){
-        for (int i=0;i<pcbList.size();i++){
-            if(pcbList.get(i).pid==pid)
-                return i;
-        }
-        return -1;
-    }
-
-    private int getIndex(List<ProcessControlBlock> queue,int pid){
-        for (int i=0;i<queue.size();i++){
-            if(queue.get(i).pid==pid)
-                return i;
-        }
-        return -1;
-    }
-
-    //主函数，测试用
-
-
-
 }
 
 

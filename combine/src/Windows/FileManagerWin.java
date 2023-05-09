@@ -50,14 +50,6 @@ public class FileManagerWin extends Win {
 
         root.setCenter(fileList);
 
-        // 右侧文件列表
-//        TableView<String> tableView = new TableView<>();
-//        TableColumn<String, String> nameColumn = new TableColumn<>("名称");
-//        TableColumn<String, String> sizeColumn = new TableColumn<>("大小");
-//        TableColumn<String, String> typeColumn = new TableColumn<>("类型");
-//        tableView.getColumns().addAll(nameColumn, sizeColumn, typeColumn);
-        //root.setCenter(tableView);
-
         // 底部状态栏
         HBox statusBox = new HBox();
         statusBox.setPadding(new Insets(5));
@@ -66,7 +58,7 @@ public class FileManagerWin extends Win {
 
         // 菜单栏
         MenuBar menuBar = new MenuBar();
-        Menu fileMenu = new Menu("文件");
+        Menu fileMenu = new Menu("选项");
         MenuItem newFileItem = new MenuItem("新建文件");
         MenuItem newFolderItem = new MenuItem("新建文件夹");
         MenuItem runMenuItem = new MenuItem("运行");
@@ -112,16 +104,7 @@ public class FileManagerWin extends Win {
                                         runMenuItem.setDisable(true);
                                         editMenuItem.setDisable(true);
                                 }else{
-                                        if(curFile.type.equals("unc")) {
-                                                newFileItem.setDisable(true);
-                                                newFolderItem.setDisable(true);
-                                                runMenuItem.setDisable(true);
-                                                editMenuItem.setDisable(true);
-                                                deleteMenuItem.setDisable(true);
-                                        }
-
-                                                newFileItem.setDisable(true);
-
+                                        newFileItem.setDisable(true);
                                         if(curFile.type.contains("e"))
                                                 runMenuItem.setDisable(false);
 
@@ -141,6 +124,7 @@ public class FileManagerWin extends Win {
         deleteMenuItem.setOnAction(event -> {
                 try {
                         controller.communicate("cd ");
+                        Thread.sleep(100);
                         String command="rm "+"-r "+curFile.path.replace(root_path,"");
                         controller.communicate(command);
                         TreeItem<String> parentItem=fileList.getSelectionModel().getSelectedItem().getParent();
@@ -149,11 +133,14 @@ public class FileManagerWin extends Win {
                         fileList.refresh();
                 } catch (IOException e) {
                         throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
                 }
         });
         runMenuItem.setOnAction(event -> {
                 try {
                         controller.communicate("cd ");
+                        Thread.sleep(100);
                         String command="exec "+curFile.path.replace(root_path,"");
                         controller.communicate(command);
                 } catch (Exception e) {
@@ -166,6 +153,7 @@ public class FileManagerWin extends Win {
                         fileOutput=new PipedInputStream();
                         fileInput.connect(fileOutput);
                         controller.communicate("cd ");
+                        Thread.sleep(100);
                         String command="vi-ui "+curFile.path.replace(root_path+File.separator,"");
                         controller.communicate(command);
                         byte[] buffer = new byte[1024];
@@ -209,14 +197,28 @@ public class FileManagerWin extends Win {
                                 parentItem.getChildren().add(item);
                                 buildTree((ObservableMap<FileInfo, Object>) entry.getValue(), item);
                         }else {
-                                item.setGraphic(new ImageView(fileImage));
-                                item.setFile((File)entry.getValue());
-                                parentItem.getChildren().add(item);
+                                if(!item.getFileInfo().type.equals("unc")){
+                                        item.setGraphic(new ImageView(fileImage));
+                                        parentItem.getChildren().add(item);
+                                }
                         }
                 }
     }
 
-     class TextWin extends Win{
+    private  class FileTreeItem extends TreeItem<String> {
+                private FileInfo fileInfo;
+
+                public FileTreeItem(String value,FileInfo fileInfo,File file) {
+                        super(value);
+                        this.fileInfo=fileInfo;
+                }
+
+                public FileInfo getFileInfo(){
+                        return fileInfo;
+                }
+
+        }
+    private class TextWin extends Win{
             private TextField textField;
             public TextWin(Controller controller,String type) throws IOException {
                     super(controller, "命名", 300, 100);
@@ -253,6 +255,7 @@ public class FileManagerWin extends Win {
                                             int bytesRead;
                                             try {
                                                     controller.communicate("cd ");
+                                                    Thread.sleep(100);
                                                     String command="mkf "+curFile.path.replace(root_path,"")+File.separator+text+" 100";
                                                     controller.communicate(command);
                                                     bytesRead = fileOutput.read(buffer);
@@ -275,12 +278,15 @@ public class FileManagerWin extends Win {
                                                     }
                                             } catch (IOException e) {
                                                     throw new RuntimeException(e);
+                                            } catch (InterruptedException e) {
+                                                    throw new RuntimeException(e);
                                             }
                                     }else if(!text.equals("")&&type.equals("Folder")){
                                             byte[] buffer = new byte[1024];
                                             int bytesRead;
                                             try {
                                                     controller.communicate("cd ");
+                                                    Thread.sleep(100);
                                                     String command="mkdir "+curFile.path.replace(root_path,"")+File.separator+text;
                                                     controller.communicate(command);
                                                     bytesRead = fileOutput.read(buffer);
@@ -303,6 +309,8 @@ public class FileManagerWin extends Win {
                                                     }
                                             } catch (IOException e) {
                                                     throw new RuntimeException(e);
+                                            } catch (InterruptedException e) {
+                                                    throw new RuntimeException(e);
                                             }
                                     }
                             }
@@ -311,43 +319,19 @@ public class FileManagerWin extends Win {
                             @Override
                             public void handle(MouseEvent mouseEvent) {
                                     controller.closeWin("命名");
-                                    //TextWin.super.scene.setDisable(false);
                             }
                     });
             }
     }
 }
-class FileInfo{
+class FileInfo {
         String name;
         String type;
         String path;
-        public FileInfo(String name,String type,String path){
-                this.name=name;
-                this.type=type;
-                this.path=path;
+
+        public FileInfo(String name, String type,String path) {
+                this.name = name;
+                this.type = type;
+                this.path = path;
         }
-}
-
-class FileTreeItem extends TreeItem<String> {
-        private FileInfo fileInfo;
-
-        private File file;
-
-        public FileTreeItem(String value,FileInfo fileInfo,File file) {
-                super(value);
-                this.fileInfo=fileInfo;
-                this.file=file;
-        }
-
-        public void setFile(File file){
-                this.file=file;
-        }
-
-        public File getFile(){
-                return file;
-        }
-        public FileInfo getFileInfo(){
-                return fileInfo;
-        }
-
 }

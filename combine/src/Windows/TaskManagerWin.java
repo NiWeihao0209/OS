@@ -1,10 +1,16 @@
 package Windows;
 
 import SystemCore.Kernel;
+import SystemCore.Memory;
 import SystemCore.ProcessControlBlock;
 import SystemCore.ProcessManager;
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -28,26 +34,22 @@ import java.util.ListIterator;
 public class TaskManagerWin extends Win {
 
     private static TableView<ProcessControlBlock> taskTable=new TableView<>();
-    private Label cpuUsageLabel;
-
+    public static Label memoryUsageLabel=new Label("内存使用:0%");;
     private ProcessControlBlock selectedProcess;
 	public TaskManagerWin(Controller controller) {
 		
 		super(controller, "任务管理器", 500, 500);
 		
         BorderPane root = new BorderPane();
-        root.setPrefSize(800, 600);
+        root.setPrefSize(500, 600);
 
         // Top bar
         HBox topBar = new HBox();
         topBar.setPrefHeight(50);
         topBar.setAlignment(Pos.CENTER_LEFT);
+        topBar.setSpacing(300);
+        topBar.getChildren().add(memoryUsageLabel);
 
-        Label titleLabel = new Label("Memory Usage:0%		");
-        topBar.getChildren().add(titleLabel);
-
-        cpuUsageLabel = new Label("CPU Usage: 0%        ");
-        topBar.getChildren().add(cpuUsageLabel);
 
         Button killBtn = new Button("终止进程");
         killBtn.setDisable(true);
@@ -59,19 +61,19 @@ public class TaskManagerWin extends Win {
         taskTable = new TableView<>();
         taskTable.setEditable(false);
 
-        TableColumn<ProcessControlBlock, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<ProcessControlBlock, String> nameColumn = new TableColumn<>("进程名称");
         nameColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getName()));
 
         TableColumn<ProcessControlBlock, String> pidColumn = new TableColumn<>("PID");
         pidColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getPid()));
 
-        TableColumn<ProcessControlBlock, String> sizeColumn = new TableColumn<>("Size");
+        TableColumn<ProcessControlBlock, String> sizeColumn = new TableColumn<>("进程大小");
         sizeColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getSize()));
 
-        TableColumn<ProcessControlBlock, String> statusColumn = new TableColumn<>("Status");
+        TableColumn<ProcessControlBlock, String> statusColumn = new TableColumn<>("进程状态");
         statusColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getStatus()));
 
-        TableColumn<ProcessControlBlock, String> priorityColumn = new TableColumn<>("Priority");
+        TableColumn<ProcessControlBlock, String> priorityColumn = new TableColumn<>("进程优先级");
         priorityColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getPriority()));
         
         taskTable.getColumns().addAll(nameColumn,pidColumn,sizeColumn,statusColumn,priorityColumn);
@@ -100,5 +102,7 @@ public class TaskManagerWin extends Win {
             }
         });
 	}
-
+    public static void updateMemory(Float usedRate){
+        memoryUsageLabel.setText("内存使用:  "+usedRate*100+"%    ");
+    }
 }

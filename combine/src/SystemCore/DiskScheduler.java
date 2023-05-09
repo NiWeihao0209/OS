@@ -24,7 +24,7 @@ public class DiskScheduler {
         }
         Diary.println("Try To Disk find");
         //随机生成初始位置0-199
-        this.initialPosition = initialPosition%(endPosition-startPosition+1);
+         this.initialPosition = (int)(Math.random()*(endPosition-startPosition+1));
         this.requests = requests;
         List<Integer> result = allResult();
         //把result写入附加在已有的System/block_access文件中

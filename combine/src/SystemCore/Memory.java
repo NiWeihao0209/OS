@@ -1,7 +1,15 @@
 package SystemCore;
-
+import Windows.Controller;
+import Windows.TaskManagerWin;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableFloatValue;
+import javafx.beans.value.ObservableValue;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,6 +17,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 //连续分配式存储管理
@@ -102,6 +111,11 @@ class ConMemoryManager {
     private List<MemoryBlock> allocatedList;
     private int memorySize;
     private HashMap<Integer, ConProcess> ProcessMap = new HashMap<Integer, ConProcess>();
+    private int freeSize;
+    private int usedSize = 0;
+    private float usedRate;
+    static int accessTimes = 0;
+    private int accessSuccessTimes = 0;
 
     public ConMemoryManager(int size) {    //size为内存总大小
         freeList = new ArrayList<>();
@@ -109,6 +123,7 @@ class ConMemoryManager {
         MemoryBlock freeBlock = new MemoryBlock(0, size);
         freeList.add(freeBlock);
         memorySize = size;
+        freeSize = size;
     }
 
     public boolean allocate(ConProcess p) {
@@ -128,6 +143,12 @@ class ConMemoryManager {
                 }
                 freeList.remove(i);
                 allocated = true;
+                freeSize -= processSize;
+                usedSize += processSize;
+                usedRate=(float) usedSize / memorySize;
+                new Thread(()->{
+                    Platform.runLater(()-> TaskManagerWin.updateMemory(usedRate));
+                }).start();
                 break;
             }
         }
@@ -140,6 +161,13 @@ class ConMemoryManager {
         MemoryBlock mergedBlock = mergeBlocks(allocatedBlock, getAdjacentBlocks(allocatedBlock));
         freeList.add(mergedBlock);
         ProcessMap.remove(p.pid);
+        p.releaseBlock();
+        freeSize += p.getSize();
+        usedSize -= p.getSize();
+        usedRate=(float) usedSize / memorySize;
+        new Thread(()->{
+            Platform.runLater(()->TaskManagerWin.updateMemory(usedRate));
+        }).start();
     }
 
     private List<MemoryBlock> getAdjacentBlocks(MemoryBlock block) {
@@ -183,7 +211,7 @@ class ConMemoryManager {
         List<String> freeListString = new ArrayList<>();
         for (int i = 0; i < freeList.size(); i++) {
             MemoryBlock block = freeList.get(i);
-            freeListString.add("SystemCore.Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
+            freeListString.add("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
         }
         return freeListString;
     }
@@ -192,22 +220,35 @@ class ConMemoryManager {
         List<String> allocatedListString = new ArrayList<>();
         for (int i = 0; i < allocatedList.size(); i++) {
             MemoryBlock block = allocatedList.get(i);
-            allocatedListString.add("SystemCore.Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
+            allocatedListString.add("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
         }
         return allocatedListString;
+    }
+
+    public List<String> getUseInformation() {
+        List<String> useString = new ArrayList<>();
+        useString.add("内存使用率: " + usedRate);
+        useString.add("内存剩余: " + freeSize);
+        useString.add("内存已用: " + usedSize);
+        useString.add("访问成功次数: " + accessTimes);
+        useString.add("访问成功率: " + (float) accessSuccessTimes / accessTimes);
+        new Thread(()->{
+            Platform.runLater(()->TaskManagerWin.updateMemory(usedRate));
+        }).start();
+        return useString;
     }
 
     public void printFreeMemory() {
         for (int i = 0; i < freeList.size(); i++) {
             MemoryBlock block = freeList.get(i);
-            System.out.println("SystemCore.Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
+            Diary.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
         }
     }
 
     public void printAllocated() {
         for (int i = 0; i < allocatedList.size(); i++) {
             MemoryBlock block = allocatedList.get(i);
-            System.out.println("SystemCore.Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
+            Diary.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
         }
     }
 
@@ -235,6 +276,7 @@ class ConMemoryManager {
             block = allocatedList.get(i);
             if(block.getPid() == pid){
                 if(block.getStart() <= address && address <= block.getEnd()){
+                    accessSuccessTimes++;
                     return 1;
                 } else {
                     return 2;
@@ -326,11 +368,12 @@ class PageTableEntry {
 }
 
 class PageMemoryManager{
-    //  SystemCore.Memory：里面包括物理内存与虚拟内存
+    //  Memory：里面包括物理内存与虚拟内存
     //  pageFrameSize：页框大小，表示一个页框的大小。
     //  pageFrameNum：页框数量，表示物理内存中的页框数量。
     //  virtualMemoryNum：虚拟内存数量，表示虚拟内存的页数。
     //  pageTableSize：页表大小，表示一个页目录中的页表大小。
+    //  accessTimes：访问次数，表示访问的总次数，包括成功和失败的。
     //  pageTableNum：页表数量，表示总页表数量。
     //  pageFault：缺页次数，表示缺页的次数。
     //  pageReplace：页面置换次数，表示页面置换的次数。
@@ -340,14 +383,18 @@ class PageMemoryManager{
     private int pageFrameSize;
     private int pageFrameNum;
     private int pageTableSize;
+    static int accessTimes = 0;
     private int pageTableNum;
     private int pageFault = 0;
     private int pageReplace = 0;
     private int freePageFrameNum;
     private int freePageNum;
-    private String pageReplaceAlgorithm;
+    String pageReplaceAlgorithm;
     private HashMap<Integer, PageProcess> processMap = new HashMap<Integer, PageProcess>();
     private PageTable pageTable;
+    private FifoQueue fifoQueue;
+    private LruQueue lruQueue;
+    private Float usedRate;
 
     public PageMemoryManager(int pageFrameSize, int pageFrameNum, int pageTableSize, int pageTableNum, String pageReplaceAlgorithm) {
         this.pageFrameSize = pageFrameSize;
@@ -359,6 +406,12 @@ class PageMemoryManager{
         this.pageTable = new PageTable(pageTableNum);
         this.freePageNum = pageTableNum;
         this.freePageFrameNum = pageFrameNum;
+        if(pageReplaceAlgorithm.equals("FIFO")){
+            this.fifoQueue = new FifoQueue(pageFrameNum);
+        }
+        else if(pageReplaceAlgorithm.equals("LRU")){
+            this.lruQueue = new LruQueue(pageFrameNum);
+        }
     }
     public boolean createProcess(int pid,String name,int size){
         PageProcess p = new PageProcess(name, size, pid);
@@ -375,18 +428,19 @@ class PageMemoryManager{
     // 分配内存(策略)
     public boolean allocateMemory(PageProcess process) {
         int size = process.getSize();
-        int pageNum = size / 4096;
+        int pageNum = size / 1024;
         if (size % pageTableSize != 0) {
             pageNum++;
         }
-        if (freePageFrameNum < pageNum) {
+        if (freePageNum < pageNum) {
             //内存不足，无法分配
             return false;
         }
         int[] pageDir = new int[pageNum];
         int j = 0;
-        int i=0;
+        int i = 0;
         while(j!=pageNum){
+            //TODO:还可以分配页
             PageTableEntry pageTableEntry = pageTable.getEntry(i);
             if (pageTableEntry.getPid() == -1){
                 pageTableEntry.setPid(process.getPid());
@@ -408,49 +462,80 @@ class PageMemoryManager{
         int offset = address % pageTableSize;
         int pageDir[] = process.getPageDirectory();
         if(pageNum >= pageDir.length){
-            System.out.println("访问越界");
-            return 0;
+            return 2;
         }
         int pageTableIndex = pageDir[pageNum];
         PageTableEntry pageTableEntry = pageTable.getEntry(pageTableIndex);
         if (pageTableEntry.isPresent()){
             pageTableEntry.setReferencedTime(System.currentTimeMillis());
+            pageTableEntry.setVisits(pageTableEntry.getVisits()+1);
             return 1;
         }
         else {
             pageFault++;
-            int pageFrameIndex;
+            int pageFrameIndex = 0;
             if (freePageFrameNum > 0){
                 // 有空闲页框
                 pageFrameIndex = memory.findFreePageFrame();
                 memory.useFrame(pageFrameIndex);
-                pageTableEntry.setPageFrameNumber(pageTableIndex);
-                pageTableEntry.setPresent(true);
-                pageTableEntry.setReferencedTime(System.currentTimeMillis());
-                pageTableEntry.setPid(pid);
-                freePageFrameNum--;
-            }
-            else {
-                // 无空闲页框
-                pageFrameIndex =  1;//TODO: pageReplaceAlgorithm();
+
                 pageTableEntry.setPageFrameNumber(pageFrameIndex);
                 pageTableEntry.setPresent(true);
                 pageTableEntry.setReferencedTime(System.currentTimeMillis());
                 pageTableEntry.setPid(pid);
-                pageReplace++;
+                freePageFrameNum--;
+                if(pageReplaceAlgorithm.equals("FIFO"))
+                    fifoQueue.push(pageFrameIndex);
+                else if(pageReplaceAlgorithm.equals("LRU"))
+                    lruQueue.push(pageFrameIndex);
+                new Thread(()->{
+                    Platform.runLater(()-> TaskManagerWin.updateMemory(usedRate));
+                }).start();
+                usedRate = (float)(pageFrameNum - freePageFrameNum) / pageFrameNum;
             }
-            return 2;
+            else {
+                // 无空闲页框
+                //TODO:改进
+                if(pageReplaceAlgorithm.equals("FIFO"))
+                    pageFrameIndex = fifoQueue.getTail();
+                else if(pageReplaceAlgorithm.equals("LRU"))
+                    pageFrameIndex = lruQueue.getTail();
+                PageTableEntry clearPageTableEntry = pageTable.getEntry(pageFrameIndex);
+                clearPageTableEntry.setPresent(false);
+
+                if(pageReplaceAlgorithm.equals("FIFO"))
+                    fifoQueue.push(pageTableIndex);
+                else if(pageReplaceAlgorithm.equals("LRU"))
+                    lruQueue.push(pageTableIndex);
+                pageTableEntry.setPageFrameNumber(pageFrameIndex);
+                pageTableEntry.setPresent(true);
+                pageTableEntry.setPid(pid);
+                pageReplace++;
+                Diary.println("PID" + pid + "的第" + pageNum + "页被置换到页框" + pageFrameIndex);
+                Diary.println("页框数量：" + pageFrameNum);
+                Diary.println("页表数量：" + pageTableNum);
+                Diary.println("空闲页表数量：" + freePageNum);
+                Diary.println("空闲页框数量：" + freePageFrameNum);
+                Diary.println("缺页次数：" + pageFault);
+                Diary.println("页面置换次数：" + pageReplace);
+                Diary.println("页面置换算法：" + pageReplaceAlgorithm);
+            }
+            new Thread(()->{
+                Platform.runLater(()-> TaskManagerWin.updateMemory(usedRate));
+            }).start();
+            usedRate = (float)(pageFrameNum - freePageFrameNum) / pageFrameNum;
+            return 5;
         }
     }
 
     public void showMemory(){
-        System.out.println("页框数量：" + pageFrameNum);
-        System.out.println("页表数量：" + pageTableNum);
-        System.out.println("缺页次数：" + pageFault);
-        System.out.println("页面置换次数：" + pageReplace);
-        System.out.println("页面置换算法：" + pageReplaceAlgorithm);
-        System.out.println("空闲页表数量：" + freePageNum);
-        System.out.println("空闲页框数量：" + freePageFrameNum);
+        Diary.println("页框数量：" + pageFrameNum);
+        Diary.println("页表数量：" + pageTableNum);
+        Diary.println("缺页次数：" + pageFault);
+        Diary.println("页面置换次数：" + pageReplace);
+        Diary.println("页面置换算法：" + pageReplaceAlgorithm);
+        Diary.println("空闲页表数量：" + freePageNum);
+        Diary.println("空闲页框数量：" + freePageFrameNum);
     }
 
     public List<String> getBriefUsage(){
@@ -462,11 +547,14 @@ class PageMemoryManager{
         memoryUsageString.add("页面置换算法：" + pageReplaceAlgorithm);
         memoryUsageString.add("空闲页表数量：" + freePageNum);
         memoryUsageString.add("空闲页框数量：" + freePageFrameNum);
+        memoryUsageString.add("内存使用率：" + usedRate);
+        memoryUsageString.add("缺页率：" + (float)pageFault / accessTimes);
         return memoryUsageString;
     }
 
     public List<String> getDetailedUsage(){
-        //TODO(后期) 输出详细内存的使用信息（按照每个进程）
+
+        //TODO(后期) 输出详细内存的使用信息（按照每个进程）和UI对接的模块
         return null;
     }
 
@@ -475,21 +563,30 @@ class PageMemoryManager{
     }
 
     public boolean deleteProcess(int pid){
-        //TODO:完善删除进程的方法
         boolean deleteProcessResult = false;
+
         PageProcess process = processMap.get(pid);
         int[] pageDir = process.getPageDirectory();
         for (int i = 0; i < pageDir.length; i++) {
             PageTableEntry pageTableEntry = pageTable.getEntry(pageDir[i]);
+            if(pageTableEntry.isPresent()){
+                memory.freeFrame(pageTableEntry.getPageFrameNumber());
+                freePageFrameNum++;
+            }
             pageTableEntry.setPid(-1);
             pageTableEntry.setPresent(false);
             pageTableEntry.setReferencedTime(0);
             pageTableEntry.setModifiedTime(0);
             pageTableEntry.setPageFrameNumber(-1);
+            pageTableEntry.setVisits(0);
             freePageNum++;
-            freePageFrameNum++;
+            deleteProcessResult = true;
         }
         processMap.remove(pid);
+        usedRate=((float)(pageFrameNum - freePageFrameNum) / pageFrameNum);
+        new Thread(()->{
+            Platform.runLater(()->TaskManagerWin.updateMemory(usedRate));
+        }).start();
         return deleteProcessResult;
     }
 }
@@ -513,6 +610,7 @@ class PageTable {
     public void setEntry(int index, PageTableEntry entry) {
         entries[index] = entry;
     }
+
 }
 
 
@@ -523,12 +621,14 @@ class MemoryPage {
     private int pageTableSize;
     private PageFrame[] pageFrames;
     private Page[] pages;
+    private int numFrames;
 
     public MemoryPage(int numFrames, int pageFrameSize, int pageTableNum, int pageTableSize) {
         // 初始化页框(物理内存)
         this.pageFrameSize = pageFrameSize;
         this.pageFrames = new PageFrame[numFrames];
         this.pages = new Page[pageTableNum];
+        this.numFrames = numFrames;
 
         for (int i = 0; i < numFrames; i++) {
             pageFrames[i] = new PageFrame(i,pageFrameSize);
@@ -547,7 +647,7 @@ class MemoryPage {
     }
 
     public int findFreePageFrame(){
-        for (int i = 0; i < pageFrameSize; i++) {
+        for (int i = 0; i < numFrames; i++) {
             if (pageFrames[i].isFree()){
                 return i;
             }
@@ -610,7 +710,6 @@ class Page {
         this.pageNumber = pageNumber;
         this.data = data;
     }
-
     public int getPageNumber() {
         return pageNumber;
     }
@@ -634,7 +733,7 @@ class PageProcess {
     private int size;   // 进程大小
     private int[] pageDirectory;    // 记得改为HashMap来存储————————————————————————————————————————————
 
-    public PageProcess(String name, int pid, int size) {
+    public PageProcess(String name, int size, int pid) {
         this.name = name;
         this.pid = pid;
         this.size = size;
@@ -662,10 +761,10 @@ class PageProcess {
 }
 
 public class Memory {
-    static String testName = "ca";
+    static String testName;
     ConMemoryManager conMemoryManager;
     PageMemoryManager pageMemoryManager;
-    private static String readFile(File file) throws IOException {
+    private static String readFile(File file) throws IOException, IOException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuilder content = new StringBuilder();
         String line;
@@ -691,10 +790,10 @@ public class Memory {
             e.printStackTrace();
         }
         if (testName.equals("ca")) {
-            conMemoryManager = new ConMemoryManager(10000);
+            conMemoryManager = new ConMemoryManager(20480);
         }
         else if (testName.equals("pa")) {
-            pageMemoryManager = new PageMemoryManager(4096, 8, 4096, 24, "LRU");
+            pageMemoryManager = new PageMemoryManager(1024, 8, 1024, 24, "LRU");
         }
 
     }
@@ -703,6 +802,7 @@ public class Memory {
         if (testName.equals("ca")) {
             allMemoryList.addAll(conMemoryManager.getFreeList());
             allMemoryList.addAll(conMemoryManager.getAllocatedList());
+            allMemoryList.addAll(conMemoryManager.getUseInformation());
         }
         else if (testName.equals("pa")) {
             allMemoryList.addAll(pageMemoryManager.getBriefUsage());
@@ -722,10 +822,14 @@ public class Memory {
     int access(int pid, int address){
         int accessResult = 0;
         if (testName.equals("ca")) {
+            //返回0表示进程不存在，返回1表示访问成功，返回2表示访问越界，返回3表示进程未分配内存，返回4表示其他错误
             accessResult = conMemoryManager.accessProcess(pid, address);
+            conMemoryManager.accessTimes++;
         }
         else if (testName.equals("pa")) {
+            //返回1表示访问成功，返回2表示访问越界，返回5表示缺页
             accessResult = pageMemoryManager.accessProcess(pageMemoryManager.getProcess(pid), address);
+            pageMemoryManager.accessTimes++;
         }
         return accessResult;
     }
@@ -739,10 +843,71 @@ public class Memory {
             }
         }
         else if (testName.equals("pa")) {
-            //TODO:pageMemoryManager.release();
             releaseResult = pageMemoryManager.deleteProcess(pid);
         }
         return releaseResult;
     }
 
+}
+
+
+
+class Queue {
+    LinkedList<Integer> queue;
+    int maxSize;
+    public Queue(int maxSize) {
+        this.queue = new LinkedList<>();
+        this.maxSize = maxSize;
+    }
+
+    public void push(int value) {
+    }
+
+    public boolean isEmpty() {
+        return this.queue.isEmpty();
+    }
+
+    public LinkedList getQueue() {
+        return this.queue;
+    }
+
+    public int size() {
+        return this.queue.size();
+    }
+
+    public Integer getTail() {
+        return this.queue.peekLast();
+    }
+}
+
+class FifoQueue extends Queue{
+    public FifoQueue(int maxSize) {
+        super(maxSize);
+    }
+    public void push(int value) {
+        if (!this.queue.contains(value) && this.queue.size() >= this.maxSize) {
+            this.queue.pollLast();
+            this.queue.offerFirst(value);
+        }
+        else if (!this.queue.contains(value) && this.queue.size() < this.maxSize) {
+            this.queue.offerFirst(value);
+        }
+    }
+}
+
+class LruQueue extends Queue{
+
+    public LruQueue(int maxSize) {
+        super(maxSize);
+    }
+
+    public void push(int value) {
+        if (this.queue.contains(value)) {
+            this.queue.removeFirstOccurrence(value);
+        }
+        if(this.queue.size() >= this.maxSize) {
+            this.queue.pollLast();
+        }
+        this.queue.offerFirst(value);
+    }
 }

@@ -10,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,6 +24,8 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 
+
+
 public class Kernel extends Application {
     //创建文件管理器
     static FileManager fileManager = new FileManager(1024,10,10);
@@ -31,7 +35,7 @@ public class Kernel extends Application {
     //创建内存管理器
 
     static Controller controller;
-    private static HashSet<String> keyWord=new HashSet<>(Arrays.asList(new String[] { "mc","jr","gcc","vi","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","sv"}));
+    private static HashSet<String> keyWord=new HashSet<>(Arrays.asList(new String[] { "pc","ar","mc","jr","gcc","vi","re","ls","cd","mkdir","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","sv"}));
     //管道0,shell向kernel传输数据
     static String method= "print";
     public static PipedInputStream[] output=new PipedInputStream[2];
@@ -40,11 +44,14 @@ public class Kernel extends Application {
     private DoubleProperty baseWidth = new SimpleDoubleProperty((int) Toolkit.getDefaultToolkit().getScreenSize().width);//界面宽度
     private DoubleProperty baseHeight = new SimpleDoubleProperty((int)Toolkit.getDefaultToolkit().getScreenSize().height);//界面高度
     static Memory memoryManager;
+    static HardwareManager hardwareManager;
     public static void main(String[] args) throws IOException {
+        Diary.println("System start");
         //初始化内存管理器
         memoryManager = new Memory();
+        hardwareManager=new HardwareManager();
         //初始化进程管理器,把内存管理器传进去
-        processManager = new ProcessManager(memoryManager);
+        processManager = new ProcessManager(memoryManager, hardwareManager);
         // Create a pipe for communication from shell to kernel
         new Thread(processManager).start();
 
@@ -63,7 +70,7 @@ public class Kernel extends Application {
         while (true) {
             bytesRead = output[0].read(buffer);
             String data = new String(buffer, 0, bytesRead);
-            System.out.println(data);
+            Diary.println("receive:"+data);
             accept(data);//接受管道传输过来的数据
             // Process the data as needed
         }
@@ -72,11 +79,9 @@ public class Kernel extends Application {
     public void start(Stage primaryStage) {
 
         StackPane readyPane = new StackPane();//欢迎界面
-        readyPane.setStyle("-fx-background-color:#212121");
+        readyPane.setStyle("-fx-background-color:#000000");
 
-        Text wellcome = new Text("HOMOS");
-        wellcome.setFill(Color.WHITE);
-        wellcome.setFont(new Font(200));
+        ImageView wellcome=new ImageView(new Image("file:res/icons/logo.png"));
         readyPane.getChildren().add(wellcome);
 
         Scene readyScene = new Scene(readyPane);
@@ -146,9 +151,7 @@ public class Kernel extends Application {
         else if(words[0].equals("mkdir")){
             deal_mkdir(word);
         }
-        else if(words[0].equals("mon")){
-            deal_mon(word);
-        }
+
         else if(words[0].equals("rm")){
             deal_rm(word);
         }
@@ -198,11 +201,48 @@ public class Kernel extends Application {
         else if (words[0].equals("mc")){
             deal_mc(word);
         }
+        else if (words[0].equals("ar")){
+            deal_ar(word);
+
+        }
+        else if (words[0].equals("pc")){
+            deal_pc(word);
+
+        }
 
         else{
-            input[1].write("命令不存在".getBytes());
-            input[1].flush();
+            write("命令不存在");
+
         }
+    }
+    private static void deal_pc(String word) throws IOException{
+        String[] words = word.split(" ");
+        if(words.length==2 &&(words[1].equals("LRU")||words[1].equals("FIFO"))){
+            fileManager.change_page(words[1]);
+
+        }
+        else{
+            try {
+                write("pc:错误");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private static void deal_ar(String word) throws IOException {
+        String[] words = word.split(" ");
+        if(words.length==2 &&(words[1].equals("camera")||words[1].equals("printer"))){
+            hardwareManager.add_hardware(words[1]);
+
+        }
+        else{
+            try {
+                write("ar:参数错误");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
     private static void deal_mc(String word) throws IOException {
         String[] words = word.split(" ");
@@ -212,8 +252,7 @@ public class Kernel extends Application {
         }
         else{
             try {
-                input[1].write("mc:错误".getBytes());
-                input[1].flush();
+                write("mc:错误");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -222,8 +261,9 @@ public class Kernel extends Application {
 
     //向管道中写入数据
     public static void write(String word) throws IOException {
-        input[1].write(word.getBytes());
+        input[1].write((word+"\n").getBytes());
         input[1].flush();
+
     }
     public static void deal_jr(String word) throws IOException {
         String[] words = word.split(" ");
@@ -240,10 +280,8 @@ public class Kernel extends Application {
         //打印list,全打印在同一行,用空格隔开
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
-                input[1].write(list.get(i).getBytes());
-                input[1].write("\n".getBytes());
+                write(list.get(i));
             }
-            input[1].write("\r\n".getBytes());
         }
     }
 
@@ -255,8 +293,8 @@ public class Kernel extends Application {
             method = "get";
         }
         else{
-            input[1].write("re:参数过多".getBytes());
-            input[1].flush();
+            write("re:参数过多");
+
         }
     }
     public static void deal_ls(String word) throws IOException {
@@ -301,14 +339,14 @@ public class Kernel extends Application {
                 list= fileManager.ls(words[2],"-al",method);
             }
             else{
-                input[1].write("ls:第二,三个参数格式错误".getBytes());
-                input[1].flush();
+                write("ls:第二,三个参数格式错误");
+
             }
 
         }
         else{
-            input[1].write("ls:参数过多".getBytes());
-            input[1].flush();
+            write("ls:参数过多");
+
         }
         //打印list
         printList(list);
@@ -328,16 +366,16 @@ public class Kernel extends Application {
             //调用cd path模块
             fileManager.cd(words[1]);
             if(list!=null ){
-                input[1].write(list.getBytes());
-                input[1].flush();
+                write(list);
+
             }
 
 
 
         }
         else{
-            input[1].write("cd:参数过多".getBytes());
-            input[1].flush();
+            write("cd:参数过多");
+
         }
 
 
@@ -346,42 +384,24 @@ public class Kernel extends Application {
         String[] words = word.split(" ");
         String list = null;
         if(words.length==1){
-            input[1].write("mkdir:缺少指定路径".getBytes());
-            input[1].flush();
+            write("mkdir:缺少指定路径");
+
         }
         else if(words.length==2){
             list=fileManager.mkdir(words[1]);
             if(list!=null ){
-                input[1].write(list.getBytes());
-                input[1].flush();
+                write(list);
+
             }
 
         }
         else{
-            input[1].write("mkdir:参数过多".getBytes());
-            input[1].flush();
+            write("mkdir:参数过多");
+
         }
 
     }
-    public static void deal_mon(String word) throws IOException {
-        String[] words = word.split(" ");
-        if(words.length==1){
-            //调用mon模块
-        }
-        else if(words.length==2){
-            if(words[1].equals("-o")){
 
-            }
-            else{
-                input[1].write("mon:参数错误".getBytes());
-                input[1].flush();
-            }
-        }
-        else {
-            input[1].write("mon:参数过多".getBytes());
-            input[1].flush();
-        }
-    }
 
 
 
@@ -391,15 +411,15 @@ public class Kernel extends Application {
         String[] words = word.split(" ");
         String list = null;
         if(words.length==1){
-            input[1].write("rm:缺少路径".getBytes());
-            input[1].flush();
+            write("rm:缺少路径");
+
         }
         //特殊情况:rm+path
         else if(words.length==2){
             list=fileManager.rm(words[1],"-r");
             if(list!=null ){
-                input[1].write(list.getBytes());
-                input[1].flush();
+                write(list);
+
             }
         }
         else if(words.length==3){
@@ -417,19 +437,19 @@ public class Kernel extends Application {
                 list=fileManager.rm(words[2],"-rf");
             }
             else{
-                input[1].write("ls:第二,三个参数格式错误".getBytes());
-                input[1].flush();
+                write("ls:第二,三个参数格式错误");
+
                 return;
             }
             if(list!=null ){
-                input[1].write(list.getBytes());
-                input[1].flush();
+                write(list);
+
             }
 
         }
         else{
-            input[1].write("ls:参数过多".getBytes());
-            input[1].flush();
+            write("ls:参数过多");
+
         }
 
     }
@@ -439,28 +459,28 @@ public class Kernel extends Application {
         if(words.length==1){
             list=fileManager.dss();
             if(list!=null ){
-                input[1].write(list.toString().getBytes());
-                input[1].flush();
+                write(list.toString());
+
             }
         }
         else {
             //参数过多
-            input[1].write("dss:参数过多".getBytes());
-            input[1].flush();
+            write("dss:参数过多");
+
         }
 
     }
     public static void deal_exec(String word) throws IOException {
         String[] words = word.split(" ");
         if(words.length==1){
-            input[1].write("exec:缺少指定路径".getBytes());
-            input[1].flush();
+            write("exec:缺少指定路径");
+
         }
         else if(words.length==2){
             //先给filemanager模块传入路径,看是否存在该文件,再接收该文件的内容
             if(fileManager.find(words[1]).equals("error")){
-                input[1].write("执行文件不存在".getBytes());
-                input[1].flush();
+                write("执行文件不存在");
+
                 return;
             }
             //执行该文件的内容
@@ -472,8 +492,8 @@ public class Kernel extends Application {
                 List<String> list = null;
                 list=fileManager.readContentFromFile(words[1]);
                 if(list==null){
-                    input[1].write("该文件为空文件".getBytes());
-                    input[1].flush();
+                    write("该文件为空文件");
+
                     return;
                 }
                 //执行
@@ -481,13 +501,13 @@ public class Kernel extends Application {
                 //controller.refreshTask();
             }
             else {
-                input[1].write("该文件不属于可执行文件".getBytes());
-                input[1].flush();
+                write("该文件不属于可执行文件");
+
             }
         }
         else{
-            input[1].write("exec:参数过多".getBytes());
-            input[1].flush();
+            write("exec:参数过多");
+
         }
     }
     public static void deal_dms(String word) throws IOException {
@@ -503,8 +523,8 @@ public class Kernel extends Application {
         }
         else {
             //参数过多
-            input[1].write("dms:参数过多".getBytes());
-            input[1].flush();
+            write("dms:参数过多");
+
         }
     }
 
@@ -515,8 +535,8 @@ public class Kernel extends Application {
         }
         else {
             //参数过多
-            input[1].write("td:参数过多".getBytes());
-            input[1].flush();
+            write("td:参数过多");
+
         }
     }
     public static void deal_mkf(String word) throws IOException {
@@ -526,23 +546,30 @@ public class Kernel extends Application {
             //调用mkf模块
             list=fileManager.mkf(words[1],"crwx",words[2]);
             if(list!=null ){
-                input[1].write(list.getBytes());
-                input[1].flush();
+                write(list);
+
             }
         }
         else {
-            input[1].write("mkf:参数不为3".getBytes());
-            input[1].flush();
+            write("mkf:参数不为3");
+
         }
     }
     public static void deal_kill(String word) throws IOException {
         String[] words = word.split(" ");
         if(words.length==2){
-            processManager.killProcess(Integer.parseInt(words[1]));
+            try {
+                processManager.killProcess(Integer.parseInt(words[1]));
+            }catch (Exception e){
+                write("kill:存在非法参数");
+
+                return;
+            }
+
         }
         else {
-            input[1].write("kill:参数不为2".getBytes());
-            input[1].flush();
+            write("kill:参数不为2");
+
         }
 
     }
@@ -554,36 +581,43 @@ public class Kernel extends Application {
             pcbList=processManager.getProcess();
             //如果pcbList为空,则没有进程
             if(pcbList==null){
-                input[1].write("没有进程".getBytes());
-                input[1].flush();
+                write("没有进程");
+
                 return;
             }
             //遍历pcbList,打印状态,name,pid
             for (int i = 0; i < pcbList.size(); i++) {
-                input[1].write(("进程名字:" + pcbList.get(i).name + " 进程状态:" + pcbList.get(i).status + " 进程pid:" + pcbList.get(i).pid+"\n").getBytes());
-                input[1].flush();
+                write(("进程名字:" + pcbList.get(i).name + " 进程状态:" + pcbList.get(i).status + " 进程pid:" + pcbList.get(i).pid+"\n"));
+
             }
         }
         else {
             //参数过多
-            input[1].write("ps:参数过多".getBytes());
-            input[1].flush();
+            write("ps:参数过多");
+
         }
     }
     public static void deal_rs(String word) throws IOException {
         String[] words = word.split(" ");
         if(words.length==1){
+            //获得硬件信息
+            ArrayList<Hardware> list=hardwareManager.get_hardware_used_info();
+            //把硬件信息传回shell
+            for (int i = 0; i < list.size(); i++) {
+                write(("种类为:"+list.get(i).hardware_cate+" pid为:"+list.get(i).hardware_pid+" 是否被使用:"+list.get(i).hardware_used));
+
+            }
         }
         else {
             //参数过多
-            input[1].write("rs:参数过多".getBytes());
-            input[1].flush();
+            write("rs:参数过多");
+
         }
     }
     public static void deal_man(String word) throws IOException {
         String[] words = word.split(" ");
         if(words.length==1){
-            //调用mon模块
+
             //读取文件System/Guide文件的每一行,并且转化为字符串list
             String filePath = "System/Guide"; // 文件路径
             List<String> lines = new ArrayList<>(); // 字符串列表
@@ -603,8 +637,8 @@ public class Kernel extends Application {
             //检查words每一个元素是否属于字符数组keyword
             for(int i=1;i<words.length;i++){
                 if(!keyWord.contains(words[i])){
-                    input[1].write("man:存在不正确的指令".getBytes());
-                    input[1].flush();
+                    write("man:存在不正确的指令");
+
                     return;
                 }
             }
@@ -619,14 +653,14 @@ public class Kernel extends Application {
             //调用vi模块
             list=fileManager.vi(words[1]);
             if(list!=null ){
-                input[1].write(list.getBytes());
-                input[1].flush();
+                write(list);
+
             }
         }
         else {
             //参数过多
-            input[1].write(":参数错误".getBytes());
-            input[1].flush();
+            write(":参数错误");
+
         }
     }
     public static void deal_gcc(String word) throws IOException {
@@ -636,55 +670,55 @@ public class Kernel extends Application {
             //检测是否存在该文件
             list=fileManager.find(words[1]);
             if(list.equals("error")){
-                input[1].write("gcc:文件不存在".getBytes());
-                input[1].flush();
+                write("gcc:文件不存在");
+
                 return;
             }
 
             //调用gcc模块,成功or不符合格式
             if(gcc.compile(words[1],list)){
-                input[1].write("gcc:编译成功".getBytes());
-                input[1].flush();
+                write("gcc:编译成功");
+
             }
             else{
-                input[1].write("gcc:格式错误,编译失败".getBytes());
-                input[1].flush();
+                write("gcc:格式错误,编译失败");
+
             }
         }
         if(words.length==3){
             //检测是否存在该文件
             list=fileManager.find(words[2]);
             if(list.equals("error")){
-                input[1].write("gcc:文件不存在".getBytes());
-                input[1].flush();
+                write("gcc:文件不存在");
+
                 return;
             }
             //检查words[1]是否为数字
             try {
                 int i = Integer.parseInt(words[1]);
             }catch (Exception e){
-                input[1].write("gcc:参数错误".getBytes());
-                input[1].flush();
+                write("gcc:参数错误");
+
                 return;
             }
             //调用gcc模块,成功or不符合格式
             if(gcc.compile(words[1],list)){
-                input[1].write("gcc:编译成功".getBytes());
-                input[1].flush();
+                write("gcc:编译成功");
+
             }
             else{
-                input[1].write("gcc:编译失败".getBytes());
-                input[1].flush();
+                write("gcc:编译失败");
+
             }
         }
         else {
             //参数过多
-            input[1].write(":参数错误".getBytes());
-            input[1].flush();
+            write(":参数错误");
+
         }
     }
     private static void deal_sv(String word) throws IOException {
-        String[] words = word.split(" ");
+        String[] words = word.split(" ",3);
         fileManager.sv(words[1],words[2]);
     }
 }

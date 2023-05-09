@@ -1,0 +1,2102 @@
+2023-05-09 12:01:20:Try To Disk find
+2023-05-09 12:06:05:Try To Disk find
+2023-05-09 12:12:52:Try To Disk find
+2023-05-09 12:14:42:Try To Disk find
+2023-05-09 12:20:23:Try To Disk find
+2023-05-09 12:22:16:Try To Disk find
+2023-05-09 17:42:09:initialize blocks
+2023-05-09 17:45:38:initialize blocks
+2023-05-09 17:49:58:initialize blocks
+2023-05-09 17:50:46:initialize blocks
+2023-05-09 17:56:00:initialize blocks
+2023-05-09 17:56:48:\s\
+2023-05-09 17:56:53:Process: 0 has successfully allocated memory.
+2023-05-09 17:56:53:Process: 0 has been successfully created.
+2023-05-09 17:56:53:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:56:53:---Process: 0 has transitioned to running.
+2023-05-09 17:56:53:Try To Disk find
+2023-05-09 17:56:54:---Process: 0 has transitioned to ready.
+2023-05-09 17:56:54:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:56:54:---Process: 0 has transitioned to running.
+2023-05-09 17:56:54:---Process: 0 has transitioned to waiting.
+2023-05-09 17:56:54:Process: 0 successfully added to the waitingQueue.
+2023-05-09 17:56:54:Process: 0 has successfully requested the use of device resources.
+2023-05-09 17:56:54:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 17:56:55:---Process: 0 has transitioned to ready.
+2023-05-09 17:56:55:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:56:55:Process: 0 successfully remove from waitingQueue.
+2023-05-09 17:56:55:---Process: 0 has transitioned to running.
+2023-05-09 17:56:55:Process: 0 finish!
+2023-05-09 17:56:55:---Process: 0 has transitioned to terminated.
+2023-05-09 17:57:44:process_name:test process_statue:terminated pid:0
+2023-05-09 17:57:48:---Process: 0 has transitioned to waiting.
+2023-05-09 17:57:54:initialize blocks
+2023-05-09 17:58:05:\s\
+2023-05-09 17:58:08:try commend ls
+2023-05-09 17:58:08:ls success
+2023-05-09 17:58:14:Process: 0 has successfully allocated memory.
+2023-05-09 17:58:14:Process: 0 has been successfully created.
+2023-05-09 17:58:14:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:58:14:---Process: 0 has transitioned to running.
+2023-05-09 17:58:14:Try To Disk find
+2023-05-09 17:58:15:---Process: 0 has transitioned to ready.
+2023-05-09 17:58:15:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:58:15:---Process: 0 has transitioned to running.
+2023-05-09 17:58:15:---Process: 0 has transitioned to waiting.
+2023-05-09 17:58:15:Process: 0 successfully added to the waitingQueue.
+2023-05-09 17:58:15:Process: 0 has successfully requested the use of device resources.
+2023-05-09 17:58:15:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 17:58:16:---Process: 0 has transitioned to ready.
+2023-05-09 17:58:16:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:58:16:Process: 0 successfully remove from waitingQueue.
+2023-05-09 17:58:16:---Process: 0 has transitioned to running.
+2023-05-09 17:58:16:Process: 0 finish!
+2023-05-09 17:58:16:---Process: 0 has transitioned to terminated.
+2023-05-09 17:58:49:process_name:test process_statue:terminated pid:0
+2023-05-09 17:58:54:---Process: 0 has transitioned to waiting.
+2023-05-09 17:59:11:initialize blocks
+2023-05-09 17:59:25:\s\
+2023-05-09 17:59:43:Process: 0 has successfully allocated memory.
+2023-05-09 17:59:43:Process: 0 has been successfully created.
+2023-05-09 17:59:43:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:59:43:---Process: 0 has transitioned to running.
+2023-05-09 17:59:43:Try To Disk find
+2023-05-09 17:59:44:---Process: 0 has transitioned to ready.
+2023-05-09 17:59:44:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:59:44:---Process: 0 has transitioned to running.
+2023-05-09 17:59:44:---Process: 0 has transitioned to waiting.
+2023-05-09 17:59:44:Process: 0 successfully added to the waitingQueue.
+2023-05-09 17:59:44:Process: 0 has successfully requested the use of device resources.
+2023-05-09 17:59:44:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 17:59:45:---Process: 0 has transitioned to ready.
+2023-05-09 17:59:45:Process: 0 successfully added to the readyQueue.
+2023-05-09 17:59:45:Process: 0 successfully remove from waitingQueue.
+2023-05-09 17:59:45:---Process: 0 has transitioned to running.
+2023-05-09 17:59:45:Process: 0 finish!
+2023-05-09 17:59:45:---Process: 0 has transitioned to terminated.
+2023-05-09 18:00:14:---Process: 0 has transitioned to waiting.
+2023-05-09 18:00:18:initialize blocks
+2023-05-09 18:01:49:initialize blocks
+2023-05-09 18:02:52:initialize blocks
+2023-05-09 18:07:28:initialize blocks
+2023-05-09 18:10:45:initialize blocks
+2023-05-09 18:13:10:initialize blocks
+2023-05-09 18:14:29:initialize blocks
+2023-05-09 18:14:29:System start
+2023-05-09 18:14:35:receivekill
+2023-05-09 18:14:40:receivekill 0
+2023-05-09 18:14:44:receivecd
+2023-05-09 18:14:46:receivecd s
+2023-05-09 18:14:46:\s\
+2023-05-09 18:14:50:receiveexec test
+2023-05-09 18:14:50:Process: 0 has successfully allocated memory.
+2023-05-09 18:14:50:Process: 0 has been successfully created.
+2023-05-09 18:14:50:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:14:50:---Process: 0 has transitioned to running.
+2023-05-09 18:14:50:Try To Disk find
+2023-05-09 18:14:51:---Process: 0 has transitioned to ready.
+2023-05-09 18:14:51:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:14:51:---Process: 0 has transitioned to running.
+2023-05-09 18:14:51:---Process: 0 has transitioned to waiting.
+2023-05-09 18:14:51:Process: 0 successfully added to the waitingQueue.
+2023-05-09 18:14:51:Process: 0 has successfully requested the use of device resources.
+2023-05-09 18:14:51:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 18:14:52:---Process: 0 has transitioned to ready.
+2023-05-09 18:14:52:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:14:52:Process: 0 successfully remove from waitingQueue.
+2023-05-09 18:14:52:---Process: 0 has transitioned to running.
+2023-05-09 18:14:52:Process: 0 finish!
+2023-05-09 18:14:52:---Process: 0 has transitioned to terminated.
+2023-05-09 18:15:03:receivekill 0
+2023-05-09 18:15:03:---Process: 0 has transitioned to waiting.
+2023-05-09 18:19:43:initialize blocks
+2023-05-09 18:19:43:System start
+2023-05-09 18:19:53:receivecd
+2023-05-09 18:19:57:receivecd s
+2023-05-09 18:19:57:\s\
+2023-05-09 18:20:01:receiveexec test
+2023-05-09 18:20:01:Process: 0 has successfully allocated memory.
+2023-05-09 18:20:01:Process: 0 has been successfully created.
+2023-05-09 18:20:01:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:20:01:---Process: 0 has transitioned to running.
+2023-05-09 18:20:01:Try To Disk find
+2023-05-09 18:20:02:---Process: 0 has transitioned to ready.
+2023-05-09 18:20:02:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:20:02:---Process: 0 has transitioned to running.
+2023-05-09 18:20:02:---Process: 0 has transitioned to waiting.
+2023-05-09 18:20:02:Process: 0 successfully added to the waitingQueue.
+2023-05-09 18:20:02:Process: 0 has successfully requested the use of device resources.
+2023-05-09 18:20:02:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 18:20:03:---Process: 0 has transitioned to ready.
+2023-05-09 18:20:03:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:20:03:Process: 0 successfully remove from waitingQueue.
+2023-05-09 18:20:03:---Process: 0 has transitioned to running.
+2023-05-09 18:20:03:Process: 0 finish!
+2023-05-09 18:20:03:---Process: 0 has transitioned to terminated.
+2023-05-09 18:20:06:receivekill 0
+2023-05-09 18:20:11:receivekill 1010
+2023-05-09 18:21:45:initialize blocks
+2023-05-09 18:21:46:System start
+2023-05-09 18:21:52:receivecd
+2023-05-09 18:21:54:receivecd s
+2023-05-09 18:21:54:\s\
+2023-05-09 18:21:58:receiveexec test
+2023-05-09 18:21:58:Process: 0 has successfully allocated memory.
+2023-05-09 18:21:58:Process: 0 has been successfully created.
+2023-05-09 18:21:58:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:21:58:---Process: 0 has transitioned to running.
+2023-05-09 18:21:58:Try To Disk find
+2023-05-09 18:21:59:---Process: 0 has transitioned to ready.
+2023-05-09 18:21:59:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:21:59:---Process: 0 has transitioned to running.
+2023-05-09 18:21:59:---Process: 0 has transitioned to waiting.
+2023-05-09 18:21:59:Process: 0 successfully added to the waitingQueue.
+2023-05-09 18:21:59:Process: 0 has successfully requested the use of device resources.
+2023-05-09 18:21:59:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 18:22:00:---Process: 0 has transitioned to ready.
+2023-05-09 18:22:00:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:22:00:Process: 0 successfully remove from waitingQueue.
+2023-05-09 18:22:00:---Process: 0 has transitioned to running.
+2023-05-09 18:22:00:Process: 0 finish!
+2023-05-09 18:22:00:---Process: 0 has transitioned to terminated.
+2023-05-09 18:22:00:receivekill 0
+2023-05-09 18:22:00:Process: 0 has already been terminated.
+2023-05-09 18:22:23:receivekill 100\
+2023-05-09 18:25:25:initialize blocks
+2023-05-09 18:25:25:System start
+2023-05-09 18:25:33:receivekill
+2023-05-09 18:25:37:receivekill  s
+2023-05-09 18:25:40:receivekill s
+2023-05-09 18:26:26:initialize blocks
+2023-05-09 18:26:26:System start
+2023-05-09 18:26:32:receive:cd
+2023-05-09 18:26:35:receive:cd s
+2023-05-09 18:26:35:\s\
+2023-05-09 18:26:38:receive:exec test
+2023-05-09 18:26:38:Process: 0 has successfully allocated memory.
+2023-05-09 18:26:38:Process: 0 has been successfully created.
+2023-05-09 18:26:38:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:26:38:---Process: 0 has transitioned to running.
+2023-05-09 18:26:38:Try To Disk find
+2023-05-09 18:26:39:---Process: 0 has transitioned to ready.
+2023-05-09 18:26:39:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:26:39:---Process: 0 has transitioned to running.
+2023-05-09 18:26:39:---Process: 0 has transitioned to waiting.
+2023-05-09 18:26:39:Process: 0 successfully added to the waitingQueue.
+2023-05-09 18:26:39:Process: 0 has successfully requested the use of device resources.
+2023-05-09 18:26:39:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 18:26:40:---Process: 0 has transitioned to ready.
+2023-05-09 18:26:40:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:26:40:Process: 0 successfully remove from waitingQueue.
+2023-05-09 18:26:40:---Process: 0 has transitioned to running.
+2023-05-09 18:26:40:Process: 0 finish!
+2023-05-09 18:26:40:---Process: 0 has transitioned to terminated.
+2023-05-09 18:26:41:receive:kill 100
+2023-05-09 18:26:41:Process: 100 is not in the pcbList.
+2023-05-09 18:37:01:initialize blocks
+2023-05-09 18:37:02:System start
+2023-05-09 18:39:10:initialize blocks
+2023-05-09 18:39:10:System start
+2023-05-09 18:39:20:receive:cd s
+2023-05-09 18:39:20:\s\
+2023-05-09 18:39:23:receive:exec test
+2023-05-09 18:39:23:Process: 0 has successfully allocated memory.
+2023-05-09 18:39:23:Process: 0 has been successfully created.
+2023-05-09 18:39:23:---Process: 0 has transitioned to running.
+2023-05-09 18:39:23:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:39:23:Try To Disk find
+2023-05-09 18:39:24:---Process: 0 has transitioned to ready.
+2023-05-09 18:39:24:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:39:24:---Process: 0 has transitioned to running.
+2023-05-09 18:39:24:---Process: 0 has transitioned to waiting.
+2023-05-09 18:39:24:Process: 0 successfully added to the waitingQueue.
+2023-05-09 18:39:24:Process: 0 has successfully requested the use of device resources.
+2023-05-09 18:39:24:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 18:39:25:---Process: 0 has transitioned to ready.
+2023-05-09 18:39:25:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:39:25:Process: 0 successfully remove from waitingQueue.
+2023-05-09 18:39:25:---Process: 0 has transitioned to running.
+2023-05-09 18:39:25:Process: 0 finish!
+2023-05-09 18:39:25:---Process: 0 has transitioned to terminated.
+2023-05-09 18:39:25:receive:rs
+2023-05-09 18:44:27:initialize blocks
+2023-05-09 18:44:27:System start
+2023-05-09 18:44:35:receive:rs
+2023-05-09 18:46:11:initialize blocks
+2023-05-09 18:46:11:System start
+2023-05-09 18:46:17:receive:mc
+2023-05-09 18:46:20:receive:mc pa
+2023-05-09 18:46:20:change way of memory
+2023-05-09 18:47:00:receive:cd 
+2023-05-09 18:47:00:receive:vi s\hhh
+2023-05-09 18:48:05:receive:cd 
+2023-05-09 18:48:05:receive:sv s\hhh access 10
+printer 50
+cpu 6
+fork
+access 50
+access 100
+fork
+access 199
+2023-05-09 18:48:05:sv success
+2023-05-09 18:48:15:receive:cd 
+2023-05-09 18:48:15:receive:vi s\fff
+2023-05-09 18:49:13:receive:cd 
+2023-05-09 18:49:13:receive:sv s\fff access 90
+fork
+access 55
+printer 20
+access 990
+2023-05-09 18:49:13:sv success
+2023-05-09 18:49:56:receive:cd s
+2023-05-09 18:49:56:\s\
+2023-05-09 18:50:11:receive:gcc 1 hhh
+2023-05-09 18:50:15:receive:gcc 2 fff
+2023-05-09 18:50:22:receive:cd 
+2023-05-09 18:50:23:receive:exec \s\fff
+2023-05-09 18:50:23:Process: 0 has successfully allocated memory.
+2023-05-09 18:50:23:Process: 0 has been successfully created.
+2023-05-09 18:50:23:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:50:23:---Process: 0 has transitioned to running.
+2023-05-09 18:50:23:Process: 0 access memory 90 failed, page fault
+
+2023-05-09 18:50:24:---Process: 0 has transitioned to ready.
+2023-05-09 18:50:24:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:50:24:---Process: 0 has transitioned to running.
+2023-05-09 18:50:24:Process: 1 has successfully allocated memory.
+2023-05-09 18:50:24:Process: 1 has been successfully created.
+2023-05-09 18:50:24:Process: 1 successfully added to the readyQueue.
+2023-05-09 18:50:25:receive:cd 
+2023-05-09 18:50:25:receive:exec \s\hhh
+2023-05-09 18:50:25:Process: 2 has successfully allocated memory.
+2023-05-09 18:50:25:Process: 2 has been successfully created.
+2023-05-09 18:50:25:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:26:---Process: 0 has transitioned to ready.
+2023-05-09 18:50:26:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:50:26:---Process: 1 has transitioned to running.
+2023-05-09 18:50:26:Process: 1 access memory 55 failed, page fault
+
+2023-05-09 18:50:27:---Process: 1 has transitioned to ready.
+2023-05-09 18:50:27:Process: 1 successfully added to the readyQueue.
+2023-05-09 18:50:27:---Process: 0 has transitioned to running.
+2023-05-09 18:50:27:Process: 0 access memory 55 successfully
+
+2023-05-09 18:50:28:---Process: 0 has transitioned to ready.
+2023-05-09 18:50:28:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:50:28:---Process: 1 has transitioned to running.
+2023-05-09 18:50:28:---Process: 1 has transitioned to waiting.
+2023-05-09 18:50:28:Process: 1 successfully added to the waitingQueue.
+2023-05-09 18:50:28:Process: 1 has successfully requested the use of device resources.
+2023-05-09 18:50:28:---Process: 1 has transitioned to waiting(printer).
+2023-05-09 18:50:28:---Process: 0 has transitioned to running.
+2023-05-09 18:50:29:---Process: 1 has transitioned to ready.
+2023-05-09 18:50:29:Process: 1 successfully added to the readyQueue.
+2023-05-09 18:50:29:Process: 1 successfully remove from waitingQueue.
+2023-05-09 18:50:29:---Process: 0 has transitioned to ready.
+2023-05-09 18:50:29:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:50:29:---Process: 1 has transitioned to running.
+2023-05-09 18:50:29:Process: 1 access memory 990 successfully
+
+2023-05-09 18:50:30:Process: 1 finish!
+2023-05-09 18:50:30:---Process: 1 has transitioned to terminated.
+2023-05-09 18:50:30:---Process: 0 has transitioned to running.
+2023-05-09 18:50:30:---Process: 0 has transitioned to waiting.
+2023-05-09 18:50:30:Process: 0 successfully added to the waitingQueue.
+2023-05-09 18:50:30:Process: 0 has successfully requested the use of device resources.
+2023-05-09 18:50:30:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 18:50:30:---Process: 2 has transitioned to running.
+2023-05-09 18:50:31:---Process: 0 has transitioned to ready.
+2023-05-09 18:50:31:Process: 0 successfully added to the readyQueue.
+2023-05-09 18:50:31:Process: 0 successfully remove from waitingQueue.
+2023-05-09 18:50:31:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:31:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:31:---Process: 0 has transitioned to running.
+2023-05-09 18:50:31:Process: 0 access memory 990 successfully
+
+2023-05-09 18:50:32:Process: 0 finish!
+2023-05-09 18:50:32:---Process: 0 has transitioned to terminated.
+2023-05-09 18:50:32:---Process: 2 has transitioned to running.
+2023-05-09 18:50:32:Process: 2 access memory 10 failed, page fault
+
+2023-05-09 18:50:33:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:33:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:33:---Process: 2 has transitioned to running.
+2023-05-09 18:50:33:---Process: 2 has transitioned to waiting.
+2023-05-09 18:50:33:Process: 2 successfully added to the waitingQueue.
+2023-05-09 18:50:33:Process: 2 has successfully requested the use of device resources.
+2023-05-09 18:50:33:---Process: 2 has transitioned to waiting(printer).
+2023-05-09 18:50:34:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:34:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:34:Process: 2 successfully remove from waitingQueue.
+2023-05-09 18:50:34:---Process: 2 has transitioned to running.
+2023-05-09 18:50:35:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:35:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:35:---Process: 2 has transitioned to running.
+2023-05-09 18:50:36:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:36:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:36:---Process: 2 has transitioned to running.
+2023-05-09 18:50:37:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:37:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:37:---Process: 2 has transitioned to running.
+2023-05-09 18:50:38:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:38:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:38:---Process: 2 has transitioned to running.
+2023-05-09 18:50:39:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:39:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:39:---Process: 2 has transitioned to running.
+2023-05-09 18:50:40:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:40:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:40:---Process: 2 has transitioned to running.
+2023-05-09 18:50:40:Process: 3 has successfully allocated memory.
+2023-05-09 18:50:40:Process: 3 has been successfully created.
+2023-05-09 18:50:40:Process: 3 successfully added to the readyQueue.
+2023-05-09 18:50:42:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:42:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:42:---Process: 3 has transitioned to running.
+2023-05-09 18:50:42:Process: 3 access memory 50 failed, page fault
+
+2023-05-09 18:50:43:---Process: 3 has transitioned to ready.
+2023-05-09 18:50:43:Process: 3 successfully added to the readyQueue.
+2023-05-09 18:50:43:---Process: 2 has transitioned to running.
+2023-05-09 18:50:43:Process: 2 access memory 50 successfully
+
+2023-05-09 18:50:44:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:44:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:44:---Process: 3 has transitioned to running.
+2023-05-09 18:50:44:Process: 3 access memory 100 successfully
+
+2023-05-09 18:50:45:---Process: 3 has transitioned to ready.
+2023-05-09 18:50:45:Process: 3 successfully added to the readyQueue.
+2023-05-09 18:50:45:---Process: 2 has transitioned to running.
+2023-05-09 18:50:45:Process: 2 access memory 100 successfully
+
+2023-05-09 18:50:46:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:46:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:46:---Process: 3 has transitioned to running.
+2023-05-09 18:50:46:Process: 4 has successfully allocated memory.
+2023-05-09 18:50:46:Process: 4 has been successfully created.
+2023-05-09 18:50:46:Process: 4 successfully added to the readyQueue.
+2023-05-09 18:50:48:---Process: 3 has transitioned to ready.
+2023-05-09 18:50:48:Process: 3 successfully added to the readyQueue.
+2023-05-09 18:50:48:---Process: 2 has transitioned to running.
+2023-05-09 18:50:48:Process: 5 has successfully allocated memory.
+2023-05-09 18:50:48:Process: 5 has been successfully created.
+2023-05-09 18:50:48:Process: 5 successfully added to the readyQueue.
+2023-05-09 18:50:50:---Process: 2 has transitioned to ready.
+2023-05-09 18:50:50:Process: 2 successfully added to the readyQueue.
+2023-05-09 18:50:50:---Process: 4 has transitioned to running.
+2023-05-09 18:50:50:Process: 4 access memory 199 failed, page fault
+
+2023-05-09 18:50:51:Process: 4 finish!
+2023-05-09 18:50:51:---Process: 4 has transitioned to terminated.
+2023-05-09 18:50:51:---Process: 3 has transitioned to running.
+2023-05-09 18:50:51:Process: 3 access memory 199 successfully
+
+2023-05-09 18:50:52:Process: 3 finish!
+2023-05-09 18:50:52:---Process: 3 has transitioned to terminated.
+2023-05-09 18:50:52:---Process: 5 has transitioned to running.
+2023-05-09 18:50:52:Process: 5 access memory 199 failed, page fault
+
+2023-05-09 18:50:53:Process: 5 finish!
+2023-05-09 18:50:53:---Process: 5 has transitioned to terminated.
+2023-05-09 18:50:53:---Process: 2 has transitioned to running.
+2023-05-09 18:50:53:Process: 2 access memory 199 successfully
+
+2023-05-09 18:50:54:Process: 2 finish!
+2023-05-09 18:50:54:---Process: 2 has transitioned to terminated.
+2023-05-09 18:53:59:receive:cd 
+2023-05-09 18:53:59:receive:vi s\fff
+2023-05-09 18:54:11:receive:cd 
+2023-05-09 18:54:11:receive:sv s\fff access 90
+fork
+access 55
+printer 20000
+access 990
+
+2023-05-09 18:54:11:sv success
+2023-05-09 18:54:17:receive:cd 
+2023-05-09 18:54:18:receive:vi s\hhh
+2023-05-09 18:54:25:receive:cd 
+2023-05-09 18:54:25:receive:sv s\hhh access 10
+printer 50000
+cpu 6
+fork
+access 50
+access 100
+fork
+access 199
+
+2023-05-09 18:54:25:sv success
+2023-05-09 18:54:45:receive:cd 
+2023-05-09 18:54:45:receive:exec \s\hhh
+2023-05-09 18:54:45:Process: 6 has successfully allocated memory.
+2023-05-09 18:54:45:Process: 6 has been successfully created.
+2023-05-09 18:54:45:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:54:45:---Process: 6 has transitioned to running.
+2023-05-09 18:54:45:Process: 6 access memory 10 failed, page fault
+
+2023-05-09 18:54:46:---Process: 6 has transitioned to ready.
+2023-05-09 18:54:46:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:54:46:---Process: 6 has transitioned to running.
+2023-05-09 18:54:46:---Process: 6 has transitioned to waiting.
+2023-05-09 18:54:46:Process: 6 successfully added to the waitingQueue.
+2023-05-09 18:54:46:Process: 6 has successfully requested the use of device resources.
+2023-05-09 18:54:46:---Process: 6 has transitioned to waiting(printer).
+2023-05-09 18:54:49:receive:cd 
+2023-05-09 18:54:49:receive:exec \s\fff
+2023-05-09 18:54:49:Process: 7 has successfully allocated memory.
+2023-05-09 18:54:49:Process: 7 has been successfully created.
+2023-05-09 18:54:49:Process: 7 successfully added to the readyQueue.
+2023-05-09 18:54:49:---Process: 7 has transitioned to running.
+2023-05-09 18:54:49:Process: 7 access memory 90 failed, page fault
+
+2023-05-09 18:54:50:---Process: 7 has transitioned to ready.
+2023-05-09 18:54:50:Process: 7 successfully added to the readyQueue.
+2023-05-09 18:54:50:---Process: 7 has transitioned to running.
+2023-05-09 18:54:50:Process: 8 has successfully allocated memory.
+2023-05-09 18:54:50:Process: 8 has been successfully created.
+2023-05-09 18:54:50:Process: 8 successfully added to the readyQueue.
+2023-05-09 18:54:52:---Process: 7 has transitioned to ready.
+2023-05-09 18:54:52:Process: 7 successfully added to the readyQueue.
+2023-05-09 18:54:52:---Process: 8 has transitioned to running.
+2023-05-09 18:54:52:Process: 8 access memory 55 failed, page fault
+
+2023-05-09 18:54:53:---Process: 8 has transitioned to ready.
+2023-05-09 18:54:53:Process: 8 successfully added to the readyQueue.
+2023-05-09 18:54:53:---Process: 7 has transitioned to running.
+2023-05-09 18:54:53:Process: 7 access memory 55 successfully
+
+2023-05-09 18:54:54:---Process: 7 has transitioned to ready.
+2023-05-09 18:54:54:Process: 7 successfully added to the readyQueue.
+2023-05-09 18:54:54:---Process: 8 has transitioned to running.
+2023-05-09 18:54:54:---Process: 8 has transitioned to waiting.
+2023-05-09 18:54:54:Process: 8 successfully added to the waitingQueue.
+2023-05-09 18:54:54:Process: 8 failed to request the use of device resources!
+2023-05-09 18:54:54:---Process: 7 has transitioned to running.
+2023-05-09 18:54:55:---Process: 7 has transitioned to ready.
+2023-05-09 18:54:55:Process: 7 successfully added to the readyQueue.
+2023-05-09 18:54:55:---Process: 7 has transitioned to running.
+2023-05-09 18:54:55:---Process: 7 has transitioned to waiting.
+2023-05-09 18:54:55:Process: 7 successfully added to the waitingQueue.
+2023-05-09 18:54:55:Process: 7 failed to request the use of device resources!
+2023-05-09 18:55:36:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:36:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:36:Process: 6 successfully remove from waitingQueue.
+2023-05-09 18:55:36:Process: 8 failed to request the use of device resources!
+2023-05-09 18:55:36:Process: 7 failed to request the use of device resources!
+2023-05-09 18:55:36:---Process: 6 has transitioned to running.
+2023-05-09 18:55:37:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:37:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:37:---Process: 6 has transitioned to running.
+2023-05-09 18:55:38:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:38:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:38:---Process: 6 has transitioned to running.
+2023-05-09 18:55:39:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:39:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:39:---Process: 6 has transitioned to running.
+2023-05-09 18:55:40:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:40:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:40:---Process: 6 has transitioned to running.
+2023-05-09 18:55:41:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:41:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:41:---Process: 6 has transitioned to running.
+2023-05-09 18:55:42:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:42:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:42:---Process: 6 has transitioned to running.
+2023-05-09 18:55:42:Process: 9 has successfully allocated memory.
+2023-05-09 18:55:42:Process: 9 has been successfully created.
+2023-05-09 18:55:42:Process: 9 successfully added to the readyQueue.
+2023-05-09 18:55:44:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:44:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:44:---Process: 9 has transitioned to running.
+2023-05-09 18:55:44:Process: 9 access memory 50 failed, page fault
+
+2023-05-09 18:55:45:---Process: 9 has transitioned to ready.
+2023-05-09 18:55:45:Process: 9 successfully added to the readyQueue.
+2023-05-09 18:55:45:---Process: 6 has transitioned to running.
+2023-05-09 18:55:45:Process: 6 access memory 50 successfully
+
+2023-05-09 18:55:46:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:46:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:46:---Process: 9 has transitioned to running.
+2023-05-09 18:55:46:Process: 9 access memory 100 successfully
+
+2023-05-09 18:55:47:---Process: 9 has transitioned to ready.
+2023-05-09 18:55:47:Process: 9 successfully added to the readyQueue.
+2023-05-09 18:55:47:---Process: 6 has transitioned to running.
+2023-05-09 18:55:47:Process: 6 access memory 100 successfully
+
+2023-05-09 18:55:48:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:48:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:48:---Process: 9 has transitioned to running.
+2023-05-09 18:55:48:Process: 10 has successfully allocated memory.
+2023-05-09 18:55:48:Process: 10 has been successfully created.
+2023-05-09 18:55:48:Process: 10 successfully added to the readyQueue.
+2023-05-09 18:55:50:---Process: 9 has transitioned to ready.
+2023-05-09 18:55:50:Process: 9 successfully added to the readyQueue.
+2023-05-09 18:55:50:---Process: 6 has transitioned to running.
+2023-05-09 18:55:50:Process: 11 has successfully allocated memory.
+2023-05-09 18:55:50:Process: 11 has been successfully created.
+2023-05-09 18:55:50:Process: 11 successfully added to the readyQueue.
+2023-05-09 18:55:52:---Process: 6 has transitioned to ready.
+2023-05-09 18:55:52:Process: 6 successfully added to the readyQueue.
+2023-05-09 18:55:52:---Process: 10 has transitioned to running.
+2023-05-09 18:55:52:Process: 10 access memory 199 failed, page fault
+
+2023-05-09 18:55:53:Process: 10 finish!
+2023-05-09 18:55:53:---Process: 10 has transitioned to terminated.
+2023-05-09 18:55:53:---Process: 9 has transitioned to running.
+2023-05-09 18:55:53:Process: 9 access memory 199 successfully
+
+2023-05-09 18:55:54:Process: 9 finish!
+2023-05-09 18:55:54:---Process: 9 has transitioned to terminated.
+2023-05-09 18:55:54:---Process: 11 has transitioned to running.
+2023-05-09 18:55:54:Process: 11 access memory 199 failed, page fault
+
+2023-05-09 18:55:56:Process: 11 finish!
+2023-05-09 18:55:56:---Process: 11 has transitioned to terminated.
+2023-05-09 18:55:56:---Process: 6 has transitioned to running.
+2023-05-09 18:55:56:Process: 6 access memory 199 successfully
+
+2023-05-09 18:55:57:Process: 6 finish!
+2023-05-09 18:55:57:---Process: 6 has transitioned to terminated.
+2023-05-09 19:13:22:initialize blocks
+2023-05-09 19:13:22:System start
+2023-05-09 19:13:32:receive:cd 
+2023-05-09 19:13:32:receive:vi s\hhh
+2023-05-09 19:13:39:receive:cd 
+2023-05-09 19:13:39:receive:vi s\fff
+2023-05-09 19:13:46:receive:cd 
+2023-05-09 19:13:46:receive:vi s\test
+2023-05-09 19:13:50:receive:cd 
+2023-05-09 19:13:50:receive:exec \s\test
+2023-05-09 19:13:50:Process: 0 has successfully allocated memory.
+2023-05-09 19:13:50:Process: 0 has been successfully created.
+2023-05-09 19:13:50:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:13:50:---Process: 0 has transitioned to running.
+2023-05-09 19:13:50:Try To Disk find
+2023-05-09 19:14:48:initialize blocks
+2023-05-09 19:14:48:System start
+2023-05-09 19:14:56:receive:cd 
+2023-05-09 19:14:56:receive:exec \s\test
+2023-05-09 19:14:56:Process: 0 has successfully allocated memory.
+2023-05-09 19:14:56:Process: 0 has been successfully created.
+2023-05-09 19:14:56:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:14:56:---Process: 0 has transitioned to running.
+2023-05-09 19:14:56:Try To Disk find
+2023-05-09 19:14:57:---Process: 0 has transitioned to ready.
+2023-05-09 19:14:57:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:14:57:---Process: 0 has transitioned to running.
+2023-05-09 19:14:57:---Process: 0 has transitioned to waiting.
+2023-05-09 19:14:57:Process: 0 successfully added to the waitingQueue.
+2023-05-09 19:14:57:Process: 0 has successfully requested the use of device resources.
+2023-05-09 19:14:57:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 19:14:58:---Process: 0 has transitioned to ready.
+2023-05-09 19:14:58:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:14:58:Process: 0 successfully remove from waitingQueue.
+2023-05-09 19:14:58:---Process: 0 has transitioned to running.
+2023-05-09 19:14:58:Process: 0 finish!
+2023-05-09 19:14:58:---Process: 0 has transitioned to terminated.
+2023-05-09 19:15:19:initialize blocks
+2023-05-09 19:15:19:System start
+2023-05-09 19:15:30:receive:cd 
+2023-05-09 19:15:30:receive:exec \s\test
+2023-05-09 19:15:30:Process: 0 has successfully allocated memory.
+2023-05-09 19:15:30:Process: 0 has been successfully created.
+2023-05-09 19:15:30:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:15:30:---Process: 0 has transitioned to running.
+2023-05-09 19:15:30:Try To Disk find
+2023-05-09 19:15:54:initialize blocks
+2023-05-09 19:15:54:System start
+2023-05-09 19:16:03:receive:cd 
+2023-05-09 19:16:03:receive:exec \s\test
+2023-05-09 19:16:03:Process: 0 has successfully allocated memory.
+2023-05-09 19:16:03:Process: 0 has been successfully created.
+2023-05-09 19:16:03:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:16:03:---Process: 0 has transitioned to running.
+2023-05-09 19:16:03:Try To Disk find
+2023-05-09 19:16:39:initialize blocks
+2023-05-09 19:16:39:System start
+2023-05-09 19:16:50:receive:cd 
+2023-05-09 19:16:50:receive:exec \s\test
+2023-05-09 19:16:50:Process: 0 has successfully allocated memory.
+2023-05-09 19:16:50:Process: 0 has been successfully created.
+2023-05-09 19:16:50:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:16:50:---Process: 0 has transitioned to running.
+2023-05-09 19:16:50:Try To Disk find
+2023-05-09 19:16:51:---Process: 0 has transitioned to ready.
+2023-05-09 19:16:51:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:16:51:---Process: 0 has transitioned to running.
+2023-05-09 19:16:51:---Process: 0 has transitioned to waiting.
+2023-05-09 19:16:51:Process: 0 successfully added to the waitingQueue.
+2023-05-09 19:16:51:Process: 0 has successfully requested the use of device resources.
+2023-05-09 19:16:51:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 19:16:52:---Process: 0 has transitioned to ready.
+2023-05-09 19:16:52:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:16:52:Process: 0 successfully remove from waitingQueue.
+2023-05-09 19:16:52:---Process: 0 has transitioned to running.
+2023-05-09 19:16:52:Process: 0 finish!
+2023-05-09 19:16:52:---Process: 0 has transitioned to terminated.
+2023-05-09 19:26:30:initialize blocks
+2023-05-09 19:26:30:System start
+2023-05-09 19:27:33:initialize blocks
+2023-05-09 19:27:33:System start
+2023-05-09 19:28:08:initialize blocks
+2023-05-09 19:28:08:System start
+2023-05-09 19:28:15:receive:dss
+2023-05-09 19:28:15:get information of blocks success
+2023-05-09 19:28:57:receive:td
+2023-05-09 19:28:57:initialize blocks
+2023-05-09 19:28:57:tidy disk complete
+2023-05-09 19:28:59:receive:dss
+2023-05-09 19:28:59:get information of blocks success
+2023-05-09 19:30:46:receive:ps
+2023-05-09 19:30:50:receive:exec
+2023-05-09 19:30:54:receive:exec test
+2023-05-09 19:30:54:Process: 0 has successfully allocated memory.
+2023-05-09 19:30:54:Process: 0 has been successfully created.
+2023-05-09 19:30:54:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:30:54:---Process: 0 has transitioned to running.
+2023-05-09 19:30:54:Process: 0 access memory 100 failed, page fault
+
+2023-05-09 19:30:55:---Process: 0 has transitioned to ready.
+2023-05-09 19:30:55:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:30:55:---Process: 0 has transitioned to running.
+2023-05-09 19:30:55:Process: 0 access memory 100 successfully
+
+2023-05-09 19:30:56:---Process: 0 has transitioned to ready.
+2023-05-09 19:30:56:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:30:56:---Process: 0 has transitioned to running.
+2023-05-09 19:30:56:Process: 0 access memory 2100 failed, page fault
+
+2023-05-09 19:30:56:receive:ps
+2023-05-09 19:30:56:process_name:test process_statue:running pid:0
+2023-05-09 19:30:57:---Process: 0 has transitioned to ready.
+2023-05-09 19:30:57:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:30:57:---Process: 0 has transitioned to running.
+2023-05-09 19:30:57:Process: 0 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:30:58:---Process: 0 has transitioned to ready.
+2023-05-09 19:30:58:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:30:58:---Process: 0 has transitioned to running.
+2023-05-09 19:30:58:Process: 0 access memory 3100 failed, page fault
+
+2023-05-09 19:30:58:receive:ps
+2023-05-09 19:30:58:process_name:test process_statue:running pid:0
+2023-05-09 19:30:59:Process: 0 finish!
+2023-05-09 19:30:59:---Process: 0 has transitioned to terminated.
+2023-05-09 19:31:00:receive:dms
+2023-05-09 19:31:17:receive:man
+2023-05-09 19:31:31:receive:ls
+2023-05-09 19:31:31:try commend ls
+2023-05-09 19:31:31:ls success
+2023-05-09 19:32:04:initialize blocks
+2023-05-09 19:32:04:System start
+2023-05-09 19:32:09:receive:man
+2023-05-09 19:32:12:receive:ls
+2023-05-09 19:32:12:try commend ls
+2023-05-09 19:32:12:ls success
+2023-05-09 19:32:22:receive:ps
+2023-05-09 19:32:25:receive:exec
+2023-05-09 19:32:28:receive:exec test
+2023-05-09 19:32:28:Process: 0 has successfully allocated memory.
+2023-05-09 19:32:28:Process: 0 has been successfully created.
+2023-05-09 19:32:28:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:32:28:---Process: 0 has transitioned to running.
+2023-05-09 19:32:28:Process: 0 access memory 100 failed, page fault
+
+2023-05-09 19:32:29:---Process: 0 has transitioned to ready.
+2023-05-09 19:32:29:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:32:29:---Process: 0 has transitioned to running.
+2023-05-09 19:32:29:Process: 0 access memory 100 successfully
+
+2023-05-09 19:32:29:receive:man
+2023-05-09 19:32:30:---Process: 0 has transitioned to ready.
+2023-05-09 19:32:30:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:32:30:---Process: 0 has transitioned to running.
+2023-05-09 19:32:30:Process: 0 access memory 2100 failed, page fault
+
+2023-05-09 19:32:31:---Process: 0 has transitioned to ready.
+2023-05-09 19:32:31:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:32:31:---Process: 0 has transitioned to running.
+2023-05-09 19:32:31:Process: 0 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:32:32:---Process: 0 has transitioned to ready.
+2023-05-09 19:32:32:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:32:32:---Process: 0 has transitioned to running.
+2023-05-09 19:32:32:Process: 0 access memory 3100 failed, page fault
+
+2023-05-09 19:32:33:receive:ps
+2023-05-09 19:32:33:process_name:test process_statue:running pid:0
+2023-05-09 19:32:33:Process: 0 finish!
+2023-05-09 19:32:33:---Process: 0 has transitioned to terminated.
+2023-05-09 19:32:35:receive:dms
+2023-05-09 19:33:11:initialize blocks
+2023-05-09 19:33:11:System start
+2023-05-09 19:33:18:receive:exec
+2023-05-09 19:33:22:receive:exec test
+2023-05-09 19:33:22:Process: 0 has successfully allocated memory.
+2023-05-09 19:33:22:Process: 0 has been successfully created.
+2023-05-09 19:33:22:---Process: 0 has transitioned to running.
+2023-05-09 19:33:22:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:33:22:Process: 0 access memory 100 failed, page fault
+
+2023-05-09 19:33:23:---Process: 0 has transitioned to ready.
+2023-05-09 19:33:23:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:33:23:---Process: 0 has transitioned to running.
+2023-05-09 19:33:23:Process: 0 access memory 100 successfully
+
+2023-05-09 19:33:23:receive:dms
+2023-05-09 19:33:24:---Process: 0 has transitioned to ready.
+2023-05-09 19:33:24:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:33:24:---Process: 0 has transitioned to running.
+2023-05-09 19:33:24:Process: 0 access memory 2100 failed, page fault
+
+2023-05-09 19:33:25:---Process: 0 has transitioned to ready.
+2023-05-09 19:33:25:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:33:25:---Process: 0 has transitioned to running.
+2023-05-09 19:33:25:Process: 0 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:33:26:---Process: 0 has transitioned to ready.
+2023-05-09 19:33:26:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:33:26:---Process: 0 has transitioned to running.
+2023-05-09 19:33:26:Process: 0 access memory 3100 failed, page fault
+
+2023-05-09 19:33:27:Process: 0 finish!
+2023-05-09 19:33:27:---Process: 0 has transitioned to terminated.
+2023-05-09 19:33:30:receive:dms
+2023-05-09 19:33:32:receive:man
+2023-05-09 19:33:34:receive:dms
+2023-05-09 19:33:36:receive:dms
+2023-05-09 19:33:40:receive:man
+2023-05-09 19:33:42:receive:dms
+2023-05-09 19:33:46:receive:exec test
+2023-05-09 19:33:46:Process: 1 has successfully allocated memory.
+2023-05-09 19:33:46:Process: 1 has been successfully created.
+2023-05-09 19:33:46:Process: 1 successfully added to the readyQueue.
+2023-05-09 19:33:46:---Process: 1 has transitioned to running.
+2023-05-09 19:33:46:Process: 1 access memory 100 failed, page fault
+
+2023-05-09 19:33:47:receive:dms
+2023-05-09 19:33:47:---Process: 1 has transitioned to ready.
+2023-05-09 19:33:47:Process: 1 successfully added to the readyQueue.
+2023-05-09 19:33:47:---Process: 1 has transitioned to running.
+2023-05-09 19:33:47:Process: 1 access memory 100 successfully
+
+2023-05-09 19:33:48:---Process: 1 has transitioned to ready.
+2023-05-09 19:33:48:Process: 1 successfully added to the readyQueue.
+2023-05-09 19:33:48:---Process: 1 has transitioned to running.
+2023-05-09 19:33:48:Process: 1 access memory 2100 failed, page fault
+
+2023-05-09 19:33:49:---Process: 1 has transitioned to ready.
+2023-05-09 19:33:49:Process: 1 successfully added to the readyQueue.
+2023-05-09 19:33:49:---Process: 1 has transitioned to running.
+2023-05-09 19:33:49:Process: 1 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:33:50:---Process: 1 has transitioned to ready.
+2023-05-09 19:33:50:Process: 1 successfully added to the readyQueue.
+2023-05-09 19:33:50:---Process: 1 has transitioned to running.
+2023-05-09 19:33:50:Process: 1 access memory 3100 failed, page fault
+
+2023-05-09 19:33:51:receive:man
+2023-05-09 19:33:51:Process: 1 finish!
+2023-05-09 19:33:51:---Process: 1 has transitioned to terminated.
+2023-05-09 19:33:56:receive:man
+2023-05-09 19:33:58:receive:dms
+2023-05-09 19:34:00:receive:dms
+2023-05-09 19:34:02:receive:dms
+2023-05-09 19:34:04:receive:exec test
+2023-05-09 19:34:04:Process: 2 has successfully allocated memory.
+2023-05-09 19:34:04:Process: 2 has been successfully created.
+2023-05-09 19:34:04:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:34:04:---Process: 2 has transitioned to running.
+2023-05-09 19:34:04:Process: 2 access memory 100 failed, page fault
+
+2023-05-09 19:34:05:---Process: 2 has transitioned to ready.
+2023-05-09 19:34:05:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:34:05:---Process: 2 has transitioned to running.
+2023-05-09 19:34:05:Process: 2 access memory 100 successfully
+
+2023-05-09 19:34:06:receive:cd s
+2023-05-09 19:34:06:\s\
+2023-05-09 19:34:06:---Process: 2 has transitioned to ready.
+2023-05-09 19:34:06:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:34:06:---Process: 2 has transitioned to running.
+2023-05-09 19:34:06:Process: 2 access memory 2100 failed, page fault
+
+2023-05-09 19:34:07:---Process: 2 has transitioned to ready.
+2023-05-09 19:34:07:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:34:07:---Process: 2 has transitioned to running.
+2023-05-09 19:34:07:Process: 2 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:34:08:---Process: 2 has transitioned to ready.
+2023-05-09 19:34:08:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:34:08:---Process: 2 has transitioned to running.
+2023-05-09 19:34:08:Process: 2 access memory 3100 failed, page fault
+
+2023-05-09 19:34:09:Process: 2 finish!
+2023-05-09 19:34:09:---Process: 2 has transitioned to terminated.
+2023-05-09 19:34:10:receive:exec test
+2023-05-09 19:34:10:Process: 3 has successfully allocated memory.
+2023-05-09 19:34:10:Process: 3 has been successfully created.
+2023-05-09 19:34:10:Process: 3 successfully added to the readyQueue.
+2023-05-09 19:34:10:---Process: 3 has transitioned to running.
+2023-05-09 19:34:10:Try To Disk find
+2023-05-09 19:34:11:---Process: 3 has transitioned to ready.
+2023-05-09 19:34:11:Process: 3 successfully added to the readyQueue.
+2023-05-09 19:34:11:---Process: 3 has transitioned to running.
+2023-05-09 19:34:11:---Process: 3 has transitioned to waiting.
+2023-05-09 19:34:11:Process: 3 successfully added to the waitingQueue.
+2023-05-09 19:34:11:Process: 3 has successfully requested the use of device resources.
+2023-05-09 19:34:11:---Process: 3 has transitioned to waiting(printer).
+2023-05-09 19:34:11:receive:dms
+2023-05-09 19:34:12:---Process: 3 has transitioned to ready.
+2023-05-09 19:34:12:Process: 3 successfully added to the readyQueue.
+2023-05-09 19:34:12:Process: 3 successfully remove from waitingQueue.
+2023-05-09 19:34:12:---Process: 3 has transitioned to running.
+2023-05-09 19:34:12:Process: 3 finish!
+2023-05-09 19:34:12:---Process: 3 has transitioned to terminated.
+2023-05-09 19:34:58:receive:ls
+2023-05-09 19:34:58:try commend ls
+2023-05-09 19:34:58:ls success
+2023-05-09 19:35:51:initialize blocks
+2023-05-09 19:35:52:System start
+2023-05-09 19:35:58:receive:exec
+2023-05-09 19:36:02:receive:exec test
+2023-05-09 19:36:02:Process: 0 has successfully allocated memory.
+2023-05-09 19:36:02:Process: 0 has been successfully created.
+2023-05-09 19:36:02:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:36:02:---Process: 0 has transitioned to running.
+2023-05-09 19:36:02:Process: 0 access memory 100 failed, page fault
+
+2023-05-09 19:36:03:---Process: 0 has transitioned to ready.
+2023-05-09 19:36:03:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:36:03:---Process: 0 has transitioned to running.
+2023-05-09 19:36:03:Process: 0 access memory 100 successfully
+
+2023-05-09 19:36:04:---Process: 0 has transitioned to ready.
+2023-05-09 19:36:04:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:36:04:---Process: 0 has transitioned to running.
+2023-05-09 19:36:04:Process: 0 access memory 2100 failed, page fault
+
+2023-05-09 19:36:05:---Process: 0 has transitioned to ready.
+2023-05-09 19:36:05:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:36:05:---Process: 0 has transitioned to running.
+2023-05-09 19:36:05:Process: 0 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:36:06:receive:exec test
+2023-05-09 19:36:06:Process: 1 failed to create due to insufficient memory allocation!
+2023-05-09 19:36:06:---Process: 0 has transitioned to ready.
+2023-05-09 19:36:06:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:36:06:---Process: 0 has transitioned to running.
+2023-05-09 19:36:06:Process: 0 access memory 3100 failed, page fault
+
+2023-05-09 19:36:07:Process: 0 finish!
+2023-05-09 19:36:07:---Process: 0 has transitioned to terminated.
+2023-05-09 19:36:08:receive:dms
+2023-05-09 19:36:09:receive:dms
+2023-05-09 19:36:09:receive:dms
+2023-05-09 19:36:10:receive:dms
+2023-05-09 19:36:14:receive:man
+2023-05-09 19:36:20:receive:dms
+2023-05-09 19:36:26:receive:dms
+2023-05-09 19:36:28:receive:man
+2023-05-09 19:36:30:receive:man
+2023-05-09 19:36:32:receive:man
+2023-05-09 19:36:33:receive:dms
+2023-05-09 19:36:36:receive:dms
+2023-05-09 19:36:37:receive:dms
+2023-05-09 19:36:42:receive:exec test
+2023-05-09 19:36:42:Process: 2 has successfully allocated memory.
+2023-05-09 19:36:42:Process: 2 has been successfully created.
+2023-05-09 19:36:42:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:36:42:---Process: 2 has transitioned to running.
+2023-05-09 19:36:42:Process: 2 access memory 100 failed, page fault
+
+2023-05-09 19:36:43:---Process: 2 has transitioned to ready.
+2023-05-09 19:36:43:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:36:43:---Process: 2 has transitioned to running.
+2023-05-09 19:36:43:Process: 2 access memory 100 successfully
+
+2023-05-09 19:36:44:---Process: 2 has transitioned to ready.
+2023-05-09 19:36:44:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:36:44:---Process: 2 has transitioned to running.
+2023-05-09 19:36:44:Process: 2 access memory 2100 failed, page fault
+
+2023-05-09 19:36:45:receive:man
+2023-05-09 19:36:45:---Process: 2 has transitioned to ready.
+2023-05-09 19:36:45:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:36:45:---Process: 2 has transitioned to running.
+2023-05-09 19:36:45:Process: 2 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:36:46:receive:man
+2023-05-09 19:36:46:---Process: 2 has transitioned to ready.
+2023-05-09 19:36:46:Process: 2 successfully added to the readyQueue.
+2023-05-09 19:36:46:---Process: 2 has transitioned to running.
+2023-05-09 19:36:46:Process: 2 access memory 3100 failed, page fault
+
+2023-05-09 19:36:47:Process: 2 finish!
+2023-05-09 19:36:47:---Process: 2 has transitioned to terminated.
+2023-05-09 19:36:49:receive:dms
+2023-05-09 19:36:50:receive:dms
+2023-05-09 19:36:51:receive:dms
+2023-05-09 19:39:29:initialize blocks
+2023-05-09 19:39:29:System start
+2023-05-09 19:39:35:receive:man
+2023-05-09 19:39:36:receive:man
+2023-05-09 19:39:36:receive:man
+2023-05-09 19:39:39:receive:man
+2023-05-09 19:39:40:receive:man
+2023-05-09 19:39:41:receive:man
+2023-05-09 19:39:42:receive:man
+2023-05-09 19:39:43:receive:man
+2023-05-09 19:39:45:receive:man
+2023-05-09 19:39:47:receive:man
+2023-05-09 19:46:45:initialize blocks
+2023-05-09 19:46:45:System start
+2023-05-09 19:46:51:receive:man
+2023-05-09 19:46:52:receive:man
+2023-05-09 19:46:52:receive:man
+2023-05-09 19:46:54:receive:man
+2023-05-09 19:46:55:receive:man
+2023-05-09 19:46:56:receive:man
+2023-05-09 19:46:59:receive:man
+2023-05-09 19:47:00:receive:man
+2023-05-09 19:47:01:receive:man
+2023-05-09 19:47:02:receive:man
+2023-05-09 19:47:23:receive:man
+2023-05-09 19:47:25:receive:man
+2023-05-09 19:47:26:receive:man
+2023-05-09 19:47:27:receive:man
+2023-05-09 19:47:28:receive:man
+2023-05-09 19:47:29:receive:man
+2023-05-09 19:47:30:receive:man
+2023-05-09 19:47:31:receive:man
+2023-05-09 19:47:32:receive:man
+2023-05-09 19:47:33:receive:man
+2023-05-09 19:47:38:receive:man
+2023-05-09 19:47:39:receive:man
+2023-05-09 19:47:40:receive:man
+2023-05-09 19:47:41:receive:man
+2023-05-09 19:47:48:receive:man
+2023-05-09 19:47:49:receive:man
+2023-05-09 19:47:50:receive:man
+2023-05-09 19:47:51:receive:man
+2023-05-09 19:47:52:receive:man
+2023-05-09 19:47:53:receive:man
+2023-05-09 19:47:56:receive:man
+2023-05-09 19:47:57:receive:man
+2023-05-09 19:47:58:receive:man
+2023-05-09 19:48:00:receive:man
+2023-05-09 19:48:24:receive:man
+2023-05-09 19:48:26:receive:man
+2023-05-09 19:48:27:receive:man
+2023-05-09 19:48:27:receive:man
+2023-05-09 19:48:42:initialize blocks
+2023-05-09 19:48:42:System start
+2023-05-09 19:48:48:receive:man
+2023-05-09 19:48:49:receive:man
+2023-05-09 19:48:50:receive:man
+2023-05-09 19:48:50:receive:man
+2023-05-09 19:48:51:receive:man
+2023-05-09 19:48:52:receive:man
+2023-05-09 19:48:53:receive:man
+2023-05-09 19:48:54:receive:man
+2023-05-09 19:48:55:receive:man
+2023-05-09 19:48:56:receive:man
+2023-05-09 19:48:57:receive:man
+2023-05-09 19:48:58:receive:man
+2023-05-09 19:48:59:receive:man
+2023-05-09 19:49:00:receive:man
+2023-05-09 19:49:02:receive:man
+2023-05-09 19:49:04:receive:man
+2023-05-09 19:49:05:receive:man
+2023-05-09 19:49:06:receive:man
+2023-05-09 19:49:07:receive:man
+2023-05-09 19:49:08:receive:man
+2023-05-09 19:49:09:receive:man
+2023-05-09 19:49:10:receive:man
+2023-05-09 19:49:11:receive:man
+2023-05-09 19:49:17:receive:man
+2023-05-09 19:49:18:receive:man
+2023-05-09 19:49:27:receive:man
+2023-05-09 19:49:28:receive:man
+2023-05-09 19:49:29:receive:man
+2023-05-09 19:49:31:receive:dms
+2023-05-09 19:49:32:receive:dms
+2023-05-09 19:49:34:receive:dms
+2023-05-09 19:49:36:receive:dms
+2023-05-09 19:49:39:receive:dms
+2023-05-09 19:49:41:receive:dms
+2023-05-09 19:49:44:receive:man
+2023-05-09 19:49:45:receive:man
+2023-05-09 19:49:46:receive:man
+2023-05-09 19:49:47:receive:man
+2023-05-09 19:49:48:receive:man
+2023-05-09 19:49:51:receive:exec
+2023-05-09 19:50:24:receive:man
+2023-05-09 19:50:25:receive:man
+2023-05-09 19:50:26:receive:man
+2023-05-09 19:50:27:receive:man
+2023-05-09 19:51:31:initialize blocks
+2023-05-09 19:51:31:System start
+2023-05-09 19:51:37:receive:man
+2023-05-09 19:51:38:receive:man
+2023-05-09 19:51:39:receive:man
+2023-05-09 19:51:40:receive:man
+2023-05-09 19:51:41:receive:man
+2023-05-09 19:51:42:receive:man
+2023-05-09 19:51:43:receive:man
+2023-05-09 19:51:44:receive:man
+2023-05-09 19:51:45:receive:man
+2023-05-09 19:51:47:receive:man
+2023-05-09 19:51:48:receive:man
+2023-05-09 19:51:49:receive:man
+2023-05-09 19:51:50:receive:man
+2023-05-09 19:52:03:initialize blocks
+2023-05-09 19:52:03:System start
+2023-05-09 19:52:08:receive:man
+2023-05-09 19:52:10:receive:man
+2023-05-09 19:53:51:initialize blocks
+2023-05-09 19:53:51:System start
+2023-05-09 19:53:58:receive:man
+2023-05-09 19:54:00:receive:man
+2023-05-09 19:54:01:receive:man
+2023-05-09 19:54:02:receive:man
+2023-05-09 19:54:03:receive:man
+2023-05-09 19:54:04:receive:man
+2023-05-09 19:54:23:receive:man
+2023-05-09 19:54:47:receive:man
+2023-05-09 19:54:48:receive:man
+2023-05-09 19:54:54:receive:man
+2023-05-09 19:54:55:receive:man
+2023-05-09 19:54:56:receive:man
+2023-05-09 19:54:57:receive:man
+2023-05-09 19:55:08:receive:man
+2023-05-09 19:55:11:receive:man
+2023-05-09 19:55:12:receive:man
+2023-05-09 19:55:14:receive:exec
+2023-05-09 19:55:16:receive:man
+2023-05-09 19:55:17:receive:man
+2023-05-09 19:55:19:receive:exec
+2023-05-09 19:55:25:receive:dms
+2023-05-09 19:55:26:receive:dms
+2023-05-09 19:55:27:receive:dms
+2023-05-09 19:55:27:receive:dms
+2023-05-09 19:55:29:receive:exec
+2023-05-09 19:55:38:receive:exec test
+2023-05-09 19:55:38:Process: 0 has successfully allocated memory.
+2023-05-09 19:55:38:Process: 0 has been successfully created.
+2023-05-09 19:55:38:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:55:38:---Process: 0 has transitioned to running.
+2023-05-09 19:55:38:Process: 0 access memory 100 failed, page fault
+
+2023-05-09 19:55:39:receive:dms
+2023-05-09 19:55:39:---Process: 0 has transitioned to ready.
+2023-05-09 19:55:39:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:55:39:---Process: 0 has transitioned to running.
+2023-05-09 19:55:39:Process: 0 access memory 100 successfully
+
+2023-05-09 19:55:40:---Process: 0 has transitioned to ready.
+2023-05-09 19:55:40:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:55:40:---Process: 0 has transitioned to running.
+2023-05-09 19:55:40:Process: 0 access memory 2100 failed, page fault
+
+2023-05-09 19:55:41:receive:dms
+2023-05-09 19:55:41:---Process: 0 has transitioned to ready.
+2023-05-09 19:55:41:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:55:41:---Process: 0 has transitioned to running.
+2023-05-09 19:55:41:Process: 0 access memory 19100 failed, crocess-border visit!
+
+2023-05-09 19:55:42:receive:dms
+2023-05-09 19:55:42:---Process: 0 has transitioned to ready.
+2023-05-09 19:55:42:Process: 0 successfully added to the readyQueue.
+2023-05-09 19:55:42:---Process: 0 has transitioned to running.
+2023-05-09 19:55:42:Process: 0 access memory 3100 failed, page fault
+
+2023-05-09 19:55:43:receive:dms
+2023-05-09 19:55:43:receive:dms
+2023-05-09 19:55:43:Process: 0 finish!
+2023-05-09 19:55:43:---Process: 0 has transitioned to terminated.
+2023-05-09 19:55:52:receive:dms
+2023-05-09 19:55:53:receive:dms
+2023-05-09 19:55:54:receive:dms
+2023-05-09 19:55:56:receive:man
+2023-05-09 19:55:57:receive:man
+2023-05-09 19:56:32:receive:man
+2023-05-09 19:56:33:receive:man
+2023-05-09 19:56:35:receive:man
+2023-05-09 19:56:36:receive:man
+2023-05-09 19:58:04:initialize blocks
+2023-05-09 19:58:04:System start
+2023-05-09 19:58:58:receive:man
+2023-05-09 19:59:49:receive:man
+2023-05-09 20:00:24:initialize blocks
+2023-05-09 20:00:24:System start
+2023-05-09 20:00:32:receive:man
+2023-05-09 20:00:32:receive:man
+2023-05-09 20:00:33:receive:man
+2023-05-09 20:00:35:receive:man
+2023-05-09 20:00:36:receive:man
+2023-05-09 20:00:37:receive:man
+2023-05-09 20:00:38:receive:man
+2023-05-09 20:00:43:receive:man
+2023-05-09 20:00:44:receive:man
+2023-05-09 20:00:45:receive:man
+2023-05-09 20:01:06:initialize blocks
+2023-05-09 20:01:06:System start
+2023-05-09 20:01:12:receive:man
+2023-05-09 20:01:25:initialize blocks
+2023-05-09 20:01:25:System start
+2023-05-09 20:05:18:receive:man
+2023-05-09 20:06:08:initialize blocks
+2023-05-09 20:06:08:System start
+2023-05-09 20:06:16:initialize blocks
+2023-05-09 20:06:16:System start
+2023-05-09 20:06:22:receive:man
+2023-05-09 20:06:23:receive:man
+2023-05-09 20:09:51:initialize blocks
+2023-05-09 20:09:51:System start
+2023-05-09 20:10:12:receive:man
+2023-05-09 20:10:13:receive:man
+2023-05-09 20:10:14:receive:man
+2023-05-09 20:10:15:receive:man
+2023-05-09 20:10:18:receive:man
+2023-05-09 20:10:19:receive:man
+2023-05-09 20:10:21:receive:man
+2023-05-09 20:10:22:receive:man
+2023-05-09 20:10:51:initialize blocks
+2023-05-09 20:10:51:System start
+2023-05-09 20:10:57:receive:man
+2023-05-09 20:10:59:receive:man
+2023-05-09 20:11:00:receive:man
+2023-05-09 20:11:01:receive:man
+2023-05-09 20:11:27:initialize blocks
+2023-05-09 20:11:27:System start
+2023-05-09 20:11:35:receive:man
+2023-05-09 20:11:36:receive:man
+2023-05-09 20:11:37:receive:man
+2023-05-09 20:11:38:receive:man
+2023-05-09 20:13:35:initialize blocks
+2023-05-09 20:13:35:System start
+2023-05-09 20:13:52:receive:man
+2023-05-09 20:13:53:receive:man
+2023-05-09 20:13:54:receive:man
+2023-05-09 20:13:56:receive:man
+2023-05-09 20:14:01:receive:man
+2023-05-09 20:14:05:receive:man
+2023-05-09 20:14:08:receive:man
+2023-05-09 20:29:10:initialize blocks
+2023-05-09 20:29:10:System start
+2023-05-09 20:29:17:receive:man
+2023-05-09 20:29:19:receive:man
+2023-05-09 20:29:19:receive:man
+2023-05-09 20:29:21:receive:man
+2023-05-09 20:29:22:receive:man
+2023-05-09 20:29:23:receive:man
+2023-05-09 20:29:24:receive:man
+2023-05-09 20:29:26:receive:man
+2023-05-09 20:30:30:initialize blocks
+2023-05-09 20:30:30:System start
+2023-05-09 20:30:37:receive:man
+2023-05-09 20:30:38:receive:man
+2023-05-09 20:30:39:receive:man
+2023-05-09 20:30:40:receive:man
+2023-05-09 20:30:41:receive:man
+2023-05-09 20:30:42:receive:man
+2023-05-09 20:30:43:receive:man
+2023-05-09 20:30:44:receive:man
+2023-05-09 20:30:45:receive:man
+2023-05-09 20:30:46:receive:man
+2023-05-09 20:30:49:receive:man
+2023-05-09 20:30:50:receive:man
+2023-05-09 20:31:02:receive:man
+2023-05-09 20:31:37:initialize blocks
+2023-05-09 20:31:37:System start
+2023-05-09 20:31:42:receive:man
+2023-05-09 20:31:43:receive:man
+2023-05-09 20:31:47:receive:man
+2023-05-09 20:31:48:receive:man
+2023-05-09 20:31:51:receive:man
+2023-05-09 20:31:52:receive:man
+2023-05-09 20:31:53:receive:man
+2023-05-09 20:31:54:receive:man
+2023-05-09 20:31:55:receive:man
+2023-05-09 20:31:56:receive:man
+2023-05-09 20:32:01:receive:man
+2023-05-09 20:32:02:receive:man
+2023-05-09 20:32:03:receive:man
+2023-05-09 20:32:03:receive:man
+2023-05-09 20:32:04:receive:man
+2023-05-09 20:32:05:receive:man
+2023-05-09 20:32:06:receive:man
+2023-05-09 20:32:12:receive:man
+2023-05-09 20:32:17:receive:man
+2023-05-09 20:32:18:receive:man
+2023-05-09 20:32:19:receive:man
+2023-05-09 20:32:25:receive:cd
+2023-05-09 20:32:27:receive:man
+2023-05-09 20:32:28:receive:man
+2023-05-09 20:32:30:receive:man
+2023-05-09 20:32:31:receive:man
+2023-05-09 20:32:32:receive:man
+2023-05-09 20:32:33:receive:man
+2023-05-09 20:32:38:receive:man
+2023-05-09 20:32:41:receive:man
+2023-05-09 20:32:42:receive:man
+2023-05-09 20:32:43:receive:man
+2023-05-09 20:33:01:receive:man
+2023-05-09 20:33:02:receive:man
+2023-05-09 20:33:13:receive:man
+2023-05-09 20:33:22:receive:cd
+2023-05-09 20:33:23:receive:cd
+2023-05-09 20:33:24:receive:man
+2023-05-09 20:33:25:receive:man
+2023-05-09 20:33:25:receive:man
+2023-05-09 20:33:26:receive:man
+2023-05-09 20:33:27:receive:man
+2023-05-09 20:33:28:receive:man
+2023-05-09 20:33:29:receive:man
+2023-05-09 20:33:41:receive:man
+2023-05-09 20:33:42:receive:man
+2023-05-09 20:33:43:receive:man
+2023-05-09 20:33:45:receive:man
+2023-05-09 20:35:00:initialize blocks
+2023-05-09 20:35:00:System start
+2023-05-09 20:35:05:receive:man
+2023-05-09 20:35:06:receive:man
+2023-05-09 20:35:07:receive:man
+2023-05-09 20:35:09:receive:man
+2023-05-09 20:35:10:receive:man
+2023-05-09 20:35:17:receive:man
+2023-05-09 20:35:20:receive:man
+2023-05-09 20:35:26:receive:man
+2023-05-09 20:35:28:receive:man
+2023-05-09 20:35:29:receive:man
+2023-05-09 20:35:30:receive:man
+2023-05-09 20:35:31:receive:man
+2023-05-09 20:35:39:receive:man
+2023-05-09 20:35:40:receive:man
+2023-05-09 20:35:41:receive:man
+2023-05-09 20:35:45:receive:man
+2023-05-09 20:35:46:receive:man
+2023-05-09 20:35:47:receive:man
+2023-05-09 20:35:52:receive:man
+2023-05-09 20:35:53:receive:man
+2023-05-09 20:35:55:receive:man
+2023-05-09 20:35:58:receive:man
+2023-05-09 20:36:00:receive:man
+2023-05-09 20:36:08:receive:man
+2023-05-09 20:36:09:receive:man
+2023-05-09 20:36:11:receive:man
+2023-05-09 20:36:11:receive:man
+2023-05-09 20:36:14:receive:man
+2023-05-09 20:36:15:receive:man
+2023-05-09 20:36:17:receive:man
+2023-05-09 20:36:17:receive:man
+2023-05-09 20:36:20:receive:man
+2023-05-09 20:39:51:initialize blocks
+2023-05-09 20:39:51:System start
+2023-05-09 20:40:02:initialize blocks
+2023-05-09 20:40:02:System start
+2023-05-09 20:40:08:receive:man
+2023-05-09 20:40:09:receive:man
+2023-05-09 20:40:48:initialize blocks
+2023-05-09 20:40:48:System start
+2023-05-09 20:40:54:receive:man
+2023-05-09 20:40:55:receive:man
+2023-05-09 20:40:56:receive:man
+2023-05-09 20:41:00:receive:man
+2023-05-09 20:41:01:receive:man
+2023-05-09 20:41:01:receive:man
+2023-05-09 20:41:05:receive:cd
+2023-05-09 20:41:07:receive:man
+2023-05-09 20:41:07:receive:man
+2023-05-09 20:41:08:receive:man
+2023-05-09 20:41:10:receive:man
+2023-05-09 20:41:11:receive:man
+2023-05-09 20:41:12:receive:man
+2023-05-09 20:41:33:initialize blocks
+2023-05-09 20:41:33:System start
+2023-05-09 20:41:39:receive:man
+2023-05-09 20:41:41:receive:man
+2023-05-09 20:41:42:receive:man
+2023-05-09 20:41:43:receive:man
+2023-05-09 20:41:44:receive:man
+2023-05-09 20:41:45:receive:man
+2023-05-09 20:41:46:receive:man
+2023-05-09 20:41:48:receive:man
+2023-05-09 20:49:03:initialize blocks
+2023-05-09 20:49:03:System start
+2023-05-09 20:49:13:receive:man
+2023-05-09 20:49:15:receive:man
+2023-05-09 20:49:16:receive:man
+2023-05-09 20:49:17:receive:man
+2023-05-09 20:49:20:receive:man
+2023-05-09 20:49:21:receive:man
+2023-05-09 20:49:22:receive:man
+2023-05-09 20:49:23:receive:man
+2023-05-09 20:53:03:initialize blocks
+2023-05-09 20:53:03:System start
+2023-05-09 20:53:10:receive:man
+2023-05-09 20:53:11:receive:man
+2023-05-09 20:53:12:receive:man
+2023-05-09 20:53:15:receive:man
+2023-05-09 20:53:16:receive:man
+2023-05-09 20:53:17:receive:man
+2023-05-09 20:53:18:receive:man
+2023-05-09 20:53:21:receive:man
+2023-05-09 20:53:22:receive:man
+2023-05-09 20:53:23:receive:man
+2023-05-09 20:53:24:receive:man
+2023-05-09 20:53:27:receive:man
+2023-05-09 20:53:28:receive:man
+2023-05-09 20:56:13:initialize blocks
+2023-05-09 20:56:13:System start
+2023-05-09 20:56:20:receive:man
+2023-05-09 20:56:21:receive:man
+2023-05-09 20:56:22:receive:man
+2023-05-09 20:56:23:receive:man
+2023-05-09 20:56:24:receive:man
+2023-05-09 20:56:25:receive:man
+2023-05-09 20:56:26:receive:man
+2023-05-09 20:56:27:receive:man
+2023-05-09 20:56:28:receive:man
+2023-05-09 20:56:39:receive:man
+2023-05-09 20:56:40:receive:man
+2023-05-09 20:56:44:receive:man
+2023-05-09 20:56:47:receive:man
+2023-05-09 20:56:50:receive:man
+2023-05-09 20:56:53:receive:man
+2023-05-09 20:56:54:receive:man
+2023-05-09 20:57:18:initialize blocks
+2023-05-09 20:57:18:System start
+2023-05-09 20:57:25:receive:man
+2023-05-09 20:57:26:receive:man
+2023-05-09 20:57:26:receive:man
+2023-05-09 20:57:27:receive:man
+2023-05-09 20:57:28:receive:man
+2023-05-09 20:57:29:receive:man
+2023-05-09 20:57:30:receive:man
+2023-05-09 20:57:31:receive:man
+2023-05-09 20:57:32:receive:man
+2023-05-09 20:57:34:receive:man
+2023-05-09 20:58:11:initialize blocks
+2023-05-09 20:58:11:System start
+2023-05-09 20:58:17:receive:man
+2023-05-09 20:58:18:receive:man
+2023-05-09 20:58:19:receive:man
+2023-05-09 20:58:20:receive:man
+2023-05-09 20:58:21:receive:man
+2023-05-09 20:58:22:receive:man
+2023-05-09 20:58:24:receive:man
+2023-05-09 20:58:47:initialize blocks
+2023-05-09 20:58:47:System start
+2023-05-09 20:58:52:receive:man
+2023-05-09 20:58:53:receive:man
+2023-05-09 20:58:54:receive:man
+2023-05-09 20:58:55:receive:man
+2023-05-09 20:58:56:receive:man
+2023-05-09 20:58:58:receive:man
+2023-05-09 20:58:58:receive:man
+2023-05-09 20:59:04:receive:man
+2023-05-09 20:59:55:initialize blocks
+2023-05-09 20:59:55:System start
+2023-05-09 21:00:01:receive:man
+2023-05-09 21:00:02:receive:man
+2023-05-09 21:00:03:receive:man
+2023-05-09 21:00:04:receive:man
+2023-05-09 21:00:08:receive:man
+2023-05-09 21:00:10:receive:man
+2023-05-09 21:00:12:receive:man
+2023-05-09 21:00:12:receive:man
+2023-05-09 21:00:13:receive:man
+2023-05-09 21:00:17:receive:man
+2023-05-09 21:00:19:receive:man
+2023-05-09 21:00:21:receive:man
+2023-05-09 21:00:23:receive:man
+2023-05-09 21:00:24:receive:man
+2023-05-09 21:00:24:receive:man
+2023-05-09 21:00:25:receive:man
+2023-05-09 21:11:59:initialize blocks
+2023-05-09 21:11:59:System start
+2023-05-09 21:12:14:receive:cd 
+2023-05-09 21:12:14:receive:vi s\hhh
+2023-05-09 21:12:31:receive:cd 
+2023-05-09 21:12:31:receive:sv s\hhh access 10
+printer 15
+cpu 6
+fork
+access 50
+access 100
+fork
+access 199
+
+2023-05-09 21:12:31:sv success
+2023-05-09 21:12:36:receive:cd 
+2023-05-09 21:12:36:receive:vi s\fff
+2023-05-09 21:12:56:receive:cd 
+2023-05-09 21:12:56:receive:sv s\fff access 90
+fork
+access 55
+printer 20
+access 990
+
+2023-05-09 21:12:56:sv success
+2023-05-09 21:13:02:receive:cd 
+2023-05-09 21:13:02:receive:vi s\hhh
+2023-05-09 21:13:56:receive:cd 
+2023-05-09 21:13:56:receive:exec \s\hhh
+2023-05-09 21:13:56:Process: 0 has successfully allocated memory.
+2023-05-09 21:13:56:Process: 0 has been successfully created.
+2023-05-09 21:13:56:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:13:56:---Process: 0 has transitioned to running.
+2023-05-09 21:13:56:Process: 0 access memory 10 failed, page fault
+
+2023-05-09 21:13:57:---Process: 0 has transitioned to ready.
+2023-05-09 21:13:57:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:13:57:---Process: 0 has transitioned to running.
+2023-05-09 21:13:57:---Process: 0 has transitioned to waiting.
+2023-05-09 21:13:57:Process: 0 successfully added to the waitingQueue.
+2023-05-09 21:13:57:Process: 0 has successfully requested the use of device resources.
+2023-05-09 21:13:57:---Process: 0 has transitioned to waiting(printer).
+2023-05-09 21:13:58:receive:cd 
+2023-05-09 21:13:59:receive:exec \s\fff
+2023-05-09 21:13:59:Process: 1 has successfully allocated memory.
+2023-05-09 21:13:59:Process: 1 has been successfully created.
+2023-05-09 21:13:59:Process: 1 successfully added to the readyQueue.
+2023-05-09 21:13:59:---Process: 1 has transitioned to running.
+2023-05-09 21:13:59:Process: 1 access memory 90 failed, page fault
+
+2023-05-09 21:14:00:---Process: 1 has transitioned to ready.
+2023-05-09 21:14:00:Process: 1 successfully added to the readyQueue.
+2023-05-09 21:14:00:---Process: 1 has transitioned to running.
+2023-05-09 21:14:00:Process: 2 has successfully allocated memory.
+2023-05-09 21:14:00:Process: 2 has been successfully created.
+2023-05-09 21:14:00:Process: 2 successfully added to the readyQueue.
+2023-05-09 21:14:02:---Process: 1 has transitioned to ready.
+2023-05-09 21:14:02:Process: 1 successfully added to the readyQueue.
+2023-05-09 21:14:02:---Process: 2 has transitioned to running.
+2023-05-09 21:14:02:Process: 2 access memory 55 failed, page fault
+
+2023-05-09 21:14:03:---Process: 2 has transitioned to ready.
+2023-05-09 21:14:03:Process: 2 successfully added to the readyQueue.
+2023-05-09 21:14:03:---Process: 1 has transitioned to running.
+2023-05-09 21:14:03:Process: 1 access memory 55 successfully
+
+2023-05-09 21:14:04:---Process: 1 has transitioned to ready.
+2023-05-09 21:14:04:Process: 1 successfully added to the readyQueue.
+2023-05-09 21:14:04:---Process: 2 has transitioned to running.
+2023-05-09 21:14:04:---Process: 2 has transitioned to waiting.
+2023-05-09 21:14:04:Process: 2 successfully added to the waitingQueue.
+2023-05-09 21:14:04:Process: 2 failed to request the use of device resources!
+2023-05-09 21:14:04:---Process: 1 has transitioned to running.
+2023-05-09 21:14:05:---Process: 1 has transitioned to ready.
+2023-05-09 21:14:05:Process: 1 successfully added to the readyQueue.
+2023-05-09 21:14:05:---Process: 1 has transitioned to running.
+2023-05-09 21:14:05:---Process: 1 has transitioned to waiting.
+2023-05-09 21:14:05:Process: 1 successfully added to the waitingQueue.
+2023-05-09 21:14:05:Process: 1 failed to request the use of device resources!
+2023-05-09 21:14:12:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:12:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:12:Process: 0 successfully remove from waitingQueue.
+2023-05-09 21:14:12:Process: 2 has successfully requested the use of device resources.
+2023-05-09 21:14:12:---Process: 2 has transitioned to waiting.
+2023-05-09 21:14:12:Process: 1 failed to request the use of device resources!
+2023-05-09 21:14:12:---Process: 0 has transitioned to running.
+2023-05-09 21:14:13:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:13:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:13:---Process: 0 has transitioned to running.
+2023-05-09 21:14:14:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:14:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:14:---Process: 0 has transitioned to running.
+2023-05-09 21:14:15:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:15:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:15:---Process: 0 has transitioned to running.
+2023-05-09 21:14:16:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:16:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:16:---Process: 0 has transitioned to running.
+2023-05-09 21:14:17:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:17:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:17:---Process: 0 has transitioned to running.
+2023-05-09 21:14:18:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:18:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:18:---Process: 0 has transitioned to running.
+2023-05-09 21:14:18:Process: 3 has successfully allocated memory.
+2023-05-09 21:14:18:Process: 3 has been successfully created.
+2023-05-09 21:14:18:Process: 3 successfully added to the readyQueue.
+2023-05-09 21:14:20:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:20:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:20:---Process: 3 has transitioned to running.
+2023-05-09 21:14:20:Process: 3 access memory 50 failed, page fault
+
+2023-05-09 21:14:21:---Process: 3 has transitioned to ready.
+2023-05-09 21:14:21:Process: 3 successfully added to the readyQueue.
+2023-05-09 21:14:21:---Process: 0 has transitioned to running.
+2023-05-09 21:14:21:Process: 0 access memory 50 successfully
+
+2023-05-09 21:14:22:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:22:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:22:---Process: 3 has transitioned to running.
+2023-05-09 21:14:22:Process: 3 access memory 100 successfully
+
+2023-05-09 21:14:23:---Process: 3 has transitioned to ready.
+2023-05-09 21:14:23:Process: 3 successfully added to the readyQueue.
+2023-05-09 21:14:23:---Process: 0 has transitioned to running.
+2023-05-09 21:14:23:Process: 0 access memory 100 successfully
+
+2023-05-09 21:14:24:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:24:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:24:---Process: 3 has transitioned to running.
+2023-05-09 21:14:24:Process: 4 has successfully allocated memory.
+2023-05-09 21:14:24:Process: 4 has been successfully created.
+2023-05-09 21:14:24:Process: 4 successfully added to the readyQueue.
+2023-05-09 21:14:26:---Process: 3 has transitioned to ready.
+2023-05-09 21:14:26:Process: 3 successfully added to the readyQueue.
+2023-05-09 21:14:26:---Process: 0 has transitioned to running.
+2023-05-09 21:14:26:Process: 5 has successfully allocated memory.
+2023-05-09 21:14:26:Process: 5 has been successfully created.
+2023-05-09 21:14:26:Process: 5 successfully added to the readyQueue.
+2023-05-09 21:14:28:---Process: 0 has transitioned to ready.
+2023-05-09 21:14:28:Process: 0 successfully added to the readyQueue.
+2023-05-09 21:14:28:---Process: 4 has transitioned to running.
+2023-05-09 21:14:28:Process: 4 access memory 199 failed, page fault
+
+2023-05-09 21:14:29:Process: 4 finish!
+2023-05-09 21:14:29:---Process: 4 has transitioned to terminated.
+2023-05-09 21:14:29:---Process: 3 has transitioned to running.
+2023-05-09 21:14:29:Process: 3 access memory 199 successfully
+
+2023-05-09 21:14:30:Process: 3 finish!
+2023-05-09 21:14:30:---Process: 3 has transitioned to terminated.
+2023-05-09 21:14:30:---Process: 5 has transitioned to running.
+2023-05-09 21:14:30:Process: 5 access memory 199 failed, page fault
+
+2023-05-09 21:14:31:Process: 5 finish!
+2023-05-09 21:14:31:---Process: 5 has transitioned to terminated.
+2023-05-09 21:14:31:---Process: 0 has transitioned to running.
+2023-05-09 21:14:31:Process: 0 access memory 199 successfully
+
+2023-05-09 21:14:32:Process: 0 finish!
+2023-05-09 21:14:32:---Process: 0 has transitioned to terminated.
+2023-05-09 21:14:32:---Process: 2 has transitioned to ready.
+2023-05-09 21:14:32:Process: 2 successfully added to the readyQueue.
+2023-05-09 21:14:32:Process: 2 successfully remove from waitingQueue.
+2023-05-09 21:14:32:Process: 1 has successfully requested the use of device resources.
+2023-05-09 21:14:32:---Process: 1 has transitioned to waiting.
+2023-05-09 21:14:32:---Process: 2 has transitioned to running.
+2023-05-09 21:14:32:Process: 2 access memory 990 successfully
+
+2023-05-09 21:14:33:Process: 2 finish!
+2023-05-09 21:14:33:---Process: 2 has transitioned to terminated.
+2023-05-09 21:14:52:---Process: 1 has transitioned to ready.
+2023-05-09 21:14:52:Process: 1 successfully added to the readyQueue.
+2023-05-09 21:14:52:Process: 1 successfully remove from waitingQueue.
+2023-05-09 21:14:52:---Process: 1 has transitioned to running.
+2023-05-09 21:14:52:Process: 1 access memory 990 successfully
+
+2023-05-09 21:14:53:Process: 1 finish!
+2023-05-09 21:14:53:---Process: 1 has transitioned to terminated.
+2023-05-09 21:16:52:receive:cd 
+2023-05-09 21:16:53:receive:vi s\fff
+2023-05-09 21:17:03:receive:cd 
+2023-05-09 21:17:03:receive:exec \s\hhh
+2023-05-09 21:17:03:Process: 6 has successfully allocated memory.
+2023-05-09 21:17:03:Process: 6 has been successfully created.
+2023-05-09 21:17:03:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:03:---Process: 6 has transitioned to running.
+2023-05-09 21:17:03:Process: 6 access memory 10 failed, page fault
+
+2023-05-09 21:17:04:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:04:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:04:---Process: 6 has transitioned to running.
+2023-05-09 21:17:04:---Process: 6 has transitioned to waiting.
+2023-05-09 21:17:04:Process: 6 successfully added to the waitingQueue.
+2023-05-09 21:17:04:Process: 6 has successfully requested the use of device resources.
+2023-05-09 21:17:04:---Process: 6 has transitioned to waiting(printer).
+2023-05-09 21:17:05:receive:cd 
+2023-05-09 21:17:05:receive:exec \s\fff
+2023-05-09 21:17:05:Process: 7 has successfully allocated memory.
+2023-05-09 21:17:05:Process: 7 has been successfully created.
+2023-05-09 21:17:05:Process: 7 successfully added to the readyQueue.
+2023-05-09 21:17:05:---Process: 7 has transitioned to running.
+2023-05-09 21:17:05:Process: 7 access memory 90 failed, page fault
+
+2023-05-09 21:17:06:---Process: 7 has transitioned to ready.
+2023-05-09 21:17:06:Process: 7 successfully added to the readyQueue.
+2023-05-09 21:17:06:---Process: 7 has transitioned to running.
+2023-05-09 21:17:06:Process: 8 has successfully allocated memory.
+2023-05-09 21:17:06:Process: 8 has been successfully created.
+2023-05-09 21:17:06:Process: 8 successfully added to the readyQueue.
+2023-05-09 21:17:08:---Process: 7 has transitioned to ready.
+2023-05-09 21:17:08:Process: 7 successfully added to the readyQueue.
+2023-05-09 21:17:08:---Process: 8 has transitioned to running.
+2023-05-09 21:17:08:Process: 8 access memory 55 failed, page fault
+
+2023-05-09 21:17:09:---Process: 8 has transitioned to ready.
+2023-05-09 21:17:09:Process: 8 successfully added to the readyQueue.
+2023-05-09 21:17:09:---Process: 7 has transitioned to running.
+2023-05-09 21:17:09:Process: 7 access memory 55 successfully
+
+2023-05-09 21:17:10:---Process: 7 has transitioned to ready.
+2023-05-09 21:17:10:Process: 7 successfully added to the readyQueue.
+2023-05-09 21:17:10:---Process: 8 has transitioned to running.
+2023-05-09 21:17:10:---Process: 8 has transitioned to waiting.
+2023-05-09 21:17:10:Process: 8 successfully added to the waitingQueue.
+2023-05-09 21:17:10:Process: 8 failed to request the use of device resources!
+2023-05-09 21:17:10:---Process: 7 has transitioned to running.
+2023-05-09 21:17:11:---Process: 7 has transitioned to ready.
+2023-05-09 21:17:11:Process: 7 successfully added to the readyQueue.
+2023-05-09 21:17:11:---Process: 7 has transitioned to running.
+2023-05-09 21:17:11:---Process: 7 has transitioned to waiting.
+2023-05-09 21:17:11:Process: 7 successfully added to the waitingQueue.
+2023-05-09 21:17:11:Process: 7 failed to request the use of device resources!
+2023-05-09 21:17:19:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:19:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:19:Process: 6 successfully remove from waitingQueue.
+2023-05-09 21:17:19:Process: 8 has successfully requested the use of device resources.
+2023-05-09 21:17:19:---Process: 8 has transitioned to waiting.
+2023-05-09 21:17:19:Process: 7 failed to request the use of device resources!
+2023-05-09 21:17:19:---Process: 6 has transitioned to running.
+2023-05-09 21:17:20:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:20:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:20:---Process: 6 has transitioned to running.
+2023-05-09 21:17:21:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:21:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:21:---Process: 6 has transitioned to running.
+2023-05-09 21:17:22:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:22:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:22:---Process: 6 has transitioned to running.
+2023-05-09 21:17:23:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:23:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:23:---Process: 6 has transitioned to running.
+2023-05-09 21:17:24:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:24:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:24:---Process: 6 has transitioned to running.
+2023-05-09 21:17:25:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:25:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:25:---Process: 6 has transitioned to running.
+2023-05-09 21:17:25:Process: 9 has successfully allocated memory.
+2023-05-09 21:17:25:Process: 9 has been successfully created.
+2023-05-09 21:17:25:Process: 9 successfully added to the readyQueue.
+2023-05-09 21:17:27:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:27:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:27:---Process: 9 has transitioned to running.
+2023-05-09 21:17:27:Process: 9 access memory 50 failed, page fault
+
+2023-05-09 21:17:28:---Process: 9 has transitioned to ready.
+2023-05-09 21:17:28:Process: 9 successfully added to the readyQueue.
+2023-05-09 21:17:28:---Process: 6 has transitioned to running.
+2023-05-09 21:17:28:Process: 6 access memory 50 successfully
+
+2023-05-09 21:17:29:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:29:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:29:---Process: 9 has transitioned to running.
+2023-05-09 21:17:29:Process: 9 access memory 100 successfully
+
+2023-05-09 21:17:30:---Process: 9 has transitioned to ready.
+2023-05-09 21:17:30:Process: 9 successfully added to the readyQueue.
+2023-05-09 21:17:30:---Process: 6 has transitioned to running.
+2023-05-09 21:17:30:Process: 6 access memory 100 successfully
+
+2023-05-09 21:17:31:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:31:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:31:---Process: 9 has transitioned to running.
+2023-05-09 21:17:31:Process: 10 has successfully allocated memory.
+2023-05-09 21:17:31:Process: 10 has been successfully created.
+2023-05-09 21:17:31:Process: 10 successfully added to the readyQueue.
+2023-05-09 21:17:33:---Process: 9 has transitioned to ready.
+2023-05-09 21:17:33:Process: 9 successfully added to the readyQueue.
+2023-05-09 21:17:33:---Process: 6 has transitioned to running.
+2023-05-09 21:17:33:Process: 11 has successfully allocated memory.
+2023-05-09 21:17:33:Process: 11 has been successfully created.
+2023-05-09 21:17:33:Process: 11 successfully added to the readyQueue.
+2023-05-09 21:17:35:---Process: 6 has transitioned to ready.
+2023-05-09 21:17:35:Process: 6 successfully added to the readyQueue.
+2023-05-09 21:17:35:---Process: 10 has transitioned to running.
+2023-05-09 21:17:35:Process: 10 access memory 199 failed, page fault
+
+2023-05-09 21:17:36:Process: 10 finish!
+2023-05-09 21:17:36:---Process: 10 has transitioned to terminated.
+2023-05-09 21:17:36:---Process: 9 has transitioned to running.
+2023-05-09 21:17:36:Process: 9 access memory 199 successfully
+
+2023-05-09 21:17:37:Process: 9 finish!
+2023-05-09 21:17:37:---Process: 9 has transitioned to terminated.
+2023-05-09 21:17:37:---Process: 11 has transitioned to running.
+2023-05-09 21:17:37:Process: 11 access memory 199 failed, page fault
+
+2023-05-09 21:17:38:Process: 11 finish!
+2023-05-09 21:17:38:---Process: 11 has transitioned to terminated.
+2023-05-09 21:17:38:---Process: 6 has transitioned to running.
+2023-05-09 21:17:38:Process: 6 access memory 199 successfully
+
+2023-05-09 21:17:39:Process: 6 finish!
+2023-05-09 21:17:39:---Process: 6 has transitioned to terminated.
+2023-05-09 21:17:39:---Process: 8 has transitioned to ready.
+2023-05-09 21:17:39:Process: 8 successfully added to the readyQueue.
+2023-05-09 21:17:39:Process: 8 successfully remove from waitingQueue.
+2023-05-09 21:17:39:Process: 7 has successfully requested the use of device resources.
+2023-05-09 21:17:39:---Process: 7 has transitioned to waiting.
+2023-05-09 21:17:39:---Process: 8 has transitioned to running.
+2023-05-09 21:17:39:Process: 8 access memory 990 successfully
+
+2023-05-09 21:17:40:Process: 8 finish!
+2023-05-09 21:17:40:---Process: 8 has transitioned to terminated.
+2023-05-09 21:17:59:---Process: 7 has transitioned to ready.
+2023-05-09 21:17:59:Process: 7 successfully added to the readyQueue.
+2023-05-09 21:17:59:Process: 7 successfully remove from waitingQueue.
+2023-05-09 21:17:59:---Process: 7 has transitioned to running.
+2023-05-09 21:17:59:Process: 7 access memory 990 successfully
+
+2023-05-09 21:18:00:Process: 7 finish!
+2023-05-09 21:18:00:---Process: 7 has transitioned to terminated.
+2023-05-09 21:19:57:receive:cd 
+2023-05-09 21:19:57:receive:vi s\fff
+2023-05-09 21:20:14:receive:cd 
+2023-05-09 21:20:14:receive:sv s\fff access 90
+fork
+access 55
+printer 2
+access 990
+
+2023-05-09 21:20:14:sv success
+2023-05-09 21:20:28:receive:cd 
+2023-05-09 21:20:28:receive:exec \s\hhh
+2023-05-09 21:20:28:Process: 12 has successfully allocated memory.
+2023-05-09 21:20:28:Process: 12 has been successfully created.
+2023-05-09 21:20:28:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:28:---Process: 12 has transitioned to running.
+2023-05-09 21:20:28:Process: 12 access memory 10 failed, page fault
+
+2023-05-09 21:20:29:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:29:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:29:---Process: 12 has transitioned to running.
+2023-05-09 21:20:29:---Process: 12 has transitioned to waiting.
+2023-05-09 21:20:29:Process: 12 successfully added to the waitingQueue.
+2023-05-09 21:20:29:Process: 12 has successfully requested the use of device resources.
+2023-05-09 21:20:29:---Process: 12 has transitioned to waiting(printer).
+2023-05-09 21:20:30:receive:cd 
+2023-05-09 21:20:30:receive:exec \s\fff
+2023-05-09 21:20:30:Process: 13 has successfully allocated memory.
+2023-05-09 21:20:30:Process: 13 has been successfully created.
+2023-05-09 21:20:30:Process: 13 successfully added to the readyQueue.
+2023-05-09 21:20:30:---Process: 13 has transitioned to running.
+2023-05-09 21:20:30:Process: 13 access memory 90 failed, page fault
+
+2023-05-09 21:20:31:---Process: 13 has transitioned to ready.
+2023-05-09 21:20:31:Process: 13 successfully added to the readyQueue.
+2023-05-09 21:20:31:---Process: 13 has transitioned to running.
+2023-05-09 21:20:31:Process: 14 has successfully allocated memory.
+2023-05-09 21:20:31:Process: 14 has been successfully created.
+2023-05-09 21:20:31:Process: 14 successfully added to the readyQueue.
+2023-05-09 21:20:33:---Process: 13 has transitioned to ready.
+2023-05-09 21:20:33:Process: 13 successfully added to the readyQueue.
+2023-05-09 21:20:33:---Process: 14 has transitioned to running.
+2023-05-09 21:20:33:Process: 14 access memory 55 failed, page fault
+
+2023-05-09 21:20:34:---Process: 14 has transitioned to ready.
+2023-05-09 21:20:34:Process: 14 successfully added to the readyQueue.
+2023-05-09 21:20:34:---Process: 13 has transitioned to running.
+2023-05-09 21:20:34:Process: 13 access memory 55 successfully
+
+2023-05-09 21:20:35:---Process: 13 has transitioned to ready.
+2023-05-09 21:20:35:Process: 13 successfully added to the readyQueue.
+2023-05-09 21:20:35:---Process: 14 has transitioned to running.
+2023-05-09 21:20:35:---Process: 14 has transitioned to waiting.
+2023-05-09 21:20:35:Process: 14 successfully added to the waitingQueue.
+2023-05-09 21:20:35:Process: 14 failed to request the use of device resources!
+2023-05-09 21:20:35:---Process: 13 has transitioned to running.
+2023-05-09 21:20:36:---Process: 13 has transitioned to ready.
+2023-05-09 21:20:36:Process: 13 successfully added to the readyQueue.
+2023-05-09 21:20:36:---Process: 13 has transitioned to running.
+2023-05-09 21:20:36:---Process: 13 has transitioned to waiting.
+2023-05-09 21:20:36:Process: 13 successfully added to the waitingQueue.
+2023-05-09 21:20:36:Process: 13 failed to request the use of device resources!
+2023-05-09 21:20:44:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:44:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:44:Process: 12 successfully remove from waitingQueue.
+2023-05-09 21:20:44:Process: 14 has successfully requested the use of device resources.
+2023-05-09 21:20:44:---Process: 14 has transitioned to waiting.
+2023-05-09 21:20:44:Process: 13 failed to request the use of device resources!
+2023-05-09 21:20:44:---Process: 12 has transitioned to running.
+2023-05-09 21:20:45:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:45:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:45:---Process: 12 has transitioned to running.
+2023-05-09 21:20:46:---Process: 14 has transitioned to ready.
+2023-05-09 21:20:46:Process: 14 successfully added to the readyQueue.
+2023-05-09 21:20:46:Process: 14 successfully remove from waitingQueue.
+2023-05-09 21:20:46:Process: 13 has successfully requested the use of device resources.
+2023-05-09 21:20:46:---Process: 13 has transitioned to waiting.
+2023-05-09 21:20:46:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:46:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:46:---Process: 14 has transitioned to running.
+2023-05-09 21:20:46:Process: 14 access memory 990 successfully
+
+2023-05-09 21:20:47:Process: 14 finish!
+2023-05-09 21:20:47:---Process: 14 has transitioned to terminated.
+2023-05-09 21:20:47:---Process: 12 has transitioned to running.
+2023-05-09 21:20:48:---Process: 13 has transitioned to ready.
+2023-05-09 21:20:48:Process: 13 successfully added to the readyQueue.
+2023-05-09 21:20:48:Process: 13 successfully remove from waitingQueue.
+2023-05-09 21:20:48:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:48:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:48:---Process: 13 has transitioned to running.
+2023-05-09 21:20:48:Process: 13 access memory 990 successfully
+
+2023-05-09 21:20:49:Process: 13 finish!
+2023-05-09 21:20:49:---Process: 13 has transitioned to terminated.
+2023-05-09 21:20:49:---Process: 12 has transitioned to running.
+2023-05-09 21:20:50:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:50:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:50:---Process: 12 has transitioned to running.
+2023-05-09 21:20:51:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:51:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:51:---Process: 12 has transitioned to running.
+2023-05-09 21:20:52:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:52:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:52:---Process: 12 has transitioned to running.
+2023-05-09 21:20:52:Process: 15 has successfully allocated memory.
+2023-05-09 21:20:52:Process: 15 has been successfully created.
+2023-05-09 21:20:52:Process: 15 successfully added to the readyQueue.
+2023-05-09 21:20:54:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:54:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:54:---Process: 15 has transitioned to running.
+2023-05-09 21:20:54:Process: 15 access memory 50 failed, page fault
+
+2023-05-09 21:20:55:---Process: 15 has transitioned to ready.
+2023-05-09 21:20:55:Process: 15 successfully added to the readyQueue.
+2023-05-09 21:20:55:---Process: 12 has transitioned to running.
+2023-05-09 21:20:55:Process: 12 access memory 50 successfully
+
+2023-05-09 21:20:56:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:56:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:56:---Process: 15 has transitioned to running.
+2023-05-09 21:20:56:Process: 15 access memory 100 successfully
+
+2023-05-09 21:20:57:---Process: 15 has transitioned to ready.
+2023-05-09 21:20:57:Process: 15 successfully added to the readyQueue.
+2023-05-09 21:20:57:---Process: 12 has transitioned to running.
+2023-05-09 21:20:57:Process: 12 access memory 100 successfully
+
+2023-05-09 21:20:58:---Process: 12 has transitioned to ready.
+2023-05-09 21:20:58:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:20:58:---Process: 15 has transitioned to running.
+2023-05-09 21:20:58:Process: 16 has successfully allocated memory.
+2023-05-09 21:20:58:Process: 16 has been successfully created.
+2023-05-09 21:20:58:Process: 16 successfully added to the readyQueue.
+2023-05-09 21:21:00:---Process: 15 has transitioned to ready.
+2023-05-09 21:21:00:Process: 15 successfully added to the readyQueue.
+2023-05-09 21:21:00:---Process: 12 has transitioned to running.
+2023-05-09 21:21:00:Process: 17 has successfully allocated memory.
+2023-05-09 21:21:00:Process: 17 has been successfully created.
+2023-05-09 21:21:00:Process: 17 successfully added to the readyQueue.
+2023-05-09 21:21:02:---Process: 12 has transitioned to ready.
+2023-05-09 21:21:02:Process: 12 successfully added to the readyQueue.
+2023-05-09 21:21:02:---Process: 16 has transitioned to running.
+2023-05-09 21:21:02:Process: 16 access memory 199 failed, page fault
+
+2023-05-09 21:21:03:Process: 16 finish!
+2023-05-09 21:21:03:---Process: 16 has transitioned to terminated.
+2023-05-09 21:21:03:---Process: 15 has transitioned to running.
+2023-05-09 21:21:03:Process: 15 access memory 199 successfully
+
+2023-05-09 21:21:04:Process: 15 finish!
+2023-05-09 21:21:04:---Process: 15 has transitioned to terminated.
+2023-05-09 21:21:04:---Process: 17 has transitioned to running.
+2023-05-09 21:21:04:Process: 17 access memory 199 failed, page fault
+
+2023-05-09 21:21:05:Process: 17 finish!
+2023-05-09 21:21:05:---Process: 17 has transitioned to terminated.
+2023-05-09 21:21:05:---Process: 12 has transitioned to running.
+2023-05-09 21:21:05:Process: 12 access memory 199 successfully
+
+2023-05-09 21:21:06:Process: 12 finish!
+2023-05-09 21:21:06:---Process: 12 has transitioned to terminated.
+2023-05-09 21:21:23:receive:cd 
+2023-05-09 21:21:23:receive:exec \s\hhh
+2023-05-09 21:21:23:Process: 18 has successfully allocated memory.
+2023-05-09 21:21:23:Process: 18 has been successfully created.
+2023-05-09 21:21:23:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:23:---Process: 18 has transitioned to running.
+2023-05-09 21:21:23:Process: 18 access memory 10 failed, page fault
+
+2023-05-09 21:21:24:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:24:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:24:---Process: 18 has transitioned to running.
+2023-05-09 21:21:24:---Process: 18 has transitioned to waiting.
+2023-05-09 21:21:24:Process: 18 successfully added to the waitingQueue.
+2023-05-09 21:21:24:Process: 18 has successfully requested the use of device resources.
+2023-05-09 21:21:24:---Process: 18 has transitioned to waiting(printer).
+2023-05-09 21:21:25:receive:cd 
+2023-05-09 21:21:26:receive:exec \s\fff
+2023-05-09 21:21:26:Process: 19 has successfully allocated memory.
+2023-05-09 21:21:26:Process: 19 has been successfully created.
+2023-05-09 21:21:26:Process: 19 successfully added to the readyQueue.
+2023-05-09 21:21:26:---Process: 19 has transitioned to running.
+2023-05-09 21:21:26:Process: 19 access memory 90 failed, page fault
+
+2023-05-09 21:21:27:---Process: 19 has transitioned to ready.
+2023-05-09 21:21:27:Process: 19 successfully added to the readyQueue.
+2023-05-09 21:21:27:---Process: 19 has transitioned to running.
+2023-05-09 21:21:27:Process: 20 has successfully allocated memory.
+2023-05-09 21:21:27:Process: 20 has been successfully created.
+2023-05-09 21:21:27:Process: 20 successfully added to the readyQueue.
+2023-05-09 21:21:29:---Process: 19 has transitioned to ready.
+2023-05-09 21:21:29:Process: 19 successfully added to the readyQueue.
+2023-05-09 21:21:29:---Process: 20 has transitioned to running.
+2023-05-09 21:21:29:Process: 20 access memory 55 failed, page fault
+
+2023-05-09 21:21:30:---Process: 20 has transitioned to ready.
+2023-05-09 21:21:30:Process: 20 successfully added to the readyQueue.
+2023-05-09 21:21:30:---Process: 19 has transitioned to running.
+2023-05-09 21:21:30:Process: 19 access memory 55 successfully
+
+2023-05-09 21:21:31:---Process: 19 has transitioned to ready.
+2023-05-09 21:21:31:Process: 19 successfully added to the readyQueue.
+2023-05-09 21:21:31:---Process: 20 has transitioned to running.
+2023-05-09 21:21:31:---Process: 20 has transitioned to waiting.
+2023-05-09 21:21:31:Process: 20 successfully added to the waitingQueue.
+2023-05-09 21:21:31:Process: 20 failed to request the use of device resources!
+2023-05-09 21:21:31:---Process: 19 has transitioned to running.
+2023-05-09 21:21:32:---Process: 19 has transitioned to ready.
+2023-05-09 21:21:32:Process: 19 successfully added to the readyQueue.
+2023-05-09 21:21:32:---Process: 19 has transitioned to running.
+2023-05-09 21:21:32:---Process: 19 has transitioned to waiting.
+2023-05-09 21:21:32:Process: 19 successfully added to the waitingQueue.
+2023-05-09 21:21:32:Process: 19 failed to request the use of device resources!
+2023-05-09 21:21:39:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:39:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:39:Process: 18 successfully remove from waitingQueue.
+2023-05-09 21:21:39:Process: 20 has successfully requested the use of device resources.
+2023-05-09 21:21:39:---Process: 20 has transitioned to waiting.
+2023-05-09 21:21:39:Process: 19 failed to request the use of device resources!
+2023-05-09 21:21:39:---Process: 18 has transitioned to running.
+2023-05-09 21:21:40:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:40:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:40:---Process: 18 has transitioned to running.
+2023-05-09 21:21:41:---Process: 20 has transitioned to ready.
+2023-05-09 21:21:41:Process: 20 successfully added to the readyQueue.
+2023-05-09 21:21:41:Process: 20 successfully remove from waitingQueue.
+2023-05-09 21:21:41:Process: 19 has successfully requested the use of device resources.
+2023-05-09 21:21:41:---Process: 19 has transitioned to waiting.
+2023-05-09 21:21:41:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:41:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:41:---Process: 20 has transitioned to running.
+2023-05-09 21:21:41:Process: 20 access memory 990 successfully
+
+2023-05-09 21:21:42:Process: 20 finish!
+2023-05-09 21:21:42:---Process: 20 has transitioned to terminated.
+2023-05-09 21:21:42:---Process: 18 has transitioned to running.
+2023-05-09 21:21:43:---Process: 19 has transitioned to ready.
+2023-05-09 21:21:43:Process: 19 successfully added to the readyQueue.
+2023-05-09 21:21:43:Process: 19 successfully remove from waitingQueue.
+2023-05-09 21:21:43:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:43:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:43:---Process: 19 has transitioned to running.
+2023-05-09 21:21:43:Process: 19 access memory 990 successfully
+
+2023-05-09 21:21:44:Process: 19 finish!
+2023-05-09 21:21:44:---Process: 19 has transitioned to terminated.
+2023-05-09 21:21:44:---Process: 18 has transitioned to running.
+2023-05-09 21:21:45:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:45:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:45:---Process: 18 has transitioned to running.
+2023-05-09 21:21:46:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:46:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:46:---Process: 18 has transitioned to running.
+2023-05-09 21:21:47:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:47:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:47:---Process: 18 has transitioned to running.
+2023-05-09 21:21:47:Process: 21 has successfully allocated memory.
+2023-05-09 21:21:47:Process: 21 has been successfully created.
+2023-05-09 21:21:47:Process: 21 successfully added to the readyQueue.
+2023-05-09 21:21:49:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:49:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:49:---Process: 21 has transitioned to running.
+2023-05-09 21:21:49:Process: 21 access memory 50 failed, page fault
+
+2023-05-09 21:21:50:---Process: 21 has transitioned to ready.
+2023-05-09 21:21:50:Process: 21 successfully added to the readyQueue.
+2023-05-09 21:21:50:---Process: 18 has transitioned to running.
+2023-05-09 21:21:50:Process: 18 access memory 50 successfully
+
+2023-05-09 21:21:51:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:51:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:51:---Process: 21 has transitioned to running.
+2023-05-09 21:21:51:Process: 21 access memory 100 successfully
+
+2023-05-09 21:21:52:---Process: 21 has transitioned to ready.
+2023-05-09 21:21:52:Process: 21 successfully added to the readyQueue.
+2023-05-09 21:21:52:---Process: 18 has transitioned to running.
+2023-05-09 21:21:52:Process: 18 access memory 100 successfully
+
+2023-05-09 21:21:53:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:53:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:53:---Process: 21 has transitioned to running.
+2023-05-09 21:21:53:Process: 22 has successfully allocated memory.
+2023-05-09 21:21:53:Process: 22 has been successfully created.
+2023-05-09 21:21:53:Process: 22 successfully added to the readyQueue.
+2023-05-09 21:21:55:---Process: 21 has transitioned to ready.
+2023-05-09 21:21:55:Process: 21 successfully added to the readyQueue.
+2023-05-09 21:21:55:---Process: 18 has transitioned to running.
+2023-05-09 21:21:55:Process: 23 has successfully allocated memory.
+2023-05-09 21:21:55:Process: 23 has been successfully created.
+2023-05-09 21:21:55:Process: 23 successfully added to the readyQueue.
+2023-05-09 21:21:57:---Process: 18 has transitioned to ready.
+2023-05-09 21:21:57:Process: 18 successfully added to the readyQueue.
+2023-05-09 21:21:57:---Process: 22 has transitioned to running.
+2023-05-09 21:21:57:Process: 22 access memory 199 failed, page fault
+
+2023-05-09 21:21:58:Process: 22 finish!
+2023-05-09 21:21:58:---Process: 22 has transitioned to terminated.
+2023-05-09 21:21:58:---Process: 21 has transitioned to running.
+2023-05-09 21:21:58:Process: 21 access memory 199 successfully
+
+2023-05-09 21:21:59:Process: 21 finish!
+2023-05-09 21:21:59:---Process: 21 has transitioned to terminated.
+2023-05-09 21:21:59:---Process: 23 has transitioned to running.
+2023-05-09 21:21:59:Process: 23 access memory 199 failed, page fault
+
+2023-05-09 21:22:00:Process: 23 finish!
+2023-05-09 21:22:00:---Process: 23 has transitioned to terminated.
+2023-05-09 21:22:00:---Process: 18 has transitioned to running.
+2023-05-09 21:22:00:Process: 18 access memory 199 successfully
+
+2023-05-09 21:22:01:Process: 18 finish!
+2023-05-09 21:22:01:---Process: 18 has transitioned to terminated.
+2023-05-09 21:26:12:initialize blocks
+2023-05-09 21:26:12:System start
+2023-05-09 21:26:18:receive:man
+2023-05-09 21:26:19:receive:man
+2023-05-09 21:26:20:receive:man
+2023-05-09 21:26:20:receive:man
+2023-05-09 21:26:22:receive:man
+2023-05-09 21:26:23:receive:man
+2023-05-09 21:26:24:receive:man
+2023-05-09 21:26:25:receive:man
+2023-05-09 21:26:25:receive:man
+2023-05-09 21:26:26:receive:man
+2023-05-09 21:26:27:receive:man
+2023-05-09 21:26:28:receive:man
+2023-05-09 21:26:29:receive:man
+2023-05-09 21:26:31:receive:man
+2023-05-09 21:26:32:receive:man
+2023-05-09 21:26:33:receive:man
+2023-05-09 21:26:34:receive:man
+2023-05-09 21:26:35:receive:man
+2023-05-09 21:26:43:receive:man
+2023-05-09 21:30:39:initialize blocks
+2023-05-09 21:30:39:System start
+2023-05-09 21:39:25:initialize blocks
+2023-05-09 21:39:25:System start
+2023-05-09 21:39:34:receive:ar
+2023-05-09 21:39:57:initialize blocks
+2023-05-09 21:39:57:System start
+2023-05-09 21:40:11:receive:ar camera
+2023-05-09 21:40:25:receive:pc FIFO
+2023-05-09 21:40:25:change way of page
+2023-05-09 21:42:09:initialize blocks
+2023-05-09 21:42:09:System start
+2023-05-09 21:42:22:initialize blocks
+2023-05-09 21:42:22:System start

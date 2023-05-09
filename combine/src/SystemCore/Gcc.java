@@ -97,6 +97,7 @@ public class Gcc {
             res.add(content.get(i).toString().trim());
         }
         if (!check(res)) {
+            Diary.println("compile fault");
             return false;
         }
         data.put("type", "erwx");

@@ -83,11 +83,9 @@ public class TerminalWin extends Win {
                                 for (int i = 0; i < words.length; i++) {
                                     String command=words[i].trim();
                                     controller.communicate(command);
-                                    Thread.sleep(100);
+
                                 }
                             } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
                         }
