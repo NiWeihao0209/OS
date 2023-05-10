@@ -1,24 +1,17 @@
 package SystemCore;
-import Windows.Controller;
 import Windows.TaskManagerWin;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableFloatValue;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 //连续分配式存储管理
 class ConProcess {
@@ -241,14 +234,14 @@ class ConMemoryManager {
     public void printFreeMemory() {
         for (int i = 0; i < freeList.size(); i++) {
             MemoryBlock block = freeList.get(i);
-            Diary.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
+            System.out.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
         }
     }
 
     public void printAllocated() {
         for (int i = 0; i < allocatedList.size(); i++) {
             MemoryBlock block = allocatedList.get(i);
-            Diary.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
+            System.out.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
         }
     }
 
@@ -412,6 +405,7 @@ class PageMemoryManager{
         else if(pageReplaceAlgorithm.equals("LRU")){
             this.lruQueue = new LruQueue(pageFrameNum);
         }
+
     }
     public boolean createProcess(int pid,String name,int size){
         PageProcess p = new PageProcess(name, size, pid);
@@ -456,7 +450,7 @@ class PageMemoryManager{
     }
 
     public int accessProcess(PageProcess process, int address){
-        //返回1表示访问成功，返回0表示访问越界，返回2表示缺页
+        //返回1表示访问成功，返回2表示访问越界，返回5表示缺页
         int pid = process.getPid();
         int pageNum = address / pageTableSize;
         int offset = address % pageTableSize;
@@ -469,6 +463,10 @@ class PageMemoryManager{
         if (pageTableEntry.isPresent()){
             pageTableEntry.setReferencedTime(System.currentTimeMillis());
             pageTableEntry.setVisits(pageTableEntry.getVisits()+1);
+            if(pageReplaceAlgorithm.equals("FIFO"))
+                fifoQueue.push(pageTableIndex);
+            else if(pageReplaceAlgorithm.equals("LRU"))
+                lruQueue.push(pageTableIndex);
             return 1;
         }
         else {
@@ -485,9 +483,9 @@ class PageMemoryManager{
                 pageTableEntry.setPid(pid);
                 freePageFrameNum--;
                 if(pageReplaceAlgorithm.equals("FIFO"))
-                    fifoQueue.push(pageFrameIndex);
+                    fifoQueue.push(pageTableIndex);
                 else if(pageReplaceAlgorithm.equals("LRU"))
-                    lruQueue.push(pageFrameIndex);
+                    lruQueue.push(pageTableIndex);
                 new Thread(()->{
                     Platform.runLater(()-> TaskManagerWin.updateMemory(usedRate));
                 }).start();
@@ -510,15 +508,16 @@ class PageMemoryManager{
                 pageTableEntry.setPageFrameNumber(pageFrameIndex);
                 pageTableEntry.setPresent(true);
                 pageTableEntry.setPid(pid);
+                pageFault++;
                 pageReplace++;
-                Diary.println("PID" + pid + "的第" + pageNum + "页被置换到页框" + pageFrameIndex);
-                Diary.println("页框数量：" + pageFrameNum);
-                Diary.println("页表数量：" + pageTableNum);
-                Diary.println("空闲页表数量：" + freePageNum);
-                Diary.println("空闲页框数量：" + freePageFrameNum);
-                Diary.println("缺页次数：" + pageFault);
-                Diary.println("页面置换次数：" + pageReplace);
-                Diary.println("页面置换算法：" + pageReplaceAlgorithm);
+                System.out.println("PID" + pid + "的第" + pageNum + "页被置换到页框" + pageFrameIndex);
+                System.out.println("页框数量：" + pageFrameNum);
+                System.out.println("页表数量：" + pageTableNum);
+                System.out.println("空闲页表数量：" + freePageNum);
+                System.out.println("空闲页框数量：" + freePageFrameNum);
+                System.out.println("缺页次数：" + pageFault);
+                System.out.println("页面置换次数：" + pageReplace);
+                System.out.println("页面置换算法：" + pageReplaceAlgorithm);
             }
             new Thread(()->{
                 Platform.runLater(()-> TaskManagerWin.updateMemory(usedRate));
@@ -529,13 +528,13 @@ class PageMemoryManager{
     }
 
     public void showMemory(){
-        Diary.println("页框数量：" + pageFrameNum);
-        Diary.println("页表数量：" + pageTableNum);
-        Diary.println("缺页次数：" + pageFault);
-        Diary.println("页面置换次数：" + pageReplace);
-        Diary.println("页面置换算法：" + pageReplaceAlgorithm);
-        Diary.println("空闲页表数量：" + freePageNum);
-        Diary.println("空闲页框数量：" + freePageFrameNum);
+        System.out.println("页框数量：" + pageFrameNum);
+        System.out.println("页表数量：" + pageTableNum);
+        System.out.println("缺页次数：" + pageFault);
+        System.out.println("页面置换次数：" + pageReplace);
+        System.out.println("页面置换算法：" + pageReplaceAlgorithm);
+        System.out.println("空闲页表数量：" + freePageNum);
+        System.out.println("空闲页框数量：" + freePageFrameNum);
     }
 
     public List<String> getBriefUsage(){
@@ -564,7 +563,6 @@ class PageMemoryManager{
 
     public boolean deleteProcess(int pid){
         boolean deleteProcessResult = false;
-
         PageProcess process = processMap.get(pid);
         int[] pageDir = process.getPageDirectory();
         for (int i = 0; i < pageDir.length; i++) {
@@ -574,12 +572,12 @@ class PageMemoryManager{
                 freePageFrameNum++;
             }
             pageTableEntry.setPid(-1);
+            freePageNum++;
             pageTableEntry.setPresent(false);
             pageTableEntry.setReferencedTime(0);
             pageTableEntry.setModifiedTime(0);
             pageTableEntry.setPageFrameNumber(-1);
             pageTableEntry.setVisits(0);
-            freePageNum++;
             deleteProcessResult = true;
         }
         processMap.remove(pid);
@@ -656,6 +654,7 @@ class MemoryPage {
     }
 
     public void freeFrame(int index){
+        System.out.println(index+"\n"+"\n");
         pageFrames[index].setFree(true);
     }
 
@@ -710,6 +709,7 @@ class Page {
         this.pageNumber = pageNumber;
         this.data = data;
     }
+
     public int getPageNumber() {
         return pageNumber;
     }
@@ -761,10 +761,13 @@ class PageProcess {
 }
 
 public class Memory {
-    static String testName;
+    public static String testName;
     ConMemoryManager conMemoryManager;
     PageMemoryManager pageMemoryManager;
+    public static String mode;
+    public static ObservableList<UsingFrameBar> pageFrameList;
     private static String readFile(File file) throws IOException, IOException, IOException {
+        pageFrameList = FXCollections.observableArrayList();
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuilder content = new StringBuilder();
         String line;
@@ -786,6 +789,7 @@ public class Memory {
             JSONObject data = JSON.parseObject(text_content);
             //提取mem字段
             testName = data.getString("mem");
+            mode=data.getString("mode");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -793,7 +797,7 @@ public class Memory {
             conMemoryManager = new ConMemoryManager(20480);
         }
         else if (testName.equals("pa")) {
-            pageMemoryManager = new PageMemoryManager(1024, 8, 1024, 24, "LRU");
+            pageMemoryManager = new PageMemoryManager(1024, 8, 1024, 24, mode);
         }
 
     }
@@ -844,6 +848,10 @@ public class Memory {
         }
         else if (testName.equals("pa")) {
             releaseResult = pageMemoryManager.deleteProcess(pid);
+            Integer[] values = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+            LinkedList<Integer> queue = new LinkedList<>(Arrays.asList(values));
+            Memory.pageFrameList.add(new UsingFrameBar(queue));
+            Queue.queue.clear();
         }
         return releaseResult;
     }
@@ -853,11 +861,29 @@ public class Memory {
 
 
 class Queue {
-    LinkedList<Integer> queue;
+    static LinkedList<Integer> queue;
     int maxSize;
+    static int frameCount = 0;
+    static String path = "System/FramePageRecord";
+    File file;
     public Queue(int maxSize) {
         this.queue = new LinkedList<>();
         this.maxSize = maxSize;
+        this.path ="System/FramePageRecord";
+        this.file = new File(this.path);
+        //在这里将queue里的内容添加到文件钟
+        try {
+            FileWriter fileWriter = new FileWriter(this.file,true);
+            //在文件里写时间戳
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time = dateFormat.format(date);
+            fileWriter.write(time+"\n"+"---------------------------------------------------------------"+ "\n");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void push(int value) {
@@ -891,7 +917,27 @@ class FifoQueue extends Queue{
         }
         else if (!this.queue.contains(value) && this.queue.size() < this.maxSize) {
             this.queue.offerFirst(value);
+            frameCount++;
         }
+
+        //在这里将queue里的内容添加到文件钟
+        try {
+            FileWriter fileWriter = new FileWriter(this.file,true);
+            for (int i = 0; i < this.queue.size(); i++) {
+                if(this.queue.get(i)!=null){
+                    fileWriter.write(this.queue.get(i).toString()+"\t");
+                }
+            }
+            for (int i = 0; i < this.maxSize - this.queue.size(); i++){
+                fileWriter.write("N"+"\t");
+            }
+            fileWriter.write("\n");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Memory.pageFrameList.add(new UsingFrameBar(this.queue));
     }
 }
 
@@ -904,10 +950,31 @@ class LruQueue extends Queue{
     public void push(int value) {
         if (this.queue.contains(value)) {
             this.queue.removeFirstOccurrence(value);
+            frameCount--;
         }
         if(this.queue.size() >= this.maxSize) {
             this.queue.pollLast();
+            frameCount--;
         }
         this.queue.offerFirst(value);
+        frameCount++;
+        //在这里将queue里的内容添加到文件钟
+        try {
+            FileWriter fileWriter = new FileWriter(this.file,true);
+            for (int i = 0; i < this.queue.size(); i++) {
+                if(this.queue.get(i)!=null){
+                    fileWriter.write(this.queue.get(i).toString()+"\t");
+                }
+            }
+            for (int i = 0; i < this.maxSize - this.queue.size(); i++){
+                fileWriter.write("N"+"\t");
+            }
+            fileWriter.write("\n");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Memory.pageFrameList.add(new UsingFrameBar(this.queue));
     }
 }

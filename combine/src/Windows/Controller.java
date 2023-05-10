@@ -29,7 +29,7 @@ public class Controller implements Runnable{
 
 	public Stage primaryStage;
 
-	private HashSet<String> keyWord=new HashSet<>(Arrays.asList(new String[] {"pc","ar", "mc","gcc","vi","vi-ui","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","sv"}));
+	private HashSet<String> keyWord=new HashSet<>(Arrays.asList(new String[] { "pc","ar","mc","jr","gcc","vi","vi-ui","re","ls","cd","mkdir","mon","rm","dss","exec","dms","td","mkf","kill","ps","rs","man","sv"}));
 
 	static int Level=0;//一级权限等级,只能识别基础命令
 
@@ -66,6 +66,11 @@ public class Controller implements Runnable{
 				winHashMap.put(name, device);
 				desktop.addWin(device);
 				break;
+			case "页框监视器":
+				PageInspectWin pageInspectWin=new PageInspectWin(this);
+				winHashMap.put(name, pageInspectWin);
+				desktop.addWin(pageInspectWin);
+				break;
 		}
 	}
 
@@ -79,6 +84,7 @@ public class Controller implements Runnable{
 	}
 
 	public Boolean isOpen(String name) {
+		Boolean isOpen=winHashMap.containsKey(name);
 		return winHashMap.containsKey(name);
 	}
 
@@ -109,7 +115,7 @@ public class Controller implements Runnable{
 					input[0].flush();
 					return;
 				}
-
+				System.out.println("s:" + command);
 				//开启写管道
 				input[0].write(command.getBytes());
 				input[0].flush();
@@ -133,7 +139,7 @@ public class Controller implements Runnable{
 			}else{
 				if(command.split(" ")[0].equals("vi-ui"))
 					command=command.replace("vi-ui","vi");
-
+				System.out.println("s:" + command);
 				//开启写管道
 				input[0].write(command.getBytes());
 				input[0].flush();
@@ -164,7 +170,8 @@ public class Controller implements Runnable{
 					JSONObject data = JSON.parseObject(fileContent); // 读取json字符串，便于之后提取type
 					part_of_tree.put(new FileInfo(file.getName(),data.getString("type"),file_path),file);
 				} catch (IOException e) {
-
+					// 处理读取或解析 JSON 异常
+					System.out.println("error: Json exception");
 				}
 			}
 		}
@@ -180,11 +187,9 @@ public class Controller implements Runnable{
 			while ((bytesRead = output[1].read(buffer)) != -1) {
 				String data = new String(buffer, 0, bytesRead);
 				//打印data
-
-				if(terminal!=null) {
-
+				//System.out.println(data);
+				if(terminal!=null)
 					TerminalWin.setText(data);
-				}
 				// Process the data as needed
 			}
 		} catch (IOException e) {

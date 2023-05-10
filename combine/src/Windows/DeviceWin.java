@@ -25,7 +25,7 @@ public class DeviceWin extends Win {
 
 	public DeviceWin(Controller controller) {
 		
-		super(controller, "设备管理器", 680,500);
+		super(controller, "设备管理器", 650,500);
 		
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(5, 5, 5, 5));
@@ -50,11 +50,9 @@ public class DeviceWin extends Win {
         TableColumn<Hardware, String> startColumn = new TableColumn<>("开始时间");
         startColumn.setPrefWidth(200);
         startColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getStartTime()));
-        TableColumn<Hardware, String> usedColumn = new TableColumn<>("已使用时间");
-        usedColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getUsedTime()));
-        TableColumn<Hardware, String> remainColumn = new TableColumn<>("预计剩余时间");
-        remainColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getRemainTime()));
-        deviceTable.getColumns().addAll(iconColumn, nameColumn, statusColumn,pidColumn,startColumn,usedColumn,remainColumn);
+        TableColumn<Hardware, String> planColumn = new TableColumn<>("计划使用时间");
+        planColumn.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getPlanTime()));
+        deviceTable.getColumns().addAll(iconColumn, nameColumn, statusColumn,pidColumn,startColumn,planColumn);
         deviceTable.setItems(HardwareManager.hardwares);
         root.setCenter(deviceTable);
 

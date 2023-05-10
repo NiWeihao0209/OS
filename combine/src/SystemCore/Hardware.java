@@ -85,15 +85,9 @@ public class Hardware {
         return "--";
     }
 
-    public String getUsedTime(){
+    public String getPlanTime(){
         if(hardware_used)
-            return String.valueOf(get_this_time_used_now());
-        return "--";
-    }
-
-    public String getRemainTime(){
-        if(hardware_used)
-            return String.valueOf(this_time_used_plan-get_this_time_used_now());
+            return String.valueOf(this_time_used_plan);
         return "--";
     }
 
