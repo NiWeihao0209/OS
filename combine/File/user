@@ -1,1 +1,1 @@
-{"mode":"FIFO","size":"2000","mem":"pa","name":"test","type":"unc"}
+{"mode":"LRU","size":"2000","mem":"ca","name":"test","type":"unc"}

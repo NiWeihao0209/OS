@@ -34,23 +34,24 @@ public class Gcc {
                         return false;
                     }
                 }
-                else if( str[0].equals("block") && str.length<=100){
-                    //把str[1]按空格分割，存入数组中
-                    String[] str1 = str[1].split(" ");
-                    //判断str1中的元素是否都为int类型
-                    for(int j=0;j<str1.length;j++){
-                        if(str1[j].matches("[0-9]+")){
 
-                        }
-                        else{
-                            return false;
-                        }
-                    }
-
-                }
 
                 else{
                     return false;
+                }
+
+            }
+            else if( str[0].equals("block") && str.length<=100){
+                //把str[1]按空格分割，存入数组中
+                String[] str1 = str[1].split(" ");
+                //判断str1中的元素是否都为int类型
+                for(int j=0;j<str1.length;j++){
+                    if(str1[j].matches("[0-9]+")){
+
+                    }
+                    else{
+                        return false;
+                    }
                 }
 
             }

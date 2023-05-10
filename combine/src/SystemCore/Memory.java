@@ -5,10 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -234,14 +230,14 @@ class ConMemoryManager {
     public void printFreeMemory() {
         for (int i = 0; i < freeList.size(); i++) {
             MemoryBlock block = freeList.get(i);
-            System.out.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
+            Diary.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "free" );
         }
     }
 
     public void printAllocated() {
         for (int i = 0; i < allocatedList.size(); i++) {
             MemoryBlock block = allocatedList.get(i);
-            System.out.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
+            Diary.println("Block " + i + ": " + block.getStart() + " - " + block.getEnd() + " " + "allocated");
         }
     }
 
@@ -510,14 +506,14 @@ class PageMemoryManager{
                 pageTableEntry.setPid(pid);
                 pageFault++;
                 pageReplace++;
-                System.out.println("PID" + pid + "的第" + pageNum + "页被置换到页框" + pageFrameIndex);
-                System.out.println("页框数量：" + pageFrameNum);
-                System.out.println("页表数量：" + pageTableNum);
-                System.out.println("空闲页表数量：" + freePageNum);
-                System.out.println("空闲页框数量：" + freePageFrameNum);
-                System.out.println("缺页次数：" + pageFault);
-                System.out.println("页面置换次数：" + pageReplace);
-                System.out.println("页面置换算法：" + pageReplaceAlgorithm);
+                Diary.println("PID" + pid + "的第" + pageNum + "页被置换到页框" + pageFrameIndex);
+                Diary.println("页框数量：" + pageFrameNum);
+                Diary.println("页表数量：" + pageTableNum);
+                Diary.println("空闲页表数量：" + freePageNum);
+                Diary.println("空闲页框数量：" + freePageFrameNum);
+                Diary.println("缺页次数：" + pageFault);
+                Diary.println("页面置换次数：" + pageReplace);
+                Diary.println("页面置换算法：" + pageReplaceAlgorithm);
             }
             new Thread(()->{
                 Platform.runLater(()-> TaskManagerWin.updateMemory(usedRate));
@@ -528,13 +524,13 @@ class PageMemoryManager{
     }
 
     public void showMemory(){
-        System.out.println("页框数量：" + pageFrameNum);
-        System.out.println("页表数量：" + pageTableNum);
-        System.out.println("缺页次数：" + pageFault);
-        System.out.println("页面置换次数：" + pageReplace);
-        System.out.println("页面置换算法：" + pageReplaceAlgorithm);
-        System.out.println("空闲页表数量：" + freePageNum);
-        System.out.println("空闲页框数量：" + freePageFrameNum);
+        Diary.println("页框数量：" + pageFrameNum);
+        Diary.println("页表数量：" + pageTableNum);
+        Diary.println("缺页次数：" + pageFault);
+        Diary.println("页面置换次数：" + pageReplace);
+        Diary.println("页面置换算法：" + pageReplaceAlgorithm);
+        Diary.println("空闲页表数量：" + freePageNum);
+        Diary.println("空闲页框数量：" + freePageFrameNum);
     }
 
     public List<String> getBriefUsage(){
@@ -654,7 +650,7 @@ class MemoryPage {
     }
 
     public void freeFrame(int index){
-        System.out.println(index+"\n"+"\n");
+        Diary.println(index+"\n"+"\n");
         pageFrames[index].setFree(true);
     }
 

@@ -15,8 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -79,7 +77,7 @@ public class Kernel extends Application {
     public void start(Stage primaryStage) {
 
         StackPane readyPane = new StackPane();//欢迎界面
-        readyPane.setStyle("-fx-background-color:#000000");
+        readyPane.setStyle("-fx-background-color:#FFFFFF");
 
         ImageView wellcome=new ImageView(new Image("file:res/icons/logo.png"));
         readyPane.getChildren().add(wellcome);
@@ -95,7 +93,7 @@ public class Kernel extends Application {
 
         // 创建一个标签，用于显示进度的百分比
         Label progressLabel = new Label("0%");
-        progressLabel.setTextFill(Color.WHITE);
+        progressLabel.setTextFill(Color.BLACK);
 
         // 创建一个垂直布局容器，将进度条和标签添加到其中
         VBox root = new VBox();

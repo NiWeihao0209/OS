@@ -92,7 +92,7 @@ public class TaskManagerWin extends Win {
             @Override
             public void handle(MouseEvent event) {
                 selectedProcess=taskTable.getSelectionModel().getSelectedItem();
-                if(selectedProcess!=null||selectedProcess.getStatus().equals("terminated"))
+                if(selectedProcess!=null&&!selectedProcess.getStatus().equals("terminated"))
                     killBtn.setDisable(false);
                 else{
                     killBtn.setDisable(true);

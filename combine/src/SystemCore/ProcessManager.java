@@ -494,6 +494,9 @@ public class ProcessManager implements Runnable {
                     //把str数组第二个数到最后一个值复制到int型disk_access数组中
                     int[] disk_access = new int[strs.length-1];
                     for(int i = 1; i < strs.length; i++){
+                        while(strs[i].equals("")){
+                            i++;
+                        }
                         disk_access[i-1] = Integer.parseInt(strs[i]);
                     }
 

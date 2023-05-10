@@ -1,6 +1,5 @@
 package SystemCore;
 
-import java.awt.*;
 import java.io.*;
 import java.nio.file.InvalidPathException;
 import java.util.*;
@@ -21,7 +20,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.*;
 
-import javax.swing.*;
 
 public class FileManager {
     private static final String file_separator = File.separator;//根据操作系统，a动态的提供分隔符
@@ -1074,7 +1072,7 @@ public class FileManager {
         //将JsonArray对象放回原来的json对象中的content字段
         data.put("content", jsonArray);
         //更新文件大小字段
-        data.put("size", fileData.length());
+        data.put("size", fileData.length()*5);
         //将更新后的json对象转换为json字符串
         String jsonData = gson.toJson(data);
         //将更新后的内容写回到文件中
