@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javafx-sdk-17.0">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/javafx-sdk-17.0.6" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/javafx-sdk-17.0.6" recursive="false" type="SOURCES" />
+  </library>
+</component>
